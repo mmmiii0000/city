@@ -2897,6 +2897,122 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
 @media (max-width:900px){ .quiz-mode-switch{flex-wrap:wrap;} .mode-tab[data-mode="municipality"]{font-size:30px;} .mode-tab[data-mode="municipality"]:not(.active){font-size:21px;} .mode-tab[data-mode="tourism"]{font-size:13px;} }
 @media (max-width:620px){ .quiz-mode-switch{gap:5px;} .mode-tab[data-mode="municipality"]{font-size:25px;} .mode-tab[data-mode="tourism"]{padding:8px 11px;} .tourism-category-segmented{grid-template-columns:repeat(2,minmax(0,1fr));} }
 
+
+/* === v2.2: mode tabs / compact answer slot / start alignment === */
+
+/* Keep the two quiz-mode controls visually consistent.
+   The selected mode is the green/white pill. */
+.quiz-mode-switch {
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.mode-tab {
+  margin-left: 0;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .72);
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.mode-tab[data-mode="municipality"],
+.mode-tab[data-mode="municipality"]:not(.active) {
+  font-size: 25px;
+}
+
+.mode-tab[data-mode="tourism"] {
+  font-size: 14px;
+}
+
+.mode-tab.active,
+.mode-tab[data-mode="municipality"].active,
+.mode-tab[data-mode="tourism"].active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.mode-tab:not(.active):hover {
+  border-color: var(--line-strong);
+  background: #fff;
+  color: var(--text);
+}
+
+/* One-answer questions: restore the centered, short answer slot. */
+#answer-slots.single-slot,
+#answer-slots[data-count="1"] {
+  width: 100%;
+  max-width: 280px;
+  justify-content: center;
+}
+
+#answer-slots.single-slot .answer-slot,
+#answer-slots[data-count="1"] .answer-slot {
+  flex: 0 0 260px;
+  width: 260px;
+  max-width: 100%;
+}
+
+/* Start screen: align the top edges of Problem count and the adjacent setting
+   (Tourism = 出題カテゴリ, Municipality = 出題する自治体). */
+.start-settings .settings-grid {
+  align-items: start;
+}
+
+.start-settings .setting-group {
+  align-self: start;
+}
+
+@media (max-width: 900px) {
+  .quiz-mode-switch {
+    flex-wrap: nowrap;
+  }
+
+  .mode-tab {
+    padding: 8px 11px;
+  }
+
+  .mode-tab[data-mode="municipality"],
+  .mode-tab[data-mode="municipality"]:not(.active) {
+    font-size: 21px;
+  }
+
+  .mode-tab[data-mode="tourism"] {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 620px) {
+  .mode-tab {
+    padding: 8px 9px;
+  }
+
+  .mode-tab[data-mode="municipality"],
+  .mode-tab[data-mode="municipality"]:not(.active) {
+    font-size: 19px;
+  }
+
+  .mode-tab[data-mode="tourism"] {
+    font-size: 13px;
+  }
+
+  #answer-slots.single-slot,
+  #answer-slots[data-count="1"] {
+    max-width: 260px;
+  }
+
+  #answer-slots.single-slot .answer-slot,
+  #answer-slots[data-count="1"] .answer-slot {
+    flex-basis: 240px;
+    width: 240px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2954,8 +3070,8 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
                   <button type="button" class="segment">世界遺産</button>
                   <button type="button" class="segment">歴史・文化</button>
                   <button type="button" class="segment">自然・絶景</button>
-                  <button type="button" class="segment">温泉</button>
-                  <button type="button" class="segment">レジャー・施設</button>
+                  <button type="button" class="segment">レジャー・温泉</button>
+                  <button type="button" class="segment">その他</button>
                 </div>
               </fieldset>
 
@@ -3024,8 +3140,8 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
                   <button type="button" class="segment">世界遺産</button>
                   <button type="button" class="segment">歴史・文化</button>
                   <button type="button" class="segment">自然・絶景</button>
-                  <button type="button" class="segment">温泉</button>
-                  <button type="button" class="segment">レジャー・施設</button>
+                  <button type="button" class="segment">レジャー・温泉</button>
+                  <button type="button" class="segment">その他</button>
                 </div>
               </fieldset>
 
@@ -3190,10 +3306,10 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
     </footer>
   </div>
 
-<script src="municipalities.js"></script>
-<script src="tourist-spots.js?v=2.1"></script>
-<script src="map-loader.js?v=2.1"></script>
-<script src="quiz.js?v=2.1"></script>
+<script src="municipalities.js?v=2.3"></script>
+<script src="tourist-spots.js?v=2.3"></script>
+<script src="map-loader.js?v=2.3"></script>
+<script src="quiz.js?v=2.3"></script>
 
 
 

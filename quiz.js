@@ -146,8 +146,8 @@
         mapName: mapNames.length === 1 ? mapNames[0] : mapNames,
         location: locationLabels.join('・'),
         quizRegion: locs[0]?.quizRegion,
-        category: spot.category,
-        quizCategory: spot.quizCategory,
+        categories: spot.categories,
+        type: spot.type,
         worldHeritage: spot.worldHeritage,
       };
     }).sort((a, b) => a.pref.localeCompare(b.pref, 'ja'));
@@ -266,7 +266,7 @@
         const regionOk = state.region === '全国' || question.answers.some(item => item.quizRegion === state.region);
         return typeOk && regionOk;
       }
-      const categoryOk = state.tourismCategory === '全部' || question.spot.quizCategory === state.tourismCategory;
+      const categoryOk = state.tourismCategory === '全部' || (question.spot.categories || []).includes(state.tourismCategory);
       const regionOk = state.region === '全国' || question.answers.some(item => item.quizRegion === state.region);
       return categoryOk && regionOk;
     });
@@ -351,6 +351,8 @@
   function renderAnswerSlots() {
     els.answerSlots.replaceChildren();
     const required = currentAnswers().length || 1;
+    els.answerSlots.dataset.count = String(required);
+    els.answerSlots.classList.toggle('single-slot', required === 1);
     for (let i=0;i<required;i+=1) {
       const slot=document.createElement('div'); slot.className='answer-slot';
       slot.innerHTML=`<span class="slot-number">${i+1}</span><span class="slot-placeholder">${required===1?'都道府県を選択':`${i+1}つ目を選択`}</span><button type="button" class="slot-clear" hidden aria-label="選択を解除">×</button>`;
@@ -405,7 +407,7 @@
   }
   function createTouristResultCard(item,spot){
     const article=document.createElement('article');article.className='municipality-card tourist-card';const info=document.createElement('div');info.className='municipality-info tourist-result-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');title.innerHTML=`<span class="pref-label">${escapeHtml(item.pref)}</span><h3 class="tourist-location-name">${escapeHtml(item.location||'所在地情報なし')}</h3>`;titleRow.append(title);info.appendChild(titleRow);
-    const meta=document.createElement('div');meta.className='tourist-meta-list';meta.innerHTML=`<div class="tourist-meta-row"><span>カテゴリ</span><strong>${escapeHtml(spot.category||item.category||'観光地')}</strong></div>`;
+    const meta=document.createElement('div');meta.className='tourist-meta-list';const categoryText=(spot.categories||[]).join(' / ')||'その他';meta.innerHTML=`<div class="tourist-meta-row"><span>カテゴリ</span><strong>${escapeHtml(categoryText)}</strong></div>`;
     if(spot.worldHeritage){const badge=document.createElement('div');badge.className='world-heritage-badge';badge.textContent=`世界遺産：${spot.worldHeritage}`;info.appendChild(badge);} info.appendChild(meta);article.append(info,createMapCard());return article;
   }
 
