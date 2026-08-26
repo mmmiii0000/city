@@ -128,7 +128,6 @@
     gameLayout: $('#game-layout'),
     startScreen: $('#start-screen'),
     startButton: $('#start-game-button'),
-    startSettingsButton: $('#start-settings-button'),
     endScreen: $('#end-screen'),
     endCorrect: $('#end-correct'),
     endTotal: $('#end-total'),
@@ -237,7 +236,7 @@
   }
 
   function syncSettingsButtons() {
-    for (const group of $$('.settings-popover .setting-group')) {
+    for (const group of $$('.settings-popover .setting-group, .start-settings .setting-group')) {
       const legend = group.querySelector('legend')?.textContent.trim();
       for (const button of group.querySelectorAll('button')) {
         const value = button.textContent.trim();
@@ -288,7 +287,7 @@
   }
 
   function bindSettings() {
-    for (const group of $$('.settings-popover .setting-group')) {
+    for (const group of $$('.settings-popover .setting-group, .start-settings .setting-group')) {
       const legend = group.querySelector('legend')?.textContent.trim();
       for (const button of group.querySelectorAll('button')) {
         button.addEventListener('click', () => applySettingChange(legend, button.textContent.trim()));
@@ -672,8 +671,8 @@
     const areaText = item.area == null ? '—' : `${formatNumber(item.area, 2)} km²${item.areaNote || ''}`;
     const densityText = item.density == null ? '—' : `${formatNumber(item.density, 1)}人/km²`;
     const populationText = item.population == null ? '—' : `${formatInteger(item.population)}人`;
-    const populationRank = item.populationRank == null ? '—' : `${item.populationRank}位 / ${item.prefMunicipalityCount}`;
-    const areaRank = item.areaRank == null ? '—' : `${item.areaRank}位 / ${item.prefMunicipalityCount}`;
+    const populationRank = item.populationRank == null ? '—' : `${item.populationRank}位/ ${item.prefMunicipalityCount}自治体`;
+    const areaRank = item.areaRank == null ? '—' : `${item.areaRank}位/ ${item.prefMunicipalityCount}自治体`;
     dl.innerHTML = [
       ['人口', populationText],
       ['面積', areaText],
@@ -746,15 +745,9 @@
     els.nextButton.addEventListener('click', advanceAfterAnswer);
 
     els.startButton.addEventListener('click', startGame);
-    els.startSettingsButton.addEventListener('click', event => {
-      event.stopPropagation();
-      setSettingsOpen(true);
-      els.settingsButton?.focus();
-    });
     els.restartSameButton.addEventListener('click', startGame);
     els.restartSettingsButton.addEventListener('click', () => {
       showStartScreen();
-      setSettingsOpen(true);
     });
 
     document.addEventListener('keydown', event => {
