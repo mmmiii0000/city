@@ -1552,6 +1552,192 @@ footer {
   transform: translateY(6px);
 }
 
+
+/* === Real GeoJSON municipality maps === */
+.municipality-map {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.municipality-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.municipality-map-outline {
+  fill: #d7e3dc;
+  stroke: #9eb5aa;
+  stroke-width: 0.7;
+}
+
+.municipality-map-highlight {
+  fill: var(--accent);
+  stroke: var(--accent-dark);
+  stroke-width: 1.4;
+}
+
+.municipality-map.map-error {
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  color: var(--muted);
+}
+
+
+/* === Runtime quiz states === */
+[hidden] { display: none !important; }
+
+.result-status.waiting {
+  background: #e6ece8;
+  color: var(--muted);
+  font-size: 24px;
+}
+
+.result-empty {
+  flex: 1;
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 22px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 15px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  text-align: center;
+}
+
+.result-empty-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #e6ece8;
+  color: var(--muted);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.result-empty p {
+  max-width: 260px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.answer-slots.single-slot .answer-slot {
+  width: 260px;
+}
+
+.prefecture.correct-answer {
+  border-color: var(--correct) !important;
+  background: var(--correct) !important;
+  color: #fff !important;
+}
+
+.prefecture.wrong-answer {
+  border-color: var(--danger) !important;
+  background: var(--danger) !important;
+  color: #fff !important;
+}
+
+.prefecture.missed-answer {
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.prefecture:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.ghost-button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.endless-progress {
+  opacity: .45;
+}
+
+.result-cards[data-count="1"] .municipality-card {
+  min-height: 250px;
+}
+
+.result-cards[data-count="1"] .map-placeholder {
+  min-height: 225px;
+}
+
+.result-cards[data-count="3"] .municipality-card,
+.result-cards[data-count="4"] .municipality-card {
+  grid-template-columns: 34% 66%;
+}
+
+.result-cards[data-count="3"] .map-placeholder,
+.result-cards[data-count="4"] .map-placeholder {
+  min-height: 88px;
+}
+
+.result-cards[data-count="3"] .municipality-info,
+.result-cards[data-count="4"] .municipality-info {
+  padding: 7px 8px;
+}
+
+.result-cards[data-count="3"] .municipality-title-row,
+.result-cards[data-count="4"] .municipality-title-row {
+  margin-bottom: 5px;
+}
+
+.result-cards[data-count="3"] .municipality-title-row h3,
+.result-cards[data-count="4"] .municipality-title-row h3 {
+  font-size: 17px;
+}
+
+.result-cards[data-count="3"] .data-grid > div,
+.result-cards[data-count="4"] .data-grid > div {
+  padding: 4px 6px;
+}
+
+.result-cards[data-count="3"] .data-grid dt,
+.result-cards[data-count="4"] .data-grid dt {
+  font-size: 8px;
+}
+
+.result-cards[data-count="3"] .data-grid dd,
+.result-cards[data-count="4"] .data-grid dd {
+  font-size: 10px;
+}
+
+@media (max-height: 900px) {
+  .result-empty { min-height: 220px; }
+  .result-cards[data-count="1"] .municipality-card { min-height: 225px; }
+  .result-cards[data-count="1"] .map-placeholder { min-height: 198px; }
+}
+
+
+/* answer slots adapt to same-name counts up to 4 */
+#answer-slots {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#answer-slots[data-count="1"] { max-width: 280px; }
+#answer-slots[data-count="2"] { max-width: 500px; }
+#answer-slots[data-count="3"] { max-width: 690px; }
+#answer-slots[data-count="4"] { max-width: 780px; }
+#answer-slots .answer-slot {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+}
+#answer-slots.single-slot .answer-slot {
+  flex: 0 0 260px;
+}
+
 </style>
 </head>
 <body>
@@ -1619,12 +1805,12 @@ footer {
         <div class="header-stats" aria-label="現在の成績">
           <div class="stat-card">
             <span class="stat-label">正答率</span>
-            <strong>82%</strong>
-            <span class="stat-sub">14 / 17</span>
+            <strong id="correct-rate">0%</strong>
+            <span class="stat-sub" id="score-count">0 / 0</span>
           </div>
           <div class="stat-card">
             <span class="stat-label">連続正解</span>
-            <strong>6</strong>
+            <strong id="current-streak">0</strong>
           </div>
         </div>
       </div>
@@ -1636,179 +1822,120 @@ footer {
         <div class="quiz-topline">
           <div class="progress-copy">
             <span class="progress-label">QUESTION</span>
-            <span class="progress-number"><strong>04</strong><span>/ 10</span></span>
+            <span class="progress-number"><strong id="question-no">01</strong><span id="question-total">/ 10</span></span>
           </div>
           <div class="progress-track" aria-hidden="true">
-            <span style="width: 40%"></span>
+            <span id="question-progress" style="width: 10%"></span>
           </div>
         </div>
 
         <div class="question-block">
           <p class="question-label">この市町村がある都道府県を選んでください</p>
-          <h2 id="question-title" class="municipality-name">府中市</h2>
+          <h2 id="question-title" class="municipality-name"><span id="municipality-name">読み込み中…</span></h2>
 
-          <div class="duplicate-notice">
+          <div class="duplicate-notice" id="duplicate-notice" hidden>
             <span class="duplicate-badge">同名自治体</span>
-            <p>
-              「府中市」は<strong>2つの都道府県</strong>にあります。
-              正しい都道府県を2つ選んでください。
-            </p>
+            <p id="duplicate-text"></p>
           </div>
         </div>
 
-        <div class="answer-slots" aria-label="選択した回答">
-          <div class="answer-slot filled">
-            <span class="slot-number">1</span>
-            <span class="slot-value">東京都</span>
-            <button type="button" class="slot-clear" aria-label="東京都の選択を解除">×</button>
-          </div>
-          <div class="answer-slot">
-            <span class="slot-number">2</span>
-            <span class="slot-placeholder">もう1つ選択</span>
-          </div>
-        </div>
+        <div class="answer-slots" id="answer-slots" aria-label="選択した回答"></div>
 
         <div class="prefecture-area">
           <div class="prefecture-grid" aria-label="47都道府県">
-            <button type="button" class="prefecture selected">北海道</button>
-            <button type="button" class="prefecture">青森県</button>
-            <button type="button" class="prefecture">岩手県</button>
-            <button type="button" class="prefecture">宮城県</button>
-            <button type="button" class="prefecture">秋田県</button>
-            <button type="button" class="prefecture">山形県</button>
-            <button type="button" class="prefecture">福島県</button>
-            <button type="button" class="prefecture">茨城県</button>
+            <button type="button" class="prefecture" data-pref="北海道">北海道</button>
+            <button type="button" class="prefecture" data-pref="青森県">青森県</button>
+            <button type="button" class="prefecture" data-pref="岩手県">岩手県</button>
+            <button type="button" class="prefecture" data-pref="宮城県">宮城県</button>
+            <button type="button" class="prefecture" data-pref="秋田県">秋田県</button>
+            <button type="button" class="prefecture" data-pref="山形県">山形県</button>
+            <button type="button" class="prefecture" data-pref="福島県">福島県</button>
+            <button type="button" class="prefecture" data-pref="茨城県">茨城県</button>
 
-            <button type="button" class="prefecture">栃木県</button>
-            <button type="button" class="prefecture">群馬県</button>
-            <button type="button" class="prefecture">埼玉県</button>
-            <button type="button" class="prefecture">千葉県</button>
-            <button type="button" class="prefecture selected">東京都</button>
-            <button type="button" class="prefecture">神奈川県</button>
-            <button type="button" class="prefecture">新潟県</button>
-            <button type="button" class="prefecture">富山県</button>
+            <button type="button" class="prefecture" data-pref="栃木県">栃木県</button>
+            <button type="button" class="prefecture" data-pref="群馬県">群馬県</button>
+            <button type="button" class="prefecture" data-pref="埼玉県">埼玉県</button>
+            <button type="button" class="prefecture" data-pref="千葉県">千葉県</button>
+            <button type="button" class="prefecture" data-pref="東京都">東京都</button>
+            <button type="button" class="prefecture" data-pref="神奈川県">神奈川県</button>
+            <button type="button" class="prefecture" data-pref="新潟県">新潟県</button>
+            <button type="button" class="prefecture" data-pref="富山県">富山県</button>
 
-            <button type="button" class="prefecture">石川県</button>
-            <button type="button" class="prefecture">福井県</button>
-            <button type="button" class="prefecture">山梨県</button>
-            <button type="button" class="prefecture">長野県</button>
-            <button type="button" class="prefecture">岐阜県</button>
-            <button type="button" class="prefecture">静岡県</button>
-            <button type="button" class="prefecture">愛知県</button>
-            <button type="button" class="prefecture">三重県</button>
+            <button type="button" class="prefecture" data-pref="石川県">石川県</button>
+            <button type="button" class="prefecture" data-pref="福井県">福井県</button>
+            <button type="button" class="prefecture" data-pref="山梨県">山梨県</button>
+            <button type="button" class="prefecture" data-pref="長野県">長野県</button>
+            <button type="button" class="prefecture" data-pref="岐阜県">岐阜県</button>
+            <button type="button" class="prefecture" data-pref="静岡県">静岡県</button>
+            <button type="button" class="prefecture" data-pref="愛知県">愛知県</button>
+            <button type="button" class="prefecture" data-pref="三重県">三重県</button>
 
-            <button type="button" class="prefecture">滋賀県</button>
-            <button type="button" class="prefecture">京都府</button>
-            <button type="button" class="prefecture">大阪府</button>
-            <button type="button" class="prefecture">兵庫県</button>
-            <button type="button" class="prefecture">奈良県</button>
-            <button type="button" class="prefecture">和歌山県</button>
-            <button type="button" class="prefecture">鳥取県</button>
-            <button type="button" class="prefecture">島根県</button>
+            <button type="button" class="prefecture" data-pref="滋賀県">滋賀県</button>
+            <button type="button" class="prefecture" data-pref="京都府">京都府</button>
+            <button type="button" class="prefecture" data-pref="大阪府">大阪府</button>
+            <button type="button" class="prefecture" data-pref="兵庫県">兵庫県</button>
+            <button type="button" class="prefecture" data-pref="奈良県">奈良県</button>
+            <button type="button" class="prefecture" data-pref="和歌山県">和歌山県</button>
+            <button type="button" class="prefecture" data-pref="鳥取県">鳥取県</button>
+            <button type="button" class="prefecture" data-pref="島根県">島根県</button>
 
-            <button type="button" class="prefecture">岡山県</button>
-            <button type="button" class="prefecture">広島県</button>
-            <button type="button" class="prefecture">山口県</button>
-            <button type="button" class="prefecture">徳島県</button>
-            <button type="button" class="prefecture">香川県</button>
-            <button type="button" class="prefecture">愛媛県</button>
-            <button type="button" class="prefecture">高知県</button>
-            <button type="button" class="prefecture">福岡県</button>
+            <button type="button" class="prefecture" data-pref="岡山県">岡山県</button>
+            <button type="button" class="prefecture" data-pref="広島県">広島県</button>
+            <button type="button" class="prefecture" data-pref="山口県">山口県</button>
+            <button type="button" class="prefecture" data-pref="徳島県">徳島県</button>
+            <button type="button" class="prefecture" data-pref="香川県">香川県</button>
+            <button type="button" class="prefecture" data-pref="愛媛県">愛媛県</button>
+            <button type="button" class="prefecture" data-pref="高知県">高知県</button>
+            <button type="button" class="prefecture" data-pref="福岡県">福岡県</button>
 
-            <button type="button" class="prefecture">佐賀県</button>
-            <button type="button" class="prefecture">長崎県</button>
-            <button type="button" class="prefecture">熊本県</button>
-            <button type="button" class="prefecture">大分県</button>
-            <button type="button" class="prefecture">宮崎県</button>
-            <button type="button" class="prefecture">鹿児島県</button>
-            <button type="button" class="prefecture">沖縄県</button>
+            <button type="button" class="prefecture" data-pref="佐賀県">佐賀県</button>
+            <button type="button" class="prefecture" data-pref="長崎県">長崎県</button>
+            <button type="button" class="prefecture" data-pref="熊本県">熊本県</button>
+            <button type="button" class="prefecture" data-pref="大分県">大分県</button>
+            <button type="button" class="prefecture" data-pref="宮崎県">宮崎県</button>
+            <button type="button" class="prefecture" data-pref="鹿児島県">鹿児島県</button>
+            <button type="button" class="prefecture" data-pref="沖縄県">沖縄県</button>
             <span class="prefecture-spacer" aria-hidden="true"></span>
           </div>
         </div>
 
         <div class="quiz-actions">
-          <button type="button" class="ghost-button">選択をリセット</button>
-          <button type="button" class="primary-button" disabled>2つ選んで回答する</button>
+          <button type="button" class="ghost-button" id="reset-selection" disabled>選択をリセット</button>
+          <button type="button" class="primary-button" id="answer-button" disabled>回答する</button>
         </div>
       </section>
 
-      <section class="result-panel" aria-labelledby="result-title">
+      <section class="result-panel" id="result-panel" aria-labelledby="result-title">
         <div class="result-head">
-          <div class="result-status correct" aria-hidden="true">○</div>
+          <div class="result-status waiting" id="result-status" aria-hidden="true">？</div>
           <div>
             <span class="section-kicker">ANSWER</span>
-            <h2 id="result-title">正解！</h2>
-            <p>府中市は <strong>東京都</strong> と <strong>広島県</strong> にあります。</p>
+            <h2 id="result-title">ANSWER</h2>
+            <p id="result-sentence">都道府県を選んで「回答する」を押してください。</p>
           </div>
         </div>
 
-        <div class="result-cards">
-          <article class="municipality-card">
-            <div class="map-card">
-              <div class="map-placeholder">
-                <svg viewBox="0 0 420 250" role="img" aria-label="東京都内で府中市の位置を示す地図のプレースホルダー">
-                  <path class="map-outline" d="M60 120 L88 88 L122 72 L162 88 L192 72 L230 88 L276 86 L320 108 L356 142 L330 172 L286 184 L244 166 L202 180 L158 162 L118 178 L80 154 Z"/>
-                  <path class="map-highlight" d="M150 128 L176 112 L205 122 L200 148 L166 154 L145 142 Z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="municipality-info">
-              <div class="municipality-title-row">
-                <div>
-                  <span class="pref-label">東京都</span>
-                  <h3>府中市</h3>
-                </div>
-                <span class="municipality-type">市</span>
-              </div>
-              <dl class="data-grid">
-                <div><dt>人口</dt><dd>約 26.2万人</dd></div>
-                <div><dt>面積</dt><dd>29.43 km²</dd></div>
-                <div><dt>人口密度</dt><dd>約 8,900人/km²</dd></div>
-                <div><dt>県内人口順位</dt><dd>ー 位</dd></div>
-                <div><dt>県内面積順位</dt><dd>ー 位</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="municipality-card">
-            <div class="map-card">
-              <div class="map-placeholder">
-                <svg viewBox="0 0 420 250" role="img" aria-label="広島県内で府中市の位置を示す地図のプレースホルダー">
-                  <path class="map-outline" d="M50 150 L68 112 L110 90 L154 72 L206 82 L248 66 L296 88 L342 112 L370 146 L344 174 L300 180 L264 164 L220 176 L178 160 L134 174 L92 166 Z"/>
-                  <path class="map-highlight" d="M212 108 L242 100 L262 120 L254 146 L226 152 L206 134 Z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="municipality-info">
-              <div class="municipality-title-row">
-                <div>
-                  <span class="pref-label">広島県</span>
-                  <h3>府中市</h3>
-                </div>
-                <span class="municipality-type">市</span>
-              </div>
-              <dl class="data-grid">
-                <div><dt>人口</dt><dd>約 3.4万人</dd></div>
-                <div><dt>面積</dt><dd>195.75 km²</dd></div>
-                <div><dt>人口密度</dt><dd>約 175人/km²</dd></div>
-                <div><dt>県内人口順位</dt><dd>ー 位</dd></div>
-                <div><dt>県内面積順位</dt><dd>ー 位</dd></div>
-              </dl>
-            </div>
-          </article>
+        <div class="result-empty" id="result-empty">
+          <span class="result-empty-mark">?</span>
+          <p>回答後に、正しい都道府県・県内での位置・基本データを表示します。</p>
         </div>
+        <div class="result-cards" id="result-cards" data-count="0"></div>
 
         <div class="result-actions">
-          <button type="button" class="primary-button">次の問題へ</button>
+          <button type="button" class="primary-button" id="next-button" hidden>次の問題へ</button>
         </div>
       </section>
       </div>
     </main>
 
     <footer>
-      <p>Municipality Quiz — Design prototype</p>
+      <p>市町村クイズ — 行政区域: 国土数値情報 N03（2026-01-01） / 面積: 国土地理院（2026-04-01） / 人口: 住民基本台帳（2024-01-01）</p>
     </footer>
   </div>
+
+<script src="municipalities.js"></script>
+<script src="map-loader.js"></script>
+<script src="quiz.js"></script>
 
 <script>
 (() => {
