@@ -668,7 +668,7 @@
 
     const dl = document.createElement('dl');
     dl.className = 'data-grid';
-    const areaText = item.area == null ? '—' : `${formatNumber(item.area, 2)} km²${item.areaNote || ''}`;
+    const areaText = item.area == null ? '—' : `${formatNumber(item.area, 2)} km²`;
     const densityText = item.density == null ? '—' : `${formatNumber(item.density, 1)}人/km²`;
     const populationText = item.population == null ? '—' : `${formatInteger(item.population)}人`;
     const populationRank = item.populationRank == null ? '—' : `${item.populationRank}位/ ${item.prefMunicipalityCount}自治体`;
