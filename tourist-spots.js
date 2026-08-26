@@ -3310,8 +3310,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3328,8 +3328,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3346,8 +3346,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3364,8 +3364,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3373,7 +3373,7 @@ window.TOURIST_SPOTS = [
   },
   {
     "id": "t0186",
-    "name": "長山古墳",
+    "name": "永山古墳",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3382,8 +3382,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3400,8 +3400,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3418,8 +3418,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3436,8 +3436,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3454,8 +3454,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3472,8 +3472,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3490,8 +3490,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3508,8 +3508,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3526,8 +3526,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3544,8 +3544,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3562,8 +3562,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3580,8 +3580,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市北区",
+        "mapName": "堺市北区",
         "quizRegion": "近畿"
       }
     ],
@@ -3598,8 +3598,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市西区",
+        "mapName": "堺市西区",
         "quizRegion": "近畿"
       }
     ],
@@ -3616,8 +3616,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市西区",
+        "mapName": "堺市西区",
         "quizRegion": "近畿"
       }
     ],
@@ -3634,8 +3634,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市堺区",
+        "mapName": "堺市堺区",
         "quizRegion": "近畿"
       }
     ],
@@ -3652,8 +3652,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市北区",
+        "mapName": "堺市北区",
         "quizRegion": "近畿"
       }
     ],
@@ -3670,8 +3670,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市北区",
+        "mapName": "堺市北区",
         "quizRegion": "近畿"
       }
     ],
@@ -3688,8 +3688,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市北区",
+        "mapName": "堺市北区",
         "quizRegion": "近畿"
       }
     ],
@@ -3706,8 +3706,8 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大阪府",
-        "location": "堺市",
-        "mapName": "堺市",
+        "location": "堺市北区",
+        "mapName": "堺市北区",
         "quizRegion": "近畿"
       }
     ],

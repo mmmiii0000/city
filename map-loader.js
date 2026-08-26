@@ -4,7 +4,7 @@
   // ---------------------------------------------------------------------------
   // Cache model
   // ---------------------------------------------------------------------------
-  const MAP_DATA_VERSION = '2.6';
+  const MAP_DATA_VERSION = '2.7';
   const geojsonCache = new Map();          // map file -> Promise<GeoJSON>
   const prefectureCache = new Map();       // map file + prefecture -> prepared geometry
   const svgCache = new Map();              // prefecture + municipality -> Promise<SVGElement>
