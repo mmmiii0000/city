@@ -2154,6 +2154,299 @@ body { min-width: 0; }
 .result-cards[data-count="3"] .data-grid dd,
 .result-cards[data-count="4"] .data-grid dd { font-size: 12px; }
 
+
+
+/* === vNext: instant map rendering + compact adaptive answer layout === */
+.game-layout {
+  grid-template-columns: minmax(0, 1.32fr) minmax(540px, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+/* The quiz card ends naturally at the action buttons and never stretches when
+   the ANSWER side becomes taller. */
+.quiz-card {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.result-panel {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.result-empty {
+  min-height: 285px !important;
+}
+
+/* Every result card uses the same information-left / square-map-right layout.
+   Additional same-name municipalities simply add another row. */
+.result-cards,
+.result-cards[data-count="1"],
+.result-cards[data-count="2"],
+.result-cards[data-count="3"],
+.result-cards[data-count="4"] {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+.municipality-card,
+.result-cards[data-count="1"] .municipality-card,
+.result-cards[data-count="2"] .municipality-card,
+.result-cards[data-count="3"] .municipality-card,
+.result-cards[data-count="4"] .municipality-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden;
+}
+
+.municipality-info,
+.result-cards[data-count="1"] .municipality-info,
+.result-cards[data-count="2"] .municipality-info,
+.result-cards[data-count="3"] .municipality-info,
+.result-cards[data-count="4"] .municipality-info {
+  order: 1 !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 0 !important;
+  border-right: 1px solid var(--line) !important;
+}
+
+.map-card,
+.result-cards[data-count="1"] .map-card,
+.result-cards[data-count="2"] .map-card,
+.result-cards[data-count="3"] .map-card,
+.result-cards[data-count="4"] .map-card {
+  order: 2 !important;
+  flex: 0 0 clamp(205px, 42%, 275px);
+  width: clamp(205px, 42%, 275px);
+  aspect-ratio: 1 / 1;
+  padding: 5px;
+  border: 0 !important;
+  background: #eef4f0;
+}
+
+.map-placeholder,
+.result-cards[data-count="1"] .map-placeholder,
+.result-cards[data-count="2"] .map-placeholder,
+.result-cards[data-count="3"] .map-placeholder,
+.result-cards[data-count="4"] .map-placeholder {
+  width: 100%;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+/* Two columns fit the data cleanly in the narrower information pane. */
+.result-cards .data-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+.result-cards .data-grid > div,
+.result-cards .data-grid > div:first-child {
+  grid-column: auto !important;
+}
+.result-cards .data-grid > div:first-child {
+  grid-column: 1 / -1 !important;
+}
+
+/* Neutral frame used only for the enlarged island inset. */
+.municipality-map-inset {
+  fill: rgba(255, 255, 255, .94);
+  stroke: #c7d8cf;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (max-width: 1240px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+  .quiz-card {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+  .result-panel {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .map-card,
+  .result-cards[data-count="1"] .map-card,
+  .result-cards[data-count="2"] .map-card,
+  .result-cards[data-count="3"] .map-card,
+  .result-cards[data-count="4"] .map-card {
+    flex-basis: clamp(170px, 40%, 230px);
+    width: clamp(170px, 40%, 230px);
+  }
+}
+
+@media (max-width: 560px) {
+  .municipality-card,
+  .result-cards[data-count="1"] .municipality-card,
+  .result-cards[data-count="2"] .municipality-card,
+  .result-cards[data-count="3"] .municipality-card,
+  .result-cards[data-count="4"] .municipality-card {
+    flex-direction: column !important;
+  }
+  .municipality-info,
+  .result-cards[data-count="1"] .municipality-info,
+  .result-cards[data-count="2"] .municipality-info,
+  .result-cards[data-count="3"] .municipality-info,
+  .result-cards[data-count="4"] .municipality-info {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+  .map-card,
+  .result-cards[data-count="1"] .map-card,
+  .result-cards[data-count="2"] .map-card,
+  .result-cards[data-count="3"] .map-card,
+  .result-cards[data-count="4"] .map-card {
+    width: min(100%, 320px);
+    flex-basis: auto;
+    align-self: center;
+  }
+}
+
+
+/* === Final game-result screen typography enlargement === */
+.end-screen {
+  padding: 30px 32px;
+}
+
+.end-heading h2 {
+  font-size: 38px;
+}
+
+.end-heading .section-kicker {
+  font-size: 12px;
+}
+
+.end-stats {
+  grid-template-columns: repeat(3, minmax(145px, 1fr));
+  gap: 12px;
+}
+
+.end-stats > div {
+  padding: 18px 20px;
+  border-radius: 15px;
+}
+
+.end-stats span {
+  font-size: 13px;
+}
+
+.end-stats strong {
+  margin-top: 5px;
+  font-size: 30px;
+}
+
+.wrong-section {
+  margin-top: 26px;
+  padding-top: 22px;
+}
+
+.wrong-section h3 {
+  margin-bottom: 13px;
+  font-size: 22px;
+}
+
+.wrong-empty {
+  font-size: 16px;
+}
+
+.wrong-list {
+  gap: 10px;
+}
+
+.wrong-item {
+  grid-template-columns: minmax(120px, .9fr) 1fr 1fr;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 13px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.wrong-item strong {
+  font-size: 17px;
+}
+
+.end-actions {
+  margin-top: 28px;
+  gap: 12px;
+}
+
+.end-actions .ghost-button,
+.end-actions .primary-button {
+  min-height: 48px;
+  padding-inline: 22px;
+  font-size: 15px;
+}
+
+@media (max-width: 1240px) {
+  .end-heading h2 {
+    font-size: 34px;
+  }
+
+  .end-stats strong {
+    font-size: 27px;
+  }
+
+  .wrong-item {
+    font-size: 13px;
+  }
+
+  .wrong-item strong {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 760px) {
+  .end-screen {
+    padding: 22px;
+  }
+
+  .end-heading h2 {
+    font-size: 30px;
+  }
+
+  .end-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .end-stats span {
+    font-size: 12px;
+  }
+
+  .end-stats strong {
+    font-size: 26px;
+  }
+
+  .wrong-section h3 {
+    font-size: 20px;
+  }
+
+  .wrong-item {
+    grid-template-columns: 1fr;
+    font-size: 14px;
+  }
+
+  .end-actions .ghost-button,
+  .end-actions .primary-button {
+    width: 100%;
+    font-size: 15px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2384,8 +2677,8 @@ body { min-width: 0; }
   </div>
 
 <script src="municipalities.js"></script>
-<script src="map-loader.js?v=20260826c"></script>
-<script src="quiz.js?v=20260826c"></script>
+<script src="map-loader.js?v=20260826d"></script>
+<script src="quiz.js?v=20260826d"></script>
 
 
 

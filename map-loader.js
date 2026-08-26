@@ -1,22 +1,30 @@
 (() => {
   'use strict';
 
-  const mapCache = new Map();
-  const preparedCache = new Map();
+  // ---------------------------------------------------------------------------
+  // Cache model
+  // ---------------------------------------------------------------------------
+  const geojsonCache = new Map();          // map file -> Promise<GeoJSON>
+  const prefectureCache = new Map();       // map file + prefecture -> prepared geometry
+  const svgCache = new Map();              // prefecture + municipality -> Promise<SVGElement>
+
   const municipalityIndex = new Map(
     (window.MUNICIPALITIES || []).map(item => [`${item.pref}\u0000${item.name}`, item])
   );
 
   function loadGeoJSON(file) {
-    if (!mapCache.has(file)) {
-      mapCache.set(file, fetch(`./${file}`).then(response => {
+    if (!geojsonCache.has(file)) {
+      geojsonCache.set(file, fetch(`./${file}`, { cache: 'force-cache' }).then(response => {
         if (!response.ok) throw new Error(`${file}: HTTP ${response.status}`);
         return response.json();
       }));
     }
-    return mapCache.get(file);
+    return geojsonCache.get(file);
   }
 
+  // ---------------------------------------------------------------------------
+  // Geometry helpers
+  // ---------------------------------------------------------------------------
   function polygonList(geometry) {
     if (!geometry) return [];
     if (geometry.type === 'Polygon') return [geometry.coordinates];
@@ -29,42 +37,52 @@
     let minLat = Infinity;
     let maxLon = -Infinity;
     let maxLat = -Infinity;
+
     for (const ring of polygon || []) {
       for (const point of ring || []) {
         const lon = point?.[0];
         const lat = point?.[1];
         if (!Number.isFinite(lon) || !Number.isFinite(lat)) continue;
         minLon = Math.min(minLon, lon);
-        maxLon = Math.max(maxLon, lon);
         minLat = Math.min(minLat, lat);
+        maxLon = Math.max(maxLon, lon);
         maxLat = Math.max(maxLat, lat);
       }
     }
+
     return Number.isFinite(minLon) ? [minLon, minLat, maxLon, maxLat] : null;
   }
 
-  function mergeBounds(list) {
-    const valid = list.filter(Boolean);
+  function mergeBounds(boundsList) {
+    const valid = boundsList.filter(Boolean);
     if (!valid.length) return null;
     return [
-      Math.min(...valid.map(b => b[0])),
-      Math.min(...valid.map(b => b[1])),
-      Math.max(...valid.map(b => b[2])),
-      Math.max(...valid.map(b => b[3])),
+      Math.min(...valid.map(bounds => bounds[0])),
+      Math.min(...valid.map(bounds => bounds[1])),
+      Math.max(...valid.map(bounds => bounds[2])),
+      Math.max(...valid.map(bounds => bounds[3])),
     ];
   }
 
   function polygonAreaApprox(polygon) {
     const ring = polygon?.[0];
     if (!ring || ring.length < 3) return 0;
-    const meanLat = ring.reduce((sum, p) => sum + p[1], 0) / ring.length;
-    const lonScale = Math.max(Math.cos(meanLat * Math.PI / 180), 0.01);
+
+    const meanLat = ring.reduce((sum, point) => sum + point[1], 0) / ring.length;
+    const lonKm = 111.32 * Math.max(Math.cos(meanLat * Math.PI / 180), 0.01);
+    const latKm = 110.57;
     let twiceArea = 0;
-    for (let i = 0; i < ring.length; i += 1) {
-      const a = ring[i];
-      const b = ring[(i + 1) % ring.length];
-      twiceArea += (a[0] * lonScale) * b[1] - (b[0] * lonScale) * a[1];
+
+    for (let index = 0; index < ring.length; index += 1) {
+      const a = ring[index];
+      const b = ring[(index + 1) % ring.length];
+      const ax = a[0] * lonKm;
+      const ay = a[1] * latKm;
+      const bx = b[0] * lonKm;
+      const by = b[1] * latKm;
+      twiceArea += ax * by - bx * ay;
     }
+
     return Math.abs(twiceArea) / 2;
   }
 
@@ -77,114 +95,8 @@
     return Math.hypot(dx, dy);
   }
 
-  function preparePrefecture(prefFeatures, pref) {
-    const key = `${pref}\u0000${prefFeatures.length}`;
-    if (preparedCache.has(key)) return preparedCache.get(key);
-
-    const components = [];
-    let largestArea = 0;
-    for (const feature of prefFeatures) {
-      for (const polygon of polygonList(feature.geometry)) {
-        const bounds = boundsOfPolygon(polygon);
-        if (!bounds) continue;
-        const area = polygonAreaApprox(polygon);
-        largestArea = Math.max(largestArea, area);
-        components.push({ feature, polygon, bounds, area });
-      }
-    }
-
-    // Remove only minute rocks from viewport calculations. They remain in the
-    // source, but should never make a prefecture appear tiny.
-    const minArea = Math.max(largestArea * 0.00008, 1e-10);
-    let significant = components.filter(item => item.area >= minArea);
-    if (!significant.length) significant = components.slice();
-
-    // Cluster only truly adjacent land. A small threshold connects boundaries
-    // that were slightly separated by simplification, but it does not chain
-    // remote islands into the mainland viewport.
-    const n = significant.length;
-    const parent = Array.from({ length: n }, (_, i) => i);
-    const find = value => {
-      let root = value;
-      while (parent[root] !== root) root = parent[root];
-      while (parent[value] !== value) {
-        const next = parent[value];
-        parent[value] = root;
-        value = next;
-      }
-      return root;
-    };
-    const union = (a, b) => {
-      const ra = find(a);
-      const rb = find(b);
-      if (ra !== rb) parent[rb] = ra;
-    };
-
-    const bucketSize = 0.18;
-    const joinKm = 1.5;
-    const buckets = new Map();
-    const bucketKey = (x, y) => `${x},${y}`;
-
-    for (let i = 0; i < n; i += 1) {
-      const bounds = significant[i].bounds;
-      const minBX = Math.floor(bounds[0] / bucketSize);
-      const maxBX = Math.floor(bounds[2] / bucketSize);
-      const minBY = Math.floor(bounds[1] / bucketSize);
-      const maxBY = Math.floor(bounds[3] / bucketSize);
-      const checked = new Set();
-
-      for (let bx = minBX - 1; bx <= maxBX + 1; bx += 1) {
-        for (let by = minBY - 1; by <= maxBY + 1; by += 1) {
-          const nearby = buckets.get(bucketKey(bx, by));
-          if (!nearby) continue;
-          for (const j of nearby) {
-            if (checked.has(j)) continue;
-            checked.add(j);
-            if (bboxGapKm(bounds, significant[j].bounds) <= joinKm) union(i, j);
-          }
-        }
-      }
-
-      for (let bx = minBX; bx <= maxBX; bx += 1) {
-        for (let by = minBY; by <= maxBY; by += 1) {
-          const k = bucketKey(bx, by);
-          if (!buckets.has(k)) buckets.set(k, []);
-          buckets.get(k).push(i);
-        }
-      }
-    }
-
-    const grouped = new Map();
-    for (let i = 0; i < n; i += 1) {
-      const root = find(i);
-      if (!grouped.has(root)) grouped.set(root, []);
-      grouped.get(root).push(significant[i]);
-    }
-
-    const clusters = [...grouped.values()].map(items => ({
-      items,
-      area: items.reduce((sum, item) => sum + item.area, 0),
-      bounds: mergeBounds(items.map(item => item.bounds)),
-      names: new Set(items.map(item => item.feature.properties?.name)),
-    })).sort((a, b) => b.area - a.area);
-
-    const prepared = { components, significant, clusters, mainCluster: clusters[0] || null };
-    preparedCache.set(key, prepared);
-    return prepared;
-  }
-
-  function chooseCluster(prepared, targetName) {
-    if (!prepared.clusters.length) return null;
-    if (prepared.mainCluster?.names.has(targetName)) return prepared.mainCluster;
-
-    // Island municipality: focus on the largest land group containing that
-    // municipality instead of zooming out to include every remote island.
-    const targetClusters = prepared.clusters
-      .filter(cluster => cluster.names.has(targetName))
-      .sort((a, b) => b.area - a.area);
-    return targetClusters[0] || prepared.mainCluster;
-  }
-
+  // Web-Mercator coordinates are used only for drawing. This fixes the
+  // east-west stretching that was visible especially in Hokkaido.
   function mercatorRaw(lon, lat) {
     const x = lon * Math.PI / 180;
     const limitedLat = Math.max(-85, Math.min(85, lat));
@@ -200,11 +112,11 @@
     return [Math.min(x1, x2), Math.min(y1, y2), Math.max(x1, x2), Math.max(y1, y2)];
   }
 
-  function expandBounds(bounds, fraction = 0.008) {
+  function expandBounds(bounds, fraction = 0.018) {
     if (!bounds) return null;
     const [minLon, minLat, maxLon, maxLat] = bounds;
-    const dx = Math.max(maxLon - minLon, 0.005);
-    const dy = Math.max(maxLat - minLat, 0.005);
+    const dx = Math.max(maxLon - minLon, 0.004);
+    const dy = Math.max(maxLat - minLat, 0.004);
     return [
       minLon - dx * fraction,
       minLat - dy * fraction,
@@ -213,21 +125,23 @@
     ];
   }
 
-  function makeProjector(geoBounds, width, height, padding = 3) {
+  function makeProjector(geoBounds, width, height, padding = 10, offsetX = 0, offsetY = 0) {
     const [minX, minY, maxX, maxY] = projectedBounds(geoBounds);
     const spanX = Math.max(maxX - minX, 1e-9);
     const spanY = Math.max(maxY - minY, 1e-9);
-    const scale = Math.min((width - padding * 2) / spanX, (height - padding * 2) / spanY);
-    const drawW = spanX * scale;
-    const drawH = spanY * scale;
-    const offsetX = (width - drawW) / 2;
-    const offsetY = (height - drawH) / 2;
+    const innerWidth = Math.max(1, width - padding * 2);
+    const innerHeight = Math.max(1, height - padding * 2);
+    const scale = Math.min(innerWidth / spanX, innerHeight / spanY);
+    const drawWidth = spanX * scale;
+    const drawHeight = spanY * scale;
+    const startX = offsetX + (width - drawWidth) / 2;
+    const startY = offsetY + (height - drawHeight) / 2;
 
     return (lon, lat) => {
       const [x, y] = mercatorRaw(lon, lat);
       return [
-        offsetX + (x - minX) * scale,
-        offsetY + (maxY - y) * scale,
+        startX + (x - minX) * scale,
+        startY + (maxY - y) * scale,
       ];
     };
   }
@@ -253,51 +167,235 @@
     return path;
   }
 
-  async function renderMunicipalityMap(container, pref, name) {
-    const info = municipalityIndex.get(`${pref}\u0000${name}`);
-    if (!info) {
-      container.textContent = `${pref} ${name} の地図データがありません`;
-      container.classList.add('map-error');
-      return;
+  function appendRect(svg, x, y, width, height) {
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', x);
+    rect.setAttribute('y', y);
+    rect.setAttribute('width', width);
+    rect.setAttribute('height', height);
+    rect.setAttribute('rx', '14');
+    rect.setAttribute('class', 'municipality-map-inset');
+    svg.appendChild(rect);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Prefecture preparation / island grouping
+  // ---------------------------------------------------------------------------
+  function preparePrefecture(prefFeatures, cacheKey) {
+    if (prefectureCache.has(cacheKey)) return prefectureCache.get(cacheKey);
+
+    const components = [];
+    let largestArea = 0;
+
+    for (const feature of prefFeatures) {
+      for (const polygon of polygonList(feature.geometry)) {
+        const bounds = boundsOfPolygon(polygon);
+        if (!bounds) continue;
+        const area = polygonAreaApprox(polygon);
+        largestArea = Math.max(largestArea, area);
+        components.push({ feature, polygon, bounds, area });
+      }
     }
 
-    container.classList.add('map-loading');
-    container.textContent = '地図を読み込み中…';
+    // Very small rocks are intentionally excluded from viewport calculations.
+    // They are the main reason a prefecture used to become unnecessarily tiny.
+    const minArea = Math.max(largestArea * 0.00006, 0.002);
+    let significant = components.filter(component => component.area >= minArea);
+    if (!significant.length) significant = components.slice();
+
+    const count = significant.length;
+    const parent = Array.from({ length: count }, (_, index) => index);
+    const find = value => {
+      let root = value;
+      while (parent[root] !== root) root = parent[root];
+      while (parent[value] !== value) {
+        const next = parent[value];
+        parent[value] = root;
+        value = next;
+      }
+      return root;
+    };
+    const union = (a, b) => {
+      const rootA = find(a);
+      const rootB = find(b);
+      if (rootA !== rootB) parent[rootB] = rootA;
+    };
+
+    // Only genuinely adjacent land masses are connected. The small tolerance
+    // absorbs simplification gaps without chaining remote islands to mainland.
+    const bucketSize = 0.14;
+    const joinKm = 0.8;
+    const buckets = new Map();
+    const bucketKey = (x, y) => `${x},${y}`;
+
+    for (let index = 0; index < count; index += 1) {
+      const bounds = significant[index].bounds;
+      const minBucketX = Math.floor(bounds[0] / bucketSize);
+      const maxBucketX = Math.floor(bounds[2] / bucketSize);
+      const minBucketY = Math.floor(bounds[1] / bucketSize);
+      const maxBucketY = Math.floor(bounds[3] / bucketSize);
+      const checked = new Set();
+
+      for (let bx = minBucketX - 1; bx <= maxBucketX + 1; bx += 1) {
+        for (let by = minBucketY - 1; by <= maxBucketY + 1; by += 1) {
+          const nearby = buckets.get(bucketKey(bx, by));
+          if (!nearby) continue;
+          for (const otherIndex of nearby) {
+            if (checked.has(otherIndex)) continue;
+            checked.add(otherIndex);
+            if (bboxGapKm(bounds, significant[otherIndex].bounds) <= joinKm) {
+              union(index, otherIndex);
+            }
+          }
+        }
+      }
+
+      for (let bx = minBucketX; bx <= maxBucketX; bx += 1) {
+        for (let by = minBucketY; by <= maxBucketY; by += 1) {
+          const key = bucketKey(bx, by);
+          if (!buckets.has(key)) buckets.set(key, []);
+          buckets.get(key).push(index);
+        }
+      }
+    }
+
+    const grouped = new Map();
+    for (let index = 0; index < count; index += 1) {
+      const root = find(index);
+      if (!grouped.has(root)) grouped.set(root, []);
+      grouped.get(root).push(significant[index]);
+    }
+
+    const clusters = [...grouped.values()].map(items => ({
+      items,
+      area: items.reduce((sum, item) => sum + item.area, 0),
+      bounds: mergeBounds(items.map(item => item.bounds)),
+      names: new Set(items.map(item => item.feature.properties?.name)),
+    })).sort((a, b) => b.area - a.area);
+
+    const prepared = {
+      components,
+      significant,
+      clusters,
+      mainCluster: clusters[0] || null,
+    };
+    prefectureCache.set(cacheKey, prepared);
+    return prepared;
+  }
+
+  function uniqueItems(clusters) {
+    const result = [];
+    const seen = new Set();
+    for (const cluster of clusters) {
+      for (const item of cluster.items) {
+        if (seen.has(item)) continue;
+        seen.add(item);
+        result.push(item);
+      }
+    }
+    return result;
+  }
+
+  function drawItems(svg, items, targetName, project) {
+    for (const component of items) {
+      if (component.feature.properties?.name === targetName) continue;
+      const d = polygonPath(component.polygon, project);
+      if (d) svg.appendChild(createPath(d, 'municipality-map-outline'));
+    }
+    for (const component of items) {
+      if (component.feature.properties?.name !== targetName) continue;
+      const d = polygonPath(component.polygon, project);
+      if (d) svg.appendChild(createPath(d, 'municipality-map-highlight'));
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // SVG build / pre-render
+  // ---------------------------------------------------------------------------
+  async function buildMunicipalitySvg(pref, name) {
+    const info = municipalityIndex.get(`${pref}\u0000${name}`);
+    if (!info) throw new Error(`${pref} ${name}: municipality metadata not found`);
+
+    const geojson = await loadGeoJSON(info.mapFile);
+    const prefFeatures = geojson.features.filter(feature => feature.properties?.pref === pref);
+    if (!prefFeatures.some(feature => feature.properties?.name === name)) {
+      throw new Error(`${pref} ${name}: geometry not found`);
+    }
+
+    const prepared = preparePrefecture(prefFeatures, `${info.mapFile}\u0000${pref}`);
+    const mainCluster = prepared.mainCluster;
+    const targetClusters = prepared.clusters.filter(cluster => cluster.names.has(name));
+    const targetComponents = prepared.components.filter(
+      component => component.feature.properties?.name === name
+    );
+    const targetIsOnMain = Boolean(mainCluster?.names.has(name));
+
+    const size = 600;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', `${pref}内で${name}の位置を示す地図`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+    if (targetIsOnMain || !mainCluster) {
+      const items = mainCluster?.items || prepared.significant;
+      const bounds = expandBounds(mainCluster?.bounds || mergeBounds(items.map(item => item.bounds)));
+      if (!bounds) throw new Error('map viewport unavailable');
+      const project = makeProjector(bounds, size, size, 10);
+      drawItems(svg, items, name, project);
+      return svg;
+    }
+
+    // Island municipality: keep the main land visible at normal scale, and add
+    // a magnified inset for the target island group. This avoids the old issue
+    // where including both in one geographic bbox made the whole map tiny.
+    const mainBounds = expandBounds(mainCluster.bounds, 0.02);
+    const mainProject = makeProjector(mainBounds, size, size, 12);
+    drawItems(svg, mainCluster.items, name, mainProject);
+
+    // If a very small island was filtered out of the normal viewport clusters,
+    // fall back to the original target polygons so it is still shown correctly.
+    const targetItems = targetClusters.length ? uniqueItems(targetClusters) : targetComponents;
+    const targetBounds = expandBounds(
+      targetClusters.length
+        ? mergeBounds(targetClusters.map(cluster => cluster.bounds))
+        : mergeBounds(targetComponents.map(component => component.bounds)),
+      0.06
+    );
+    if (!targetBounds || !targetItems.length) return svg;
+
+    const insetSize = 238;
+    const insetX = size - insetSize - 12;
+    const insetY = size - insetSize - 12;
+    appendRect(svg, insetX, insetY, insetSize, insetSize);
+    const insetProject = makeProjector(targetBounds, insetSize, insetSize, 12, insetX, insetY);
+    drawItems(svg, targetItems, name, insetProject);
+
+    return svg;
+  }
+
+  function prepareMunicipalityMap(pref, name) {
+    const key = `${pref}\u0000${name}`;
+    if (!svgCache.has(key)) {
+      svgCache.set(key, buildMunicipalitySvg(pref, name));
+    }
+    return svgCache.get(key);
+  }
+
+  async function renderMunicipalityMap(container, pref, name) {
+    if (!container) return;
+    container.classList.remove('map-error');
+
+    // If the question already warmed this map, this Promise resolves immediately
+    // and no loading state is visually noticeable.
+    if (!container.hasChildNodes()) {
+      container.classList.add('map-loading');
+      container.textContent = '地図を読み込み中…';
+    }
 
     try {
-      const geojson = await loadGeoJSON(info.mapFile);
-      const prefFeatures = geojson.features.filter(feature => feature.properties?.pref === pref);
-      if (!prefFeatures.some(feature => feature.properties?.name === name)) {
-        throw new Error('対象自治体を見つけられませんでした');
-      }
-
-      const prepared = preparePrefecture(prefFeatures, pref);
-      const cluster = chooseCluster(prepared, name);
-      const bounds = expandBounds(cluster?.bounds || mergeBounds(prepared.significant.map(item => item.bounds)));
-      if (!bounds) throw new Error('表示範囲を計算できませんでした');
-
-      const width = 760;
-      const height = 520;
-      const project = makeProjector(bounds, width, height, 3);
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-label', `${pref}内で${name}の位置を示す地図`);
-      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-
-      const visibleItems = cluster?.items || prepared.significant;
-      for (const component of visibleItems) {
-        if (component.feature.properties?.name === name) continue;
-        const d = polygonPath(component.polygon, project);
-        if (d) svg.appendChild(createPath(d, 'municipality-map-outline'));
-      }
-      for (const component of visibleItems) {
-        if (component.feature.properties?.name !== name) continue;
-        const d = polygonPath(component.polygon, project);
-        if (d) svg.appendChild(createPath(d, 'municipality-map-highlight'));
-      }
-
-      container.replaceChildren(svg);
+      const svg = await prepareMunicipalityMap(pref, name);
+      container.replaceChildren(svg.cloneNode(true));
       container.classList.remove('map-loading', 'map-error');
     } catch (error) {
       console.error(error);
@@ -307,5 +405,36 @@
     }
   }
 
+  function normalizeItems(items) {
+    return (items || []).filter(Boolean).map(item => {
+      if (typeof item === 'string') return null;
+      if (item.pref && item.name) return item;
+      return null;
+    }).filter(Boolean);
+  }
+
+  async function prepareMany(items) {
+    const normalized = normalizeItems(items);
+    await Promise.allSettled(normalized.map(item => prepareMunicipalityMap(item.pref, item.name)));
+  }
+
+  async function preloadFiles(items) {
+    const normalized = normalizeItems(items);
+    const files = new Set();
+    for (const item of normalized) {
+      const info = municipalityIndex.get(`${item.pref}\u0000${item.name}`);
+      if (info?.mapFile) files.add(info.mapFile);
+    }
+    await Promise.allSettled([...files].map(loadGeoJSON));
+  }
+
+  window.MunicipalityMap = Object.freeze({
+    prepare: prepareMunicipalityMap,
+    prepareMany,
+    preloadFiles,
+    render: renderMunicipalityMap,
+  });
+
+  // Backward-compatible entry point for existing quiz code.
   window.renderMunicipalityMap = renderMunicipalityMap;
 })();

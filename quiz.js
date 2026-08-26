@@ -192,7 +192,6 @@
     mistakes: [],
     lastName: null,
     actualGameTotal: 10,
-    replaceIndex: 0,
   };
 
   // ---------------------------------------------------------------------------
@@ -341,14 +340,12 @@
     state.currentGroup = null;
     state.selectedPrefs = [];
     state.answered = false;
-    state.replaceIndex = 0;
     state.correct = 0;
     state.answeredCount = 0;
     state.streak = 0;
     state.maxStreak = 0;
     state.mistakes = [];
     state.lastName = null;
-    state.replaceIndex = 0;
     updateStats();
   }
 
@@ -399,6 +396,36 @@
     return null;
   }
 
+  function warmCurrentAnswer(group) {
+    // Start GeoJSON loading, prefecture preparation, and SVG generation as soon
+    // as the question appears. The finished SVG remains cached until answer time.
+    window.MunicipalityMap?.prepareMany(group);
+  }
+
+  function scheduleUpcomingMapWarmup() {
+    if (!window.MunicipalityMap) return;
+
+    const upcomingGroups = Number.isFinite(state.questionLimit)
+      ? state.queue.slice()
+      : state.queue.slice(0, 8);
+    if (!upcomingGroups.length) return;
+
+    const allUpcomingItems = upcomingGroups.flat();
+    const nextFewItems = upcomingGroups.slice(0, 2).flat();
+    const task = () => {
+      // Raw regional files are warmed in the background. The next two questions
+      // go one step further and have their SVGs pre-rendered during idle time.
+      window.MunicipalityMap.preloadFiles(allUpcomingItems);
+      window.MunicipalityMap.prepareMany(nextFewItems);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(task, { timeout: 1200 });
+    } else {
+      window.setTimeout(task, 0);
+    }
+  }
+
   function showNextQuestion() {
     const group = takeNextGroup();
     if (!group) {
@@ -411,6 +438,10 @@
     state.lastName = group[0].name;
     state.selectedPrefs = [];
     state.answered = false;
+
+    // Do the expensive ANSWER preparation while the player is thinking.
+    warmCurrentAnswer(group);
+    scheduleUpcomingMapWarmup();
 
     const finite = Number.isFinite(state.questionLimit);
     els.municipalityName.textContent = group[0].name;
@@ -493,25 +524,21 @@
 
   function togglePrefecture(pref) {
     if (state.answered || !state.currentGroup) return;
+
     const required = state.currentGroup.length;
     const existingIndex = state.selectedPrefs.indexOf(pref);
 
     if (existingIndex >= 0) {
+      // Clicking a selected prefecture toggles it off.
       state.selectedPrefs.splice(existingIndex, 1);
-      state.replaceIndex = Math.min(state.replaceIndex, Math.max(0, state.selectedPrefs.length - 1));
     } else if (required === 1) {
-      // Single-answer questions always replace the current choice immediately.
+      // Single-answer questions always replace the previous choice.
       state.selectedPrefs = [pref];
-      state.replaceIndex = 0;
     } else if (state.selectedPrefs.length < required) {
       state.selectedPrefs.push(pref);
-      state.replaceIndex = state.selectedPrefs.length % required;
     } else {
-      // When every slot is full, clicking another prefecture replaces one slot
-      // instead of silently ignoring the click. Repeated replacements cycle slots.
-      const indexToReplace = Math.min(state.replaceIndex, required - 1);
-      state.selectedPrefs[indexToReplace] = pref;
-      state.replaceIndex = (indexToReplace + 1) % required;
+      // If every slot is full, replace the last slot instead of ignoring the click.
+      state.selectedPrefs[required - 1] = pref;
     }
 
     syncPrefectureSelection();
@@ -619,7 +646,7 @@
       els.resultCards.appendChild(createResultCard(item));
     }
     for (const container of els.resultCards.querySelectorAll('.municipality-map')) {
-      window.renderMunicipalityMap?.(container, container.dataset.pref, container.dataset.name);
+      window.MunicipalityMap?.render(container, container.dataset.pref, container.dataset.name);
     }
 
     const isLast = Number.isFinite(state.questionLimit) && state.questionIndex >= state.actualGameTotal;
