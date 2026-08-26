@@ -4,7 +4,7 @@
   // ---------------------------------------------------------------------------
   // Cache model
   // ---------------------------------------------------------------------------
-  const MAP_DATA_VERSION = '2.7';
+  const MAP_DATA_VERSION = '2.8';
   const geojsonCache = new Map();          // map file -> Promise<GeoJSON>
   const prefectureCache = new Map();       // map file + prefecture -> prepared geometry
   const svgCache = new Map();              // prefecture + municipality -> Promise<SVGElement>
@@ -132,6 +132,15 @@
       maxLon + dx * fraction,
       maxLat + dy * fraction,
     ];
+  }
+
+  function fitScale(geoBounds, width = 600, height = 600, padding = 10) {
+    const [minX, minY, maxX, maxY] = projectedBounds(geoBounds);
+    const spanX = Math.max(maxX - minX, 1e-9);
+    const spanY = Math.max(maxY - minY, 1e-9);
+    const innerWidth = Math.max(1, width - padding * 2);
+    const innerHeight = Math.max(1, height - padding * 2);
+    return Math.min(innerWidth / spanX, innerHeight / spanY);
   }
 
   function makeProjector(geoBounds, width, height, padding = 10, offsetX = 0, offsetY = 0) {
@@ -318,6 +327,51 @@
     return result;
   }
 
+  // Nearby islands are drawn in the same prefecture canvas when doing so does
+  // not materially shrink the mainland. This is scale-based rather than a
+  // hand-maintained island list, so Sado / Rishiri / Rebun / Okushiri can be
+  // shown naturally while remote groups such as Ogasawara still use an inset.
+  const NEARBY_ISLAND_MIN_SCALE_RATIO = 0.88;
+
+  function includeNearbyClusters(baseItems, baseBounds, clusters) {
+    if (!baseBounds || !baseItems?.length) {
+      return { items: baseItems || [], bounds: baseBounds, scaleRatio: 1, baseScale: baseBounds ? fitScale(baseBounds) : 1 };
+    }
+
+    const baseScale = fitScale(baseBounds);
+    const included = [...baseItems];
+    const includedSet = new Set(baseItems);
+    let bounds = baseBounds;
+
+    const candidates = (clusters || [])
+      .filter(cluster => !cluster.items.some(item => includedSet.has(item)))
+      .sort((a, b) => {
+        const gapDiff = bboxGapKm(baseBounds, a.bounds) - bboxGapKm(baseBounds, b.bounds);
+        return Math.abs(gapDiff) > 1e-9 ? gapDiff : b.area - a.area;
+      });
+
+    for (const cluster of candidates) {
+      const combinedBounds = mergeBounds([bounds, cluster.bounds]);
+      if (!combinedBounds) continue;
+      const ratio = fitScale(combinedBounds) / baseScale;
+      if (ratio + 1e-9 < NEARBY_ISLAND_MIN_SCALE_RATIO) continue;
+
+      for (const item of cluster.items) {
+        if (includedSet.has(item)) continue;
+        includedSet.add(item);
+        included.push(item);
+      }
+      bounds = combinedBounds;
+    }
+
+    return {
+      items: included,
+      bounds,
+      scaleRatio: fitScale(bounds) / baseScale,
+      baseScale,
+    };
+  }
+
   function drawItems(svg, items, targetName, project) {
     for (const component of items) {
       if ((Array.isArray(targetName) ? targetName.includes(component.feature.properties?.name) : component.feature.properties?.name === targetName)) continue;
@@ -367,6 +421,37 @@
         mainItems = tokyoMainItems;
         mainBounds = tokyoMainBounds;
         targetIsOnMain = targetComponents.some(component => isTokyoMainlandFeature(component.feature));
+      }
+    }
+
+    // Add nearby island clusters only while the mainland stays at least 88% of
+    // its original scale. This is evaluated cumulatively, so several nearby
+    // islands can coexist without letting many small islands gradually shrink
+    // the prefecture too much.
+    const nearby = includeNearbyClusters(mainItems, mainBounds, prepared.clusters);
+    mainItems = nearby.items;
+    mainBounds = nearby.bounds;
+
+    const targetMatches = component => (
+      Array.isArray(name)
+        ? name.includes(component.feature.properties?.name)
+        : component.feature.properties?.name === name
+    );
+    targetIsOnMain = mainItems.some(targetMatches);
+
+    // A tiny target island may have been excluded from the significant-cluster
+    // set. If adding that target itself still preserves the same scale rule,
+    // draw it in the main canvas instead of forcing an inset.
+    if (!targetIsOnMain && targetComponents.length) {
+      const targetBoundsRaw = mergeBounds(targetComponents.map(component => component.bounds));
+      const combinedBounds = mergeBounds([mainBounds, targetBoundsRaw]);
+      if (combinedBounds && fitScale(combinedBounds) / nearby.baseScale >= NEARBY_ISLAND_MIN_SCALE_RATIO) {
+        const seen = new Set(mainItems);
+        for (const component of targetComponents) {
+          if (!seen.has(component)) mainItems.push(component);
+        }
+        mainBounds = combinedBounds;
+        targetIsOnMain = true;
       }
     }
 
