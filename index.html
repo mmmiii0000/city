@@ -3074,6 +3074,17 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
   }
 }
 
+
+/* === v2.5: tourism settings placement matches start screen === */
+/* 地方の並びは変更せず、問題数と出題カテゴリだけ上端を揃える。 */
+body[data-quiz-mode="tourism"] .settings-popover .settings-grid {
+  align-items: start;
+}
+
+body[data-quiz-mode="tourism"] .settings-popover .setting-group {
+  align-self: start;
+}
+
 </style>
 </head>
 <body>
@@ -3367,10 +3378,10 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
     </footer>
   </div>
 
-<script src="municipalities.js?v=2.4"></script>
-<script src="tourist-spots.js?v=2.4"></script>
-<script src="map-loader.js?v=2.4"></script>
-<script src="quiz.js?v=2.4"></script>
+<script src="municipalities.js?v=2.6"></script>
+<script src="tourist-spots.js?v=2.6"></script>
+<script src="map-loader.js?v=2.6"></script>
+<script src="quiz.js?v=2.6"></script>
 
 
 
