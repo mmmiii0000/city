@@ -1,0 +1,1850 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>市町村 都道府県クイズ</title>
+  <style>
+:root {
+  --bg: #f4f7f5;
+  --surface: #ffffff;
+  --surface-soft: #f7faf8;
+  --line: #dce6e0;
+  --line-strong: #c7d8cf;
+  --text: #17302a;
+  --muted: #647a72;
+  --accent: #1f7a61;
+  --accent-dark: #155944;
+  --accent-soft: #e8f4ef;
+  --warm: #b76c2e;
+  --warm-soft: #fff2e6;
+  --correct: #198754;
+  --danger: #c84a4a;
+  --shadow: 0 16px 44px rgba(32, 67, 55, 0.08);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 11px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Inter, "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 1180px;
+  background:
+    radial-gradient(circle at 8% 2%, rgba(31, 122, 97, 0.08), transparent 28rem),
+    linear-gradient(180deg, #f7faf8 0, var(--bg) 28rem);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+.app-shell {
+  width: min(1440px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 42px 0 60px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.eyebrow,
+.section-kicker {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(34px, 3vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.header-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  gap: 10px;
+}
+
+.stat-card {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.stat-label,
+.stat-sub {
+  display: block;
+  color: var(--muted);
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stat-card strong {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 24px;
+}
+
+.stat-sub {
+  float: right;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.control-panel,
+.quiz-card,
+.result-panel {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.control-panel {
+  margin-bottom: 18px;
+  padding: 22px 24px 24px;
+  border-radius: var(--radius-lg);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.section-heading.compact {
+  margin-bottom: 18px;
+}
+
+.section-heading h2,
+.result-head h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.review-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.toggle-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #b2c2ba;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 2.2fr;
+  gap: 18px;
+  align-items: end;
+}
+
+.setting-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.setting-group legend {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.segmented,
+.region-filter {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.segment,
+.region-chip {
+  min-height: 37px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.16s ease;
+}
+
+.segment {
+  flex: 1 1 0;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.region-chip {
+  padding: 0 11px;
+}
+
+.segment:hover,
+.region-chip:hover,
+.prefecture:hover {
+  border-color: var(--accent);
+}
+
+.segment.active,
+.region-chip.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.quiz-card {
+  padding: 24px;
+  border-radius: 28px;
+}
+
+.quiz-topline {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.progress-copy {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.progress-copy span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.progress-copy strong {
+  font-size: 26px;
+}
+
+.progress-copy small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.progress-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e8eeea;
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.question-block {
+  text-align: center;
+}
+
+.question-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.municipality-name {
+  margin: 8px 0 14px;
+  font-size: clamp(48px, 5vw, 70px);
+  letter-spacing: -0.05em;
+}
+
+.duplicate-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 760px;
+  padding: 10px 14px;
+  border: 1px solid #f2d6ba;
+  border-radius: 999px;
+  background: var(--warm-soft);
+  color: #76431b;
+  text-align: left;
+}
+
+.duplicate-notice p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.duplicate-badge {
+  flex: 0 0 auto;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: #f3d2b2;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.answer-slots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 22px 0 18px;
+}
+
+.answer-slot {
+  display: grid;
+  grid-template-columns: 28px 1fr 26px;
+  align-items: center;
+  width: 245px;
+  min-height: 48px;
+  padding: 0 10px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 13px;
+  background: #fbfdfc;
+}
+
+.answer-slot.filled {
+  border-style: solid;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.slot-number {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e3ebe7;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.filled .slot-number {
+  background: var(--accent);
+  color: #fff;
+}
+
+.slot-value,
+.slot-placeholder {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.slot-placeholder {
+  color: #91a29a;
+}
+
+.slot-clear {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.prefecture-area {
+  padding-top: 8px;
+}
+
+.prefecture-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.prefecture,
+.prefecture-spacer {
+  min-height: 48px;
+  border-radius: var(--radius-sm);
+}
+
+.prefecture {
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  transition:
+    transform 0.12s ease,
+    border-color 0.12s ease,
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.prefecture:hover {
+  transform: translateY(-1px);
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(39, 81, 66, 0.08);
+}
+
+.prefecture.selected {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.prefecture-spacer {
+  border: 1px dashed transparent;
+}
+
+.quiz-actions,
+.result-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.primary-button,
+.ghost-button {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.primary-button {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: var(--accent-dark);
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  border-color: #cbd7d1;
+  background: #cbd7d1;
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.result-panel {
+  margin-top: 18px;
+  padding: 24px;
+  border-radius: 28px;
+}
+
+.result-head {
+  display: grid;
+  grid-template-columns: 62px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.result-status {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.result-status.correct {
+  background: var(--correct);
+}
+
+.result-status.incorrect {
+  background: var(--danger);
+}
+
+.result-head p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.result-mini-stats {
+  display: flex;
+  gap: 8px;
+}
+
+.result-mini-stats span {
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.result-mini-stats strong {
+  color: var(--text);
+}
+
+.result-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.municipality-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.map-card {
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  background: #eef4f0;
+}
+
+.map-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  overflow: hidden;
+  border-radius: 14px;
+  background:
+    linear-gradient(0deg, rgba(255,255,255,0.55), rgba(255,255,255,0.55)),
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(31,122,97,0.04) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(31,122,97,0.04) 24px);
+}
+
+.map-placeholder svg {
+  width: 82%;
+  max-height: 180px;
+}
+
+.map-outline {
+  fill: #d7e3dc;
+  stroke: #9eb5aa;
+  stroke-width: 2;
+}
+
+.map-highlight {
+  fill: var(--accent);
+  stroke: var(--accent-dark);
+  stroke-width: 3;
+}
+
+.map-note {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  padding: 7px 9px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.municipality-info {
+  padding: 18px;
+}
+
+.municipality-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.pref-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.municipality-title-row h3 {
+  margin: 3px 0 0;
+  font-size: 24px;
+}
+
+.municipality-type {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 0;
+}
+
+.data-grid > div {
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+}
+
+.data-grid > div:first-child {
+  grid-column: 1 / -1;
+}
+
+.data-grid dt {
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.data-grid dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+footer {
+  padding-top: 24px;
+  text-align: center;
+  color: #91a29a;
+  font-size: 11px;
+}
+
+@media (max-width: 1280px) {
+  .app-shell {
+    width: calc(100% - 36px);
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .setting-group-wide {
+    grid-column: 1 / -1;
+  }
+
+  .prefecture {
+    min-height: 44px;
+    font-size: 12px;
+  }
+}
+
+
+/* === Desktop split layout refinement === */
+
+body {
+  min-width: 1180px;
+}
+
+.app-shell {
+  width: min(1500px, calc(100% - 40px));
+  padding: 24px 0 28px;
+}
+
+.site-header {
+  margin-bottom: 14px;
+}
+
+.site-header h1 {
+  font-size: 38px;
+}
+
+.subtitle {
+  font-size: 14px;
+}
+
+.header-stats {
+  grid-template-columns: repeat(2, 138px);
+}
+
+.stat-card {
+  padding: 11px 13px;
+}
+
+.stat-card strong {
+  font-size: 22px;
+}
+
+/* Collapsible settings */
+.settings-disclosure {
+  padding: 0;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.settings-summary {
+  min-height: 54px;
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.settings-summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings-summary-title {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+}
+
+.settings-summary-title .section-kicker {
+  margin: 0;
+}
+
+.settings-summary-title strong {
+  font-size: 17px;
+}
+
+.settings-summary-current {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-summary-current > span:not(.settings-chevron) {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.settings-chevron {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px 3px 8px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform .18s ease, margin .18s ease;
+}
+
+.settings-disclosure[open] .settings-chevron {
+  margin-bottom: -3px;
+  transform: rotate(225deg);
+}
+
+.settings-body {
+  padding: 0 16px 15px;
+  border-top: 1px solid var(--line);
+}
+
+.settings-top-row {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.settings-top-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.settings-grid {
+  grid-template-columns: .9fr 1.1fr 2.2fr;
+  gap: 14px;
+}
+
+.setting-group legend {
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.segment,
+.region-chip {
+  min-height: 34px;
+  font-size: 11px;
+}
+
+/* Main split: question left, answer right */
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(330px, 1.08fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.quiz-card,
+.result-panel {
+  margin: 0;
+  min-width: 0;
+  border-radius: 22px;
+}
+
+.quiz-card {
+  padding: 18px;
+}
+
+.quiz-topline {
+  grid-template-columns: 118px 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.progress-copy strong {
+  font-size: 23px;
+}
+
+.question-label {
+  font-size: 13px;
+}
+
+.municipality-name {
+  margin: 4px 0 10px;
+  font-size: 54px;
+}
+
+.duplicate-notice {
+  padding: 8px 12px;
+}
+
+.duplicate-notice p {
+  font-size: 12px;
+}
+
+.answer-slots {
+  margin: 14px 0 12px;
+}
+
+.answer-slot {
+  width: 230px;
+  min-height: 42px;
+}
+
+.prefecture-grid {
+  gap: 6px;
+}
+
+.prefecture,
+.prefecture-spacer {
+  min-height: 40px;
+}
+
+.prefecture {
+  font-size: 12px;
+}
+
+.quiz-actions {
+  margin-top: 12px;
+}
+
+.primary-button,
+.ghost-button {
+  min-height: 39px;
+}
+
+/* Right-side answer stack */
+.result-panel {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-head {
+  grid-template-columns: 46px 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.result-status {
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+}
+
+.result-head h2 {
+  font-size: 19px;
+}
+
+.result-head p {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.result-mini-stats {
+  grid-column: 1 / -1;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.result-mini-stats span {
+  padding: 6px 8px;
+  font-size: 10px;
+}
+
+.result-cards {
+  grid-template-columns: 1fr;
+  gap: 9px;
+  flex: 1;
+}
+
+.municipality-card {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  min-height: 0;
+  border-radius: 15px;
+}
+
+.map-card {
+  padding: 8px;
+  border-right: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.map-placeholder {
+  min-height: 150px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.map-placeholder svg {
+  width: 92%;
+  max-height: 120px;
+}
+
+.map-note {
+  right: 6px;
+  bottom: 6px;
+  padding: 4px 5px;
+  font-size: 7px;
+}
+
+.municipality-info {
+  padding: 10px;
+}
+
+.municipality-title-row {
+  margin-bottom: 8px;
+}
+
+.pref-label {
+  font-size: 10px;
+}
+
+.municipality-title-row h3 {
+  margin-top: 2px;
+  font-size: 20px;
+}
+
+.municipality-type {
+  width: 32px;
+  height: 32px;
+  font-size: 11px;
+}
+
+.data-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.data-grid > div,
+.data-grid > div:first-child {
+  grid-column: auto;
+  padding: 7px 8px;
+  border-radius: 8px;
+}
+
+.data-grid > div:first-child {
+  grid-column: 1 / -1;
+}
+
+.data-grid dt {
+  margin-bottom: 2px;
+  font-size: 9px;
+}
+
+.data-grid dd {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.result-actions {
+  margin-top: 9px;
+}
+
+.result-actions .ghost-button,
+.result-actions .primary-button {
+  flex: 1;
+  padding-inline: 10px;
+  font-size: 11px;
+}
+
+footer {
+  display: none;
+}
+
+@media (max-width: 1280px) {
+  .game-layout {
+    grid-template-columns: minmax(0, 2.8fr) minmax(320px, 1fr);
+  }
+
+  .municipality-name {
+    font-size: 48px;
+  }
+
+  .prefecture,
+  .prefecture-spacer {
+    min-height: 36px;
+  }
+
+  .prefecture {
+    font-size: 11px;
+  }
+}
+
+@media (max-height: 900px) {
+  .app-shell {
+    padding-top: 14px;
+  }
+
+  .site-header {
+    margin-bottom: 9px;
+  }
+
+  .subtitle {
+    margin-top: 4px;
+  }
+
+  .settings-disclosure {
+    margin-bottom: 9px;
+  }
+
+  .quiz-card {
+    padding: 14px 16px;
+  }
+
+  .quiz-topline {
+    margin-bottom: 8px;
+  }
+
+  .municipality-name {
+    font-size: 47px;
+  }
+
+  .answer-slots {
+    margin: 10px 0 9px;
+  }
+
+  .prefecture,
+  .prefecture-spacer {
+    min-height: 35px;
+  }
+
+  .result-panel {
+    padding: 13px;
+  }
+
+  .result-head {
+    margin-bottom: 8px;
+  }
+
+  .map-placeholder {
+    min-height: 132px;
+  }
+
+  .municipality-info {
+    padding: 8px 9px;
+  }
+
+  .data-grid > div,
+  .data-grid > div:first-child {
+    padding: 6px 7px;
+  }
+}
+
+
+/* === Final answer-panel cleanup and slight vertical compression === */
+
+.app-shell {
+  padding-top: 18px;
+  padding-bottom: 20px;
+}
+
+.site-header {
+  margin-bottom: 10px;
+}
+
+.settings-disclosure {
+  margin-bottom: 8px;
+}
+
+.quiz-card {
+  padding-top: 14px;
+  padding-bottom: 13px;
+}
+
+.quiz-topline {
+  margin-bottom: 9px;
+}
+
+.municipality-name {
+  margin-top: 2px;
+  margin-bottom: 7px;
+}
+
+.answer-slots {
+  margin-top: 10px;
+  margin-bottom: 9px;
+}
+
+.prefecture,
+.prefecture-spacer {
+  min-height: 37px;
+}
+
+.quiz-actions {
+  margin-top: 9px;
+}
+
+.result-panel {
+  padding-top: 12px;
+  padding-bottom: 11px;
+}
+
+.result-head {
+  grid-template-columns: 44px 1fr;
+  margin-bottom: 7px;
+}
+
+.result-head p {
+  margin-top: 2px;
+}
+
+.result-cards {
+  gap: 7px;
+}
+
+.municipality-card {
+  grid-template-columns: 40% 60%;
+}
+
+.map-card {
+  padding: 6px;
+}
+
+.map-placeholder {
+  min-height: 122px;
+}
+
+.map-placeholder svg {
+  max-height: 108px;
+}
+
+.municipality-info {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.municipality-title-row {
+  margin-bottom: 6px;
+}
+
+.data-grid {
+  gap: 4px;
+}
+
+.data-grid > div,
+.data-grid > div:first-child {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.result-actions {
+  margin-top: 7px;
+}
+
+/* no answer-side score summary or map caption */
+.result-mini-stats,
+.map-note {
+  display: none !important;
+}
+
+@media (max-height: 900px) {
+  .app-shell {
+    padding-top: 10px;
+    padding-bottom: 14px;
+  }
+
+  .site-header {
+    margin-bottom: 7px;
+  }
+
+  .quiz-card {
+    padding-top: 11px;
+    padding-bottom: 10px;
+  }
+
+  .prefecture,
+  .prefecture-spacer {
+    min-height: 34px;
+  }
+
+  .result-panel {
+    padding-top: 10px;
+    padding-bottom: 9px;
+  }
+
+  .map-placeholder {
+    min-height: 112px;
+  }
+}
+
+
+/* === Remove review features / simplify score presentation === */
+
+.header-stats {
+  grid-template-columns: repeat(2, 126px);
+}
+
+.stat-card {
+  display: grid;
+  align-content: center;
+  min-height: 62px;
+}
+
+.stat-card strong {
+  margin-top: 3px;
+}
+
+.stat-sub {
+  display: none;
+}
+
+.settings-top-row {
+  min-height: 34px;
+  justify-content: flex-start;
+}
+
+.settings-top-row p {
+  font-size: 11px;
+}
+
+.settings-body {
+  padding-top: 3px;
+}
+
+.result-actions {
+  justify-content: flex-end;
+}
+
+.result-actions .primary-button {
+  flex: 0 0 auto;
+  min-width: 140px;
+}
+
+.result-actions .ghost-button {
+  display: none;
+}
+
+/* slightly rebalance available vertical space after removing controls */
+.result-panel {
+  justify-content: flex-start;
+}
+
+.result-cards {
+  flex: 0 0 auto;
+}
+
+.municipality-card {
+  min-height: 0;
+}
+
+.map-placeholder {
+  min-height: 116px;
+}
+
+.data-grid > div,
+.data-grid > div:first-child {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+@media (max-height: 900px) {
+  .header-stats {
+    grid-template-columns: repeat(2, 118px);
+  }
+
+  .stat-card {
+    min-height: 56px;
+  }
+
+  .map-placeholder {
+    min-height: 106px;
+  }
+}
+
+
+/* === v4: settings popup, stable question counter, matched action buttons === */
+.site-header {
+  position: relative;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.settings-popover-wrap {
+  position: relative;
+}
+
+.settings-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 62px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  backdrop-filter: blur(10px);
+}
+
+.settings-button:hover {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.settings-button-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.settings-popover {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 760px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 46px rgba(32, 67, 55, 0.18);
+}
+
+.settings-popover[hidden] {
+  display: none;
+}
+
+.settings-popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 13px;
+}
+
+.settings-popover-head .section-kicker {
+  margin-bottom: 2px;
+}
+
+.settings-popover-head strong {
+  font-size: 17px;
+}
+
+.settings-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.settings-popover .settings-grid {
+  grid-template-columns: .9fr 1.1fr 2.2fr;
+  gap: 12px;
+}
+
+.settings-popover .setting-group-wide {
+  grid-column: auto;
+}
+
+.header-stats {
+  margin-left: 0;
+}
+
+/* QUESTION 04 / 10 */
+.quiz-topline {
+  grid-template-columns: 155px 1fr;
+}
+
+.progress-copy {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.progress-copy .progress-label {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.progress-copy .progress-number {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+}
+
+.progress-copy .progress-number strong {
+  display: inline-block;
+  margin: 0;
+  font-size: 23px;
+  line-height: 1;
+}
+
+.progress-copy .progress-number span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* "次の問題へ" matches "回答する" */
+.result-actions .primary-button {
+  min-height: 39px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+@media (max-width: 1280px) {
+  .settings-popover {
+    width: 700px;
+  }
+
+  .settings-button {
+    min-height: 56px;
+    padding-inline: 13px;
+  }
+}
+
+
+/* === v5: settings popup row layout === */
+.settings-popover .settings-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.9fr) minmax(330px, 1.1fr);
+  column-gap: 32px;
+  row-gap: 16px;
+  align-items: end;
+}
+
+.settings-popover .setting-group-wide {
+  grid-column: 1 / -1;
+}
+
+.settings-popover .region-filter {
+  width: 100%;
+}
+
+@media (max-width: 1280px) {
+  .settings-popover .settings-grid {
+    grid-template-columns: minmax(220px, 0.9fr) minmax(310px, 1.1fr);
+    column-gap: 26px;
+  }
+}
+
+
+/* === v6: header title wording === */
+.subtitle-spacer {
+  visibility: hidden;
+}
+
+
+/* === v7: header title vertical position === */
+.site-header > div:first-child {
+  transform: translateY(6px);
+}
+
+</style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">JAPAN MUNICIPALITY QUIZ</p>
+        <h1>市町村クイズ</h1>
+        <p class="subtitle subtitle-spacer" aria-hidden="true">&nbsp;</p>
+      </div>
+
+      <div class="header-controls">
+        <div class="settings-popover-wrap">
+          <button class="settings-button" type="button" aria-expanded="false" aria-controls="settings-popover">
+            <span class="settings-button-icon" aria-hidden="true">⚙</span>
+            出題設定
+          </button>
+
+          <div class="settings-popover" id="settings-popover" hidden>
+            <div class="settings-popover-head">
+              <div>
+                <span class="section-kicker">GAME SETTINGS</span>
+                <strong>出題設定</strong>
+              </div>
+              <button class="settings-close" type="button" aria-label="出題設定を閉じる">×</button>
+            </div>
+
+            <div class="settings-grid">
+              <fieldset class="setting-group">
+                <legend>問題数</legend>
+                <div class="segmented">
+                  <button type="button" class="segment active">10問</button>
+                  <button type="button" class="segment">20問</button>
+                  <button type="button" class="segment">エンドレス</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="setting-group">
+                <legend>出題する自治体</legend>
+                <div class="segmented">
+                  <button type="button" class="segment active">全部</button>
+                  <button type="button" class="segment">市だけ</button>
+                  <button type="button" class="segment">町だけ</button>
+                  <button type="button" class="segment">村だけ</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="setting-group setting-group-wide">
+                <legend>出題する地方</legend>
+                <div class="region-filter">
+                  <button type="button" class="region-chip active">全国</button>
+                  <button type="button" class="region-chip">北海道・東北</button>
+                  <button type="button" class="region-chip">関東</button>
+                  <button type="button" class="region-chip">中部</button>
+                  <button type="button" class="region-chip">近畿</button>
+                  <button type="button" class="region-chip">中国</button>
+                  <button type="button" class="region-chip">四国</button>
+                  <button type="button" class="region-chip">九州・沖縄</button>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-stats" aria-label="現在の成績">
+          <div class="stat-card">
+            <span class="stat-label">正答率</span>
+            <strong>82%</strong>
+            <span class="stat-sub">14 / 17</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">連続正解</span>
+            <strong>6</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+<div class="game-layout">
+      <section class="quiz-card" aria-labelledby="question-title">
+        <div class="quiz-topline">
+          <div class="progress-copy">
+            <span class="progress-label">QUESTION</span>
+            <span class="progress-number"><strong>04</strong><span>/ 10</span></span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span style="width: 40%"></span>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="question-label">この市町村がある都道府県を選んでください</p>
+          <h2 id="question-title" class="municipality-name">府中市</h2>
+
+          <div class="duplicate-notice">
+            <span class="duplicate-badge">同名自治体</span>
+            <p>
+              「府中市」は<strong>2つの都道府県</strong>にあります。
+              正しい都道府県を2つ選んでください。
+            </p>
+          </div>
+        </div>
+
+        <div class="answer-slots" aria-label="選択した回答">
+          <div class="answer-slot filled">
+            <span class="slot-number">1</span>
+            <span class="slot-value">東京都</span>
+            <button type="button" class="slot-clear" aria-label="東京都の選択を解除">×</button>
+          </div>
+          <div class="answer-slot">
+            <span class="slot-number">2</span>
+            <span class="slot-placeholder">もう1つ選択</span>
+          </div>
+        </div>
+
+        <div class="prefecture-area">
+          <div class="prefecture-grid" aria-label="47都道府県">
+            <button type="button" class="prefecture selected">北海道</button>
+            <button type="button" class="prefecture">青森県</button>
+            <button type="button" class="prefecture">岩手県</button>
+            <button type="button" class="prefecture">宮城県</button>
+            <button type="button" class="prefecture">秋田県</button>
+            <button type="button" class="prefecture">山形県</button>
+            <button type="button" class="prefecture">福島県</button>
+            <button type="button" class="prefecture">茨城県</button>
+
+            <button type="button" class="prefecture">栃木県</button>
+            <button type="button" class="prefecture">群馬県</button>
+            <button type="button" class="prefecture">埼玉県</button>
+            <button type="button" class="prefecture">千葉県</button>
+            <button type="button" class="prefecture selected">東京都</button>
+            <button type="button" class="prefecture">神奈川県</button>
+            <button type="button" class="prefecture">新潟県</button>
+            <button type="button" class="prefecture">富山県</button>
+
+            <button type="button" class="prefecture">石川県</button>
+            <button type="button" class="prefecture">福井県</button>
+            <button type="button" class="prefecture">山梨県</button>
+            <button type="button" class="prefecture">長野県</button>
+            <button type="button" class="prefecture">岐阜県</button>
+            <button type="button" class="prefecture">静岡県</button>
+            <button type="button" class="prefecture">愛知県</button>
+            <button type="button" class="prefecture">三重県</button>
+
+            <button type="button" class="prefecture">滋賀県</button>
+            <button type="button" class="prefecture">京都府</button>
+            <button type="button" class="prefecture">大阪府</button>
+            <button type="button" class="prefecture">兵庫県</button>
+            <button type="button" class="prefecture">奈良県</button>
+            <button type="button" class="prefecture">和歌山県</button>
+            <button type="button" class="prefecture">鳥取県</button>
+            <button type="button" class="prefecture">島根県</button>
+
+            <button type="button" class="prefecture">岡山県</button>
+            <button type="button" class="prefecture">広島県</button>
+            <button type="button" class="prefecture">山口県</button>
+            <button type="button" class="prefecture">徳島県</button>
+            <button type="button" class="prefecture">香川県</button>
+            <button type="button" class="prefecture">愛媛県</button>
+            <button type="button" class="prefecture">高知県</button>
+            <button type="button" class="prefecture">福岡県</button>
+
+            <button type="button" class="prefecture">佐賀県</button>
+            <button type="button" class="prefecture">長崎県</button>
+            <button type="button" class="prefecture">熊本県</button>
+            <button type="button" class="prefecture">大分県</button>
+            <button type="button" class="prefecture">宮崎県</button>
+            <button type="button" class="prefecture">鹿児島県</button>
+            <button type="button" class="prefecture">沖縄県</button>
+            <span class="prefecture-spacer" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="quiz-actions">
+          <button type="button" class="ghost-button">選択をリセット</button>
+          <button type="button" class="primary-button" disabled>2つ選んで回答する</button>
+        </div>
+      </section>
+
+      <section class="result-panel" aria-labelledby="result-title">
+        <div class="result-head">
+          <div class="result-status correct" aria-hidden="true">○</div>
+          <div>
+            <span class="section-kicker">ANSWER</span>
+            <h2 id="result-title">正解！</h2>
+            <p>府中市は <strong>東京都</strong> と <strong>広島県</strong> にあります。</p>
+          </div>
+        </div>
+
+        <div class="result-cards">
+          <article class="municipality-card">
+            <div class="map-card">
+              <div class="map-placeholder">
+                <svg viewBox="0 0 420 250" role="img" aria-label="東京都内で府中市の位置を示す地図のプレースホルダー">
+                  <path class="map-outline" d="M60 120 L88 88 L122 72 L162 88 L192 72 L230 88 L276 86 L320 108 L356 142 L330 172 L286 184 L244 166 L202 180 L158 162 L118 178 L80 154 Z"/>
+                  <path class="map-highlight" d="M150 128 L176 112 L205 122 L200 148 L166 154 L145 142 Z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="municipality-info">
+              <div class="municipality-title-row">
+                <div>
+                  <span class="pref-label">東京都</span>
+                  <h3>府中市</h3>
+                </div>
+                <span class="municipality-type">市</span>
+              </div>
+              <dl class="data-grid">
+                <div><dt>人口</dt><dd>約 26.2万人</dd></div>
+                <div><dt>面積</dt><dd>29.43 km²</dd></div>
+                <div><dt>人口密度</dt><dd>約 8,900人/km²</dd></div>
+                <div><dt>県内人口順位</dt><dd>ー 位</dd></div>
+                <div><dt>県内面積順位</dt><dd>ー 位</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="municipality-card">
+            <div class="map-card">
+              <div class="map-placeholder">
+                <svg viewBox="0 0 420 250" role="img" aria-label="広島県内で府中市の位置を示す地図のプレースホルダー">
+                  <path class="map-outline" d="M50 150 L68 112 L110 90 L154 72 L206 82 L248 66 L296 88 L342 112 L370 146 L344 174 L300 180 L264 164 L220 176 L178 160 L134 174 L92 166 Z"/>
+                  <path class="map-highlight" d="M212 108 L242 100 L262 120 L254 146 L226 152 L206 134 Z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="municipality-info">
+              <div class="municipality-title-row">
+                <div>
+                  <span class="pref-label">広島県</span>
+                  <h3>府中市</h3>
+                </div>
+                <span class="municipality-type">市</span>
+              </div>
+              <dl class="data-grid">
+                <div><dt>人口</dt><dd>約 3.4万人</dd></div>
+                <div><dt>面積</dt><dd>195.75 km²</dd></div>
+                <div><dt>人口密度</dt><dd>約 175人/km²</dd></div>
+                <div><dt>県内人口順位</dt><dd>ー 位</dd></div>
+                <div><dt>県内面積順位</dt><dd>ー 位</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" class="primary-button">次の問題へ</button>
+        </div>
+      </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>Municipality Quiz — Design prototype</p>
+    </footer>
+  </div>
+
+<script>
+(() => {
+  const wrap = document.querySelector('.settings-popover-wrap');
+  if (!wrap) return;
+
+  const button = wrap.querySelector('.settings-button');
+  const popover = wrap.querySelector('.settings-popover');
+  const closeButton = wrap.querySelector('.settings-close');
+
+  const setOpen = (open) => {
+    popover.hidden = !open;
+    button.setAttribute('aria-expanded', String(open));
+  };
+
+  button.addEventListener('click', (event) => {
+    event.stopPropagation();
+    setOpen(popover.hidden);
+  });
+
+  closeButton.addEventListener('click', () => {
+    setOpen(false);
+    button.focus();
+  });
+
+  popover.addEventListener('click', (event) => event.stopPropagation());
+  document.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !popover.hidden) {
+      setOpen(false);
+      button.focus();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
