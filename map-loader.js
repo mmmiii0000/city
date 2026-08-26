@@ -11,6 +11,9 @@
   const municipalityIndex = new Map(
     (window.MUNICIPALITIES || []).map(item => [`${item.pref}\u0000${item.name}`, item])
   );
+  const prefectureMapFile = new Map(
+    (window.MUNICIPALITIES || []).map(item => [item.pref, item.mapFile])
+  );
 
   function loadGeoJSON(file) {
     if (!geojsonCache.has(file)) {
@@ -283,6 +286,19 @@
     return prepared;
   }
 
+  function isTokyoMainlandFeature(feature) {
+    const code = String(feature?.properties?.code || '');
+    const numericCode = Number(code);
+    if (!Number.isFinite(numericCode)) return false;
+
+    // Tokyo mainland = 23 special wards + all 26 cities + the four
+    // Nishitama mainland towns/villages. Izu/Ogasawara islands stay outside
+    // this set so they can use the normal mainland + inset presentation.
+    if (numericCode >= 13101 && numericCode <= 13123) return true;
+    if (numericCode >= 13201 && numericCode <= 13229) return true;
+    return ['13303', '13305', '13307', '13308'].includes(code);
+  }
+
   function uniqueItems(clusters) {
     const result = [];
     const seen = new Set();
@@ -298,12 +314,12 @@
 
   function drawItems(svg, items, targetName, project) {
     for (const component of items) {
-      if (component.feature.properties?.name === targetName) continue;
+      if ((Array.isArray(targetName) ? targetName.includes(component.feature.properties?.name) : component.feature.properties?.name === targetName)) continue;
       const d = polygonPath(component.polygon, project);
       if (d) svg.appendChild(createPath(d, 'municipality-map-outline'));
     }
     for (const component of items) {
-      if (component.feature.properties?.name !== targetName) continue;
+      if (!(Array.isArray(targetName) ? targetName.includes(component.feature.properties?.name) : component.feature.properties?.name === targetName)) continue;
       const d = polygonPath(component.polygon, project);
       if (d) svg.appendChild(createPath(d, 'municipality-map-highlight'));
     }
@@ -313,45 +329,62 @@
   // SVG build / pre-render
   // ---------------------------------------------------------------------------
   async function buildMunicipalitySvg(pref, name) {
-    const info = municipalityIndex.get(`${pref}\u0000${name}`);
-    if (!info) throw new Error(`${pref} ${name}: municipality metadata not found`);
+    const mapFile = prefectureMapFile.get(pref);
+    if (!mapFile) throw new Error(`${pref}: map file metadata not found`);
 
-    const geojson = await loadGeoJSON(info.mapFile);
+    const geojson = await loadGeoJSON(mapFile);
     const prefFeatures = geojson.features.filter(feature => feature.properties?.pref === pref);
-    if (!prefFeatures.some(feature => feature.properties?.name === name)) {
+    if (!prefFeatures.some(feature => (Array.isArray(name) ? name.includes(feature.properties?.name) : feature.properties?.name === name))) {
       throw new Error(`${pref} ${name}: geometry not found`);
     }
 
-    const prepared = preparePrefecture(prefFeatures, `${info.mapFile}\u0000${pref}`);
+    const prepared = preparePrefecture(prefFeatures, `${mapFile}\u0000${pref}`);
     const mainCluster = prepared.mainCluster;
-    const targetClusters = prepared.clusters.filter(cluster => cluster.names.has(name));
+    const targetClusters = prepared.clusters.filter(cluster => (Array.isArray(name) ? name.some(n => cluster.names.has(n)) : cluster.names.has(name)));
     const targetComponents = prepared.components.filter(
-      component => component.feature.properties?.name === name
+      component => (Array.isArray(name) ? name.includes(component.feature.properties?.name) : component.feature.properties?.name === name)
     );
-    const targetIsOnMain = Boolean(mainCluster?.names.has(name));
+
+    let mainItems = mainCluster?.items || prepared.significant;
+    let mainBounds = mainCluster?.bounds || mergeBounds(mainItems.map(item => item.bounds));
+    let targetIsOnMain = Boolean((Array.isArray(name) ? name.some(n => mainCluster?.names.has(n)) : mainCluster?.names.has(name)));
+
+    // Tokyo needs a deterministic mainland definition. Automatic cluster
+    // detection can split the 23 wards from Tama after geometry simplification,
+    // which made a city such as Tachikawa render only the Tama side. Always
+    // treat the 23 wards, 26 cities and four Nishitama mainland municipalities
+    // as one mainland canvas. The islands continue to use an inset.
+    if (pref === '東京都') {
+      const tokyoMainItems = prepared.components.filter(component => isTokyoMainlandFeature(component.feature));
+      const tokyoMainBounds = mergeBounds(tokyoMainItems.map(item => item.bounds));
+      if (tokyoMainItems.length && tokyoMainBounds) {
+        mainItems = tokyoMainItems;
+        mainBounds = tokyoMainBounds;
+        targetIsOnMain = targetComponents.some(component => isTokyoMainlandFeature(component.feature));
+      }
+    }
 
     const size = 600;
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
     svg.setAttribute('role', 'img');
-    svg.setAttribute('aria-label', `${pref}内で${name}の位置を示す地図`);
+    svg.setAttribute('aria-label', `${pref}内で${Array.isArray(name) ? name.join('・') : name}の位置を示す地図`);
     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
     if (targetIsOnMain || !mainCluster) {
-      const items = mainCluster?.items || prepared.significant;
-      const bounds = expandBounds(mainCluster?.bounds || mergeBounds(items.map(item => item.bounds)));
+      const bounds = expandBounds(mainBounds);
       if (!bounds) throw new Error('map viewport unavailable');
       const project = makeProjector(bounds, size, size, 10);
-      drawItems(svg, items, name, project);
+      drawItems(svg, mainItems, name, project);
       return svg;
     }
 
     // Island municipality: keep the main land visible at normal scale, and add
     // a magnified inset for the target island group. This avoids the old issue
     // where including both in one geographic bbox made the whole map tiny.
-    const mainBounds = expandBounds(mainCluster.bounds, 0.02);
-    const mainProject = makeProjector(mainBounds, size, size, 12);
-    drawItems(svg, mainCluster.items, name, mainProject);
+    const expandedMainBounds = expandBounds(mainBounds, 0.02);
+    const mainProject = makeProjector(expandedMainBounds, size, size, 12);
+    drawItems(svg, mainItems, name, mainProject);
 
     // If a very small island was filtered out of the normal viewport clusters,
     // fall back to the original target polygons so it is still shown correctly.
@@ -375,7 +408,7 @@
   }
 
   function prepareMunicipalityMap(pref, name) {
-    const key = `${pref}\u0000${name}`;
+    const key = `${pref}\u0000${Array.isArray(name) ? name.join('\u0001') : name}`;
     if (!svgCache.has(key)) {
       svgCache.set(key, buildMunicipalitySvg(pref, name));
     }
@@ -408,7 +441,7 @@
   function normalizeItems(items) {
     return (items || []).filter(Boolean).map(item => {
       if (typeof item === 'string') return null;
-      if (item.pref && item.name) return item;
+      if (item.pref && (item.mapName || item.name)) return { pref: item.pref, name: item.mapName || item.name };
       return null;
     }).filter(Boolean);
   }
@@ -422,8 +455,8 @@
     const normalized = normalizeItems(items);
     const files = new Set();
     for (const item of normalized) {
-      const info = municipalityIndex.get(`${item.pref}\u0000${item.name}`);
-      if (info?.mapFile) files.add(info.mapFile);
+      const mapFile = prefectureMapFile.get(item.pref);
+      if (mapFile) files.add(mapFile);
     }
     await Promise.allSettled([...files].map(loadGeoJSON));
   }

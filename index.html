@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>市町村クイズ</title>
+  <title>日本地理クイズ</title>
   <style>
 :root {
   --bg: #f4f7f5;
@@ -2874,14 +2874,40 @@ body { min-width: 0; }
   }
 }
 
+
+/* === v2.0: municipality / tourism mode === */
+.brand-area { min-width: 0; }
+.quiz-mode-switch { display:flex; align-items:center; gap:8px; min-height:46px; }
+.mode-tab { border:0; background:transparent; color:var(--muted); cursor:pointer; padding:5px 4px; font-weight:800; line-height:1.1; }
+.mode-tab[data-mode="municipality"] { font-size:38px; letter-spacing:-.04em; }
+.mode-tab[data-mode="tourism"] { margin-left:6px; padding:9px 15px; border:1px solid var(--line); border-radius:11px; background:rgba(255,255,255,.7); font-size:14px; letter-spacing:0; }
+.mode-tab.active { color:var(--text); }
+.mode-tab[data-mode="tourism"].active { color:#fff; background:var(--accent); border-color:var(--accent); }
+.mode-tab[data-mode="municipality"]:not(.active) { font-size:25px; color:var(--muted); }
+.tourism-category-segmented { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.tourist-result-info { min-width:0; }
+.tourist-result-info .municipality-title-row { margin-bottom:10px; }
+.tourist-location-name { font-size:25px !important; line-height:1.25; }
+.tourist-meta-list { display:grid; gap:7px; margin-top:8px; }
+.tourist-meta-row { padding:8px 10px; border-radius:9px; background:var(--surface-soft); }
+.tourist-meta-row span { display:block; color:var(--muted); font-size:10px; font-weight:700; margin-bottom:2px; }
+.tourist-meta-row strong { font-size:13px; line-height:1.35; }
+.world-heritage-badge { display:inline-flex; align-items:center; width:max-content; max-width:100%; padding:5px 8px; border-radius:999px; background:var(--warm-soft); color:#76431b; font-size:10px; font-weight:800; }
+body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,58px); }
+@media (max-width:900px){ .quiz-mode-switch{flex-wrap:wrap;} .mode-tab[data-mode="municipality"]{font-size:30px;} .mode-tab[data-mode="municipality"]:not(.active){font-size:21px;} .mode-tab[data-mode="tourism"]{font-size:13px;} }
+@media (max-width:620px){ .quiz-mode-switch{gap:5px;} .mode-tab[data-mode="municipality"]{font-size:25px;} .mode-tab[data-mode="tourism"]{padding:8px 11px;} .tourism-category-segmented{grid-template-columns:repeat(2,minmax(0,1fr));} }
+
 </style>
 </head>
 <body>
   <div class="app-shell">
     <header class="site-header">
-      <div>
-        <p class="eyebrow">JAPAN MUNICIPALITY QUIZ</p>
-        <h1>市町村クイズ</h1>
+      <div class="brand-area">
+        <p class="eyebrow">JAPAN PREFECTURE QUIZ</p>
+        <div class="quiz-mode-switch" aria-label="クイズ切替">
+          <button type="button" class="mode-tab active" data-mode="municipality">市町村クイズ</button>
+          <button type="button" class="mode-tab" data-mode="tourism">観光地</button>
+        </div>
         <p class="subtitle subtitle-spacer" aria-hidden="true">&nbsp;</p>
       </div>
 
@@ -2911,13 +2937,25 @@ body { min-width: 0; }
                 </div>
               </fieldset>
 
-              <fieldset class="setting-group">
+              <fieldset class="setting-group mode-municipality-setting">
                 <legend>出題する自治体</legend>
                 <div class="segmented">
                   <button type="button" class="segment active">全部</button>
                   <button type="button" class="segment">市だけ</button>
                   <button type="button" class="segment">町だけ</button>
                   <button type="button" class="segment">村だけ</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="setting-group mode-tourism-setting" hidden>
+                <legend>出題カテゴリ</legend>
+                <div class="segmented tourism-category-segmented">
+                  <button type="button" class="segment active">全部</button>
+                  <button type="button" class="segment">世界遺産</button>
+                  <button type="button" class="segment">歴史・文化</button>
+                  <button type="button" class="segment">自然・絶景</button>
+                  <button type="button" class="segment">温泉</button>
+                  <button type="button" class="segment">レジャー・施設</button>
                 </div>
               </fieldset>
 
@@ -2956,7 +2994,7 @@ body { min-width: 0; }
       <section class="screen-panel start-screen" id="start-screen">
         <div class="screen-copy">
           <span class="section-kicker">START</span>
-          <h2>市町村クイズを始める</h2>
+          <h2 id="start-screen-title">市町村クイズを始める</h2>
 
           <div class="start-settings" aria-label="開始前の出題設定">
             <div class="settings-grid">
@@ -2969,13 +3007,25 @@ body { min-width: 0; }
                 </div>
               </fieldset>
 
-              <fieldset class="setting-group">
+              <fieldset class="setting-group mode-municipality-setting">
                 <legend>出題する自治体</legend>
                 <div class="segmented">
                   <button type="button" class="segment active">全部</button>
                   <button type="button" class="segment">市だけ</button>
                   <button type="button" class="segment">町だけ</button>
                   <button type="button" class="segment">村だけ</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="setting-group mode-tourism-setting" hidden>
+                <legend>出題カテゴリ</legend>
+                <div class="segmented tourism-category-segmented">
+                  <button type="button" class="segment active">全部</button>
+                  <button type="button" class="segment">世界遺産</button>
+                  <button type="button" class="segment">歴史・文化</button>
+                  <button type="button" class="segment">自然・絶景</button>
+                  <button type="button" class="segment">温泉</button>
+                  <button type="button" class="segment">レジャー・施設</button>
                 </div>
               </fieldset>
 
@@ -3037,11 +3087,11 @@ body { min-width: 0; }
         </div>
 
         <div class="question-block">
-          <p class="question-label">この市町村がある都道府県を選んでください</p>
+          <p class="question-label" id="question-label">この市町村がある都道府県を選んでください</p>
           <h2 id="question-title" class="municipality-name"><span id="municipality-name">読み込み中…</span></h2>
 
           <div class="duplicate-notice" id="duplicate-notice" hidden>
-            <span class="duplicate-badge">同名自治体</span>
+            <span class="duplicate-badge" id="duplicate-badge">同名自治体</span>
             <p id="duplicate-text"></p>
           </div>
         </div>
@@ -3124,7 +3174,7 @@ body { min-width: 0; }
 
         <div class="result-empty" id="result-empty">
           <span class="result-empty-mark">?</span>
-          <p>回答後に、正しい都道府県・県内での位置・基本データを表示します。</p>
+          <p>回答後に、正しい都道府県・位置・情報を表示します。</p>
         </div>
         <div class="result-cards" id="result-cards" data-count="0"></div>
 
@@ -3136,13 +3186,14 @@ body { min-width: 0; }
     </main>
 
     <footer>
-      <p>市町村クイズ — 行政区域: 国土数値情報 N03（2026-01-01） / 面積: 国土地理院（2026-04-01） / 人口: 住民基本台帳（<span id="population-source-date">2026-01-01</span>）</p>
+      <p>日本地理クイズ — 行政区域: 国土数値情報 N03（2026-01-01） / 市町村人口: 住民基本台帳（<span id="population-source-date">2026-01-01</span>）</p>
     </footer>
   </div>
 
 <script src="municipalities.js"></script>
-<script src="map-loader.js?v=1.2"></script>
-<script src="quiz.js?v=1.2"></script>
+<script src="tourist-spots.js?v=2.1"></script>
+<script src="map-loader.js?v=2.1"></script>
+<script src="quiz.js?v=2.1"></script>
 
 
 

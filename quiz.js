@@ -1,15 +1,16 @@
 (async () => {
   'use strict';
 
-  // ---------------------------------------------------------------------------
-  // Data bootstrap
-  // ---------------------------------------------------------------------------
   const municipalities = Array.isArray(window.MUNICIPALITIES) ? window.MUNICIPALITIES : [];
+  const touristSpots = Array.isArray(window.TOURIST_SPOTS) ? window.TOURIST_SPOTS : [];
   if (!municipalities.length) {
     console.error('municipalities.js が読み込まれていません。');
     return;
   }
 
+  // ---------------------------------------------------------------------------
+  // Population refresh for municipality mode
+  // ---------------------------------------------------------------------------
   const POPULATION_2026_URLS = [
     'https://huggingface.co/datasets/yhay81/japan-municipal-open-data-atlas-2026/raw/d388159/municipalities_city_level.csv',
     'https://huggingface.co/datasets/yhay81/japan-municipal-open-data-atlas-2026/raw/main/municipalities_city_level.csv',
@@ -22,18 +23,11 @@
     for (let i = 0; i < line.length; i += 1) {
       const ch = line[i];
       if (ch === '"') {
-        if (quoted && line[i + 1] === '"') {
-          value += '"';
-          i += 1;
-        } else {
-          quoted = !quoted;
-        }
+        if (quoted && line[i + 1] === '"') { value += '"'; i += 1; }
+        else quoted = !quoted;
       } else if (ch === ',' && !quoted) {
-        values.push(value);
-        value = '';
-      } else {
-        value += ch;
-      }
+        values.push(value); value = '';
+      } else value += ch;
     }
     values.push(value);
     return values;
@@ -43,16 +37,12 @@
     const byPref = new Map();
     for (const item of municipalities) {
       item.density = Number.isFinite(item.population) && Number.isFinite(item.area) && item.area > 0
-        ? Math.round((item.population / item.area) * 10) / 10
-        : null;
+        ? Math.round((item.population / item.area) * 10) / 10 : null;
       if (!byPref.has(item.pref)) byPref.set(item.pref, []);
       byPref.get(item.pref).push(item);
     }
-
     for (const items of byPref.values()) {
-      items
-        .filter(item => Number.isFinite(item.population))
-        .slice()
+      items.filter(item => Number.isFinite(item.population)).slice()
         .sort((a, b) => b.population - a.population || a.code.localeCompare(b.code))
         .forEach((item, index) => { item.populationRank = index + 1; });
     }
@@ -66,16 +56,11 @@
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const text = await response.text();
         const lines = text.split(/\r?\n/).filter(Boolean);
-        if (lines.length < 2) throw new Error('人口CSVが空です');
-
-        const header = parseCsvLine(lines[0]);
+        const header = parseCsvLine(lines[0] || '');
         const codeIndex = header.indexOf('standard_area_code');
         const populationIndex = header.indexOf('resident_register_population_total');
         const dateIndex = header.indexOf('resident_register_population_observation_date');
-        if (codeIndex < 0 || populationIndex < 0 || dateIndex < 0) {
-          throw new Error('人口CSVの列構成を認識できません');
-        }
-
+        if (codeIndex < 0 || populationIndex < 0 || dateIndex < 0) throw new Error('人口CSVの列構成を認識できません');
         const populationByCode = new Map();
         let observationDate = '2026-01-01';
         for (let i = 1; i < lines.length; i += 1) {
@@ -86,7 +71,6 @@
           populationByCode.set(code, population);
           if (row[dateIndex]) observationDate = row[dateIndex];
         }
-
         let updated = 0;
         for (const item of municipalities) {
           const population = populationByCode.get(item.code);
@@ -95,144 +79,132 @@
           item.populationDate = observationDate;
           updated += 1;
         }
-        if (updated < municipalities.length * 0.98) {
-          throw new Error(`人口データの突合件数が不足しています (${updated}/${municipalities.length})`);
-        }
-
+        if (updated < municipalities.length * 0.98) throw new Error(`人口データの突合件数が不足しています (${updated}/${municipalities.length})`);
         recalculatePopulationStats();
-        document.documentElement.dataset.populationDate = observationDate;
         const sourceDate = document.querySelector('#population-source-date');
         if (sourceDate) sourceDate.textContent = observationDate;
         return true;
-      } catch (error) {
-        lastError = error;
-      }
+      } catch (error) { lastError = error; }
     }
-
-    console.warn('2026年人口データを取得できなかったため、同梱の人口データを使用します。', lastError);
+    console.warn('2026年人口データを取得できなかったため、同梱値を使用します。', lastError);
     recalculatePopulationStats();
     const sourceDate = document.querySelector('#population-source-date');
     if (sourceDate) sourceDate.textContent = municipalities[0]?.populationDate || '2024-01-01';
     return false;
   }
-
   await updatePopulation2026();
 
   // ---------------------------------------------------------------------------
-  // DOM / source model
+  // DOM
   // ---------------------------------------------------------------------------
   const $ = selector => document.querySelector(selector);
   const $$ = selector => [...document.querySelectorAll(selector)];
-
   const els = {
-    gameLayout: $('#game-layout'),
-    startScreen: $('#start-screen'),
-    startButton: $('#start-game-button'),
-    endScreen: $('#end-screen'),
-    endCorrect: $('#end-correct'),
-    endTotal: $('#end-total'),
-    endRate: $('#end-rate'),
-    endMaxStreak: $('#end-max-streak'),
-    wrongList: $('#wrong-list'),
-    wrongEmpty: $('#wrong-empty'),
-    restartSameButton: $('#restart-same-button'),
-    restartSettingsButton: $('#restart-settings-button'),
-
-    questionNo: $('#question-no'),
-    questionTotal: $('#question-total'),
-    progressBar: $('#question-progress'),
-    municipalityName: $('#municipality-name'),
-    duplicateNotice: $('#duplicate-notice'),
-    duplicateText: $('#duplicate-text'),
-    answerSlots: $('#answer-slots'),
-    prefectureButtons: $$('.prefecture[data-pref]'),
-    resetButton: $('#reset-selection'),
-    answerButton: $('#answer-button'),
-    correctRate: $('#correct-rate'),
-    scoreCount: $('#score-count'),
-    streak: $('#current-streak'),
-    resultPanel: $('#result-panel'),
-    resultStatus: $('#result-status'),
-    resultTitle: $('#result-title'),
-    resultSentence: $('#result-sentence'),
-    resultEmpty: $('#result-empty'),
-    resultCards: $('#result-cards'),
-    nextButton: $('#next-button'),
-
-    settingsWrap: $('.settings-popover-wrap'),
-    settingsButton: $('.settings-button'),
-    settingsPopover: $('#settings-popover'),
-    settingsClose: $('.settings-close'),
+    modeTabs: $$('.mode-tab[data-mode]'),
+    gameLayout: $('#game-layout'), startScreen: $('#start-screen'), startTitle: $('#start-screen-title'), startButton: $('#start-game-button'),
+    endScreen: $('#end-screen'), endCorrect: $('#end-correct'), endTotal: $('#end-total'), endRate: $('#end-rate'), endMaxStreak: $('#end-max-streak'),
+    wrongList: $('#wrong-list'), wrongEmpty: $('#wrong-empty'), restartSameButton: $('#restart-same-button'), restartSettingsButton: $('#restart-settings-button'),
+    questionNo: $('#question-no'), questionTotal: $('#question-total'), progressBar: $('#question-progress'), questionLabel: $('#question-label'),
+    questionName: $('#municipality-name'), duplicateNotice: $('#duplicate-notice'), duplicateBadge: $('#duplicate-badge'), duplicateText: $('#duplicate-text'),
+    answerSlots: $('#answer-slots'), prefectureButtons: $$('.prefecture[data-pref]'), resetButton: $('#reset-selection'), answerButton: $('#answer-button'),
+    correctRate: $('#correct-rate'), scoreCount: $('#score-count'), streak: $('#current-streak'), resultPanel: $('#result-panel'), resultStatus: $('#result-status'),
+    resultTitle: $('#result-title'), resultSentence: $('#result-sentence'), resultEmpty: $('#result-empty'), resultCards: $('#result-cards'), nextButton: $('#next-button'),
+    settingsButton: $('.settings-button'), settingsPopover: $('#settings-popover'), settingsClose: $('.settings-close'),
   };
 
-  const groupByName = new Map();
+  // ---------------------------------------------------------------------------
+  // Question source model
+  // ---------------------------------------------------------------------------
+  const municipalityByName = new Map();
   for (const item of municipalities) {
-    if (!groupByName.has(item.name)) groupByName.set(item.name, []);
-    groupByName.get(item.name).push(item);
+    if (!municipalityByName.has(item.name)) municipalityByName.set(item.name, []);
+    municipalityByName.get(item.name).push(item);
   }
-  const allGroups = [...groupByName.values()].map(group =>
-    group.slice().sort((a, b) => a.pref.localeCompare(b.pref, 'ja'))
-  );
+  const municipalityQuestions = [...municipalityByName.entries()].map(([name, answers]) => ({
+    id: `m:${name}`,
+    name,
+    mode: 'municipality',
+    answers: answers.slice().sort((a, b) => a.pref.localeCompare(b.pref, 'ja')),
+  }));
+
+  function normalizeTouristSpot(spot) {
+    const byPref = new Map();
+    for (const loc of spot.locations || []) {
+      if (!byPref.has(loc.pref)) byPref.set(loc.pref, []);
+      byPref.get(loc.pref).push(loc);
+    }
+    const answers = [...byPref.entries()].map(([pref, locs]) => {
+      const locationLabels = [...new Set(locs.map(loc => loc.location).filter(Boolean))];
+      const mapNames = [];
+      for (const loc of locs) {
+        const names = Array.isArray(loc.mapName) ? loc.mapName : [loc.mapName];
+        for (const name of names.filter(Boolean)) if (!mapNames.includes(name)) mapNames.push(name);
+      }
+      return {
+        pref,
+        name: spot.name,
+        mapName: mapNames.length === 1 ? mapNames[0] : mapNames,
+        location: locationLabels.join('・'),
+        quizRegion: locs[0]?.quizRegion,
+        category: spot.category,
+        quizCategory: spot.quizCategory,
+        worldHeritage: spot.worldHeritage,
+      };
+    }).sort((a, b) => a.pref.localeCompare(b.pref, 'ja'));
+    return { id: spot.id, name: spot.name, mode: 'tourism', answers, spot };
+  }
+  const touristQuestions = touristSpots.map(normalizeTouristSpot).filter(q => q.answers.length);
 
   const state = {
-    phase: 'start', // start | playing | ended
-    questionLimit: 10,
-    type: '全部',
-    region: '全国',
-    queue: [],
-    questionIndex: 0,
-    currentGroup: null,
-    selectedPrefs: [],
-    answered: false,
-    correct: 0,
-    answeredCount: 0,
-    streak: 0,
-    maxStreak: 0,
-    mistakes: [],
-    lastName: null,
-    actualGameTotal: 10,
+    mode: 'municipality', phase: 'start', questionLimit: 10, type: '全部', tourismCategory: '全部', region: '全国',
+    queue: [], questionIndex: 0, currentQuestion: null, selectedPrefs: [], answered: false, correct: 0, answeredCount: 0,
+    streak: 0, maxStreak: 0, mistakes: [], lastId: null, actualGameTotal: 10,
   };
 
   // ---------------------------------------------------------------------------
-  // Generic helpers
+  // Helpers
   // ---------------------------------------------------------------------------
-  function shuffle(array) {
-    const a = array.slice();
-    for (let i = a.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
-  function formatInteger(value) {
-    return new Intl.NumberFormat('ja-JP', { maximumFractionDigits: 0 }).format(value);
-  }
-
-  function formatNumber(value, digits) {
-    return new Intl.NumberFormat('ja-JP', { maximumFractionDigits: digits }).format(value);
-  }
-
-  function joinJapanese(parts) {
-    if (parts.length <= 1) return parts[0] || '';
-    if (parts.length === 2) return `${parts[0]} と ${parts[1]}`;
-    return `${parts.slice(0, -1).join('、')}、${parts.at(-1)}`;
-  }
-
-  function escapeHtml(value) {
-    return String(value).replace(/[&<>'"]/g, ch => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-    }[ch]));
-  }
-
+  function shuffle(array) { const a = array.slice(); for (let i = a.length - 1; i > 0; i -= 1) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  const escapeHtml = value => String(value).replace(/[&<>'"]/g, ch => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' }[ch]));
+  const formatInteger = value => new Intl.NumberFormat('ja-JP', { maximumFractionDigits: 0 }).format(value);
+  const formatNumber = (value, digits) => new Intl.NumberFormat('ja-JP', { maximumFractionDigits: digits }).format(value);
+  function joinJapanese(parts) { if (parts.length <= 1) return parts[0] || ''; if (parts.length === 2) return `${parts[0]} と ${parts[1]}`; return `${parts.slice(0,-1).join('、')}、${parts.at(-1)}`; }
+  function currentAnswers() { return state.currentQuestion?.answers || []; }
 
   // ---------------------------------------------------------------------------
-  // Settings popover
+  // Mode / settings
   // ---------------------------------------------------------------------------
   function setSettingsOpen(open) {
     if (!els.settingsPopover || !els.settingsButton) return;
     els.settingsPopover.hidden = !open;
     els.settingsButton.setAttribute('aria-expanded', String(open));
+  }
+
+  function updateModeUI() {
+    document.body.dataset.quizMode = state.mode;
+    for (const tab of els.modeTabs) {
+      const active = tab.dataset.mode === state.mode;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-pressed', String(active));
+    }
+    for (const node of $$('.mode-municipality-setting')) node.hidden = state.mode !== 'municipality';
+    for (const node of $$('.mode-tourism-setting')) node.hidden = state.mode !== 'tourism';
+    if (els.startTitle) els.startTitle.textContent = state.mode === 'municipality' ? '市町村クイズを始める' : '観光地クイズを始める';
+    if (els.questionLabel) els.questionLabel.textContent = state.mode === 'municipality'
+      ? 'この市町村がある都道府県を選んでください'
+      : 'この観光地がある都道府県を選んでください';
+    syncSettingsButtons();
+  }
+
+  function switchMode(mode) {
+    if (!['municipality','tourism'].includes(mode) || mode === state.mode) return;
+    if (state.phase === 'playing' && state.questionIndex > 0) {
+      const ok = window.confirm('クイズを切り替えると、現在のゲームを終了して開始画面へ戻ります。切り替えますか？');
+      if (!ok) return;
+    }
+    state.mode = mode;
+    showStartScreen();
+    updateModeUI();
   }
 
   function syncSettingsButtons() {
@@ -241,90 +213,69 @@
       for (const button of group.querySelectorAll('button')) {
         const value = button.textContent.trim();
         let active = false;
-        if (legend === '問題数') {
-          active = Number.isFinite(state.questionLimit)
-            ? parseInt(value, 10) === state.questionLimit
-            : value === 'エンドレス';
-        } else if (legend === '出題する自治体') {
-          active = value === state.type;
-        } else if (legend === '出題する地方') {
-          active = value === state.region;
-        }
+        if (legend === '問題数') active = Number.isFinite(state.questionLimit) ? parseInt(value,10) === state.questionLimit : value === 'エンドレス';
+        else if (legend === '出題する自治体') active = value === state.type;
+        else if (legend === '出題カテゴリ') active = value === state.tourismCategory;
+        else if (legend === '出題する地方') active = value === state.region;
         button.classList.toggle('active', active);
       }
     }
   }
 
   function readSettingChange(legend, value) {
-    if (legend === '問題数') {
-      return { key: 'questionLimit', value: value === 'エンドレス' ? Infinity : parseInt(value, 10) };
-    }
-    if (legend === '出題する自治体') return { key: 'type', value };
-    if (legend === '出題する地方') return { key: 'region', value };
+    if (legend === '問題数') return { key:'questionLimit', value: value === 'エンドレス' ? Infinity : parseInt(value,10) };
+    if (legend === '出題する自治体') return { key:'type', value };
+    if (legend === '出題カテゴリ') return { key:'tourismCategory', value };
+    if (legend === '出題する地方') return { key:'region', value };
     return null;
   }
 
   function applySettingChange(legend, value) {
     const change = readSettingChange(legend, value);
     if (!change || Object.is(state[change.key], change.value)) return;
-
     if (state.phase === 'playing' && state.questionIndex > 0) {
       const ok = window.confirm('出題設定を変更すると、現在のゲームをリセットして新しいゲームを開始します。変更しますか？');
-      if (!ok) {
-        syncSettingsButtons();
-        return;
-      }
+      if (!ok) { syncSettingsButtons(); return; }
     }
-
     state[change.key] = change.value;
     syncSettingsButtons();
-
-    if (state.phase === 'playing') {
-      startGame();
-    } else if (state.phase === 'ended') {
-      showStartScreen();
-    }
+    if (state.phase === 'playing') startGame();
+    else if (state.phase === 'ended') showStartScreen();
   }
 
-  function bindSettings() {
+  function bindSettingsAndMode() {
     for (const group of $$('.settings-popover .setting-group, .start-settings .setting-group')) {
       const legend = group.querySelector('legend')?.textContent.trim();
-      for (const button of group.querySelectorAll('button')) {
-        button.addEventListener('click', () => applySettingChange(legend, button.textContent.trim()));
-      }
+      for (const button of group.querySelectorAll('button')) button.addEventListener('click', () => applySettingChange(legend, button.textContent.trim()));
     }
-
-    els.settingsButton?.addEventListener('click', event => {
-      event.stopPropagation();
-      setSettingsOpen(els.settingsPopover.hidden);
-    });
-    els.settingsClose?.addEventListener('click', () => {
-      setSettingsOpen(false);
-      els.settingsButton?.focus();
-    });
+    for (const tab of els.modeTabs) tab.addEventListener('click', () => switchMode(tab.dataset.mode));
+    els.settingsButton?.addEventListener('click', event => { event.stopPropagation(); setSettingsOpen(els.settingsPopover.hidden); });
+    els.settingsClose?.addEventListener('click', () => { setSettingsOpen(false); els.settingsButton?.focus(); });
     els.settingsPopover?.addEventListener('click', event => event.stopPropagation());
     document.addEventListener('click', () => setSettingsOpen(false));
   }
 
   // ---------------------------------------------------------------------------
-  // Question pool / game lifecycle
+  // Game lifecycle / queues
   // ---------------------------------------------------------------------------
-  function candidateGroups() {
-    return allGroups.filter(group => {
-      const typeOk = state.type === '全部' || group[0].type === state.type.replace('だけ', '');
-      const regionOk = state.region === '全国' || group.some(item => item.quizRegion === state.region);
-      return typeOk && regionOk;
+  function candidateQuestions() {
+    const source = state.mode === 'municipality' ? municipalityQuestions : touristQuestions;
+    return source.filter(question => {
+      if (state.mode === 'municipality') {
+        const typeOk = state.type === '全部' || question.answers[0]?.type === state.type.replace('だけ','');
+        const regionOk = state.region === '全国' || question.answers.some(item => item.quizRegion === state.region);
+        return typeOk && regionOk;
+      }
+      const categoryOk = state.tourismCategory === '全部' || question.spot.quizCategory === state.tourismCategory;
+      const regionOk = state.region === '全国' || question.answers.some(item => item.quizRegion === state.region);
+      return categoryOk && regionOk;
     });
   }
 
   function buildGameQueue() {
-    let candidates = shuffle(candidateGroups());
-    if (!candidates.length) candidates = shuffle(allGroups);
-
-    if (state.lastName && candidates.length > 1 && candidates[0][0].name === state.lastName) {
-      [candidates[0], candidates[1]] = [candidates[1], candidates[0]];
-    }
-
+    let candidates = shuffle(candidateQuestions());
+    if (!candidates.length) candidates = shuffle(state.mode === 'municipality' ? municipalityQuestions : touristQuestions);
+    if (state.lastId && candidates.length > 1 && candidates[0].id === state.lastId) [candidates[0], candidates[1]] = [candidates[1], candidates[0]];
     if (Number.isFinite(state.questionLimit)) {
       state.actualGameTotal = Math.min(state.questionLimit, candidates.length);
       state.queue = candidates.slice(0, state.actualGameTotal);
@@ -335,450 +286,139 @@
   }
 
   function resetRoundState() {
-    state.questionIndex = 0;
-    state.currentGroup = null;
-    state.selectedPrefs = [];
-    state.answered = false;
-    state.correct = 0;
-    state.answeredCount = 0;
-    state.streak = 0;
-    state.maxStreak = 0;
-    state.mistakes = [];
-    state.lastName = null;
-    updateStats();
+    state.questionIndex = 0; state.currentQuestion = null; state.selectedPrefs = []; state.answered = false; state.correct = 0; state.answeredCount = 0;
+    state.streak = 0; state.maxStreak = 0; state.mistakes = []; state.lastId = null; updateStats();
   }
 
   function startGame() {
-    setSettingsOpen(false);
-    state.phase = 'playing';
-    resetRoundState();
-    buildGameQueue();
-    els.startScreen.hidden = true;
-    els.endScreen.hidden = true;
-    els.gameLayout.hidden = false;
-    showNextQuestion();
+    setSettingsOpen(false); state.phase = 'playing'; resetRoundState(); buildGameQueue();
+    els.startScreen.hidden = true; els.endScreen.hidden = true; els.gameLayout.hidden = false; showNextQuestion();
   }
-
   function showStartScreen() {
-    state.phase = 'start';
-    setSettingsOpen(false);
-    els.gameLayout.hidden = true;
-    els.endScreen.hidden = true;
-    els.startScreen.hidden = false;
-    syncSettingsButtons();
+    state.phase = 'start'; setSettingsOpen(false); els.gameLayout.hidden = true; els.endScreen.hidden = true; els.startScreen.hidden = false; updateModeUI();
   }
-
   function finishGame() {
     if (!Number.isFinite(state.questionLimit)) return;
-    state.phase = 'ended';
-    els.gameLayout.hidden = true;
-    els.startScreen.hidden = true;
-    els.endScreen.hidden = false;
-
-    const total = state.answeredCount;
-    const rate = total ? Math.round((state.correct / total) * 100) : 0;
-    els.endCorrect.textContent = String(state.correct);
-    els.endTotal.textContent = String(total);
-    els.endRate.textContent = `${rate}%`;
-    els.endMaxStreak.textContent = String(state.maxStreak);
-    renderMistakes();
+    state.phase = 'ended'; els.gameLayout.hidden = true; els.startScreen.hidden = true; els.endScreen.hidden = false;
+    const total = state.answeredCount; const rate = total ? Math.round((state.correct / total) * 100) : 0;
+    els.endCorrect.textContent = String(state.correct); els.endTotal.textContent = String(total); els.endRate.textContent = `${rate}%`; els.endMaxStreak.textContent = String(state.maxStreak); renderMistakes();
   }
-
-  function takeNextGroup() {
+  function takeNextQuestion() {
     if (state.queue.length) return state.queue.shift();
-
-    // Endless mode: refill only after every candidate has appeared once.
-    if (!Number.isFinite(state.questionLimit)) {
-      buildGameQueue();
-      return state.queue.shift();
-    }
+    if (!Number.isFinite(state.questionLimit)) { buildGameQueue(); return state.queue.shift(); }
     return null;
   }
 
-  function warmCurrentAnswer(group) {
-    // Start GeoJSON loading, prefecture preparation, and SVG generation as soon
-    // as the question appears. The finished SVG remains cached until answer time.
-    window.MunicipalityMap?.prepareMany(group);
-  }
-
+  function warmQuestion(question) { window.MunicipalityMap?.prepareMany(question?.answers || []); }
   function scheduleUpcomingMapWarmup() {
     if (!window.MunicipalityMap) return;
-
-    const upcomingGroups = Number.isFinite(state.questionLimit)
-      ? state.queue.slice()
-      : state.queue.slice(0, 8);
-    if (!upcomingGroups.length) return;
-
-    const allUpcomingItems = upcomingGroups.flat();
-    const nextFewItems = upcomingGroups.slice(0, 2).flat();
-    const task = () => {
-      // Raw regional files are warmed in the background. The next two questions
-      // go one step further and have their SVGs pre-rendered during idle time.
-      window.MunicipalityMap.preloadFiles(allUpcomingItems);
-      window.MunicipalityMap.prepareMany(nextFewItems);
-    };
-
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(task, { timeout: 1200 });
-    } else {
-      window.setTimeout(task, 0);
-    }
+    const upcoming = Number.isFinite(state.questionLimit) ? state.queue.slice() : state.queue.slice(0,8);
+    if (!upcoming.length) return;
+    const allItems = upcoming.flatMap(q => q.answers);
+    const nextFew = upcoming.slice(0,2).flatMap(q => q.answers);
+    const task = () => { window.MunicipalityMap.preloadFiles(allItems); window.MunicipalityMap.prepareMany(nextFew); };
+    if ('requestIdleCallback' in window) window.requestIdleCallback(task, { timeout:1200 }); else setTimeout(task, 80);
   }
 
   function showNextQuestion() {
-    const group = takeNextGroup();
-    if (!group) {
-      finishGame();
-      return;
-    }
-
-    state.currentGroup = group;
-    state.questionIndex += 1;
-    state.lastName = group[0].name;
-    state.selectedPrefs = [];
-    state.answered = false;
-
-    // Do the expensive ANSWER preparation while the player is thinking.
-    warmCurrentAnswer(group);
-    scheduleUpcomingMapWarmup();
-
-    const finite = Number.isFinite(state.questionLimit);
-    els.municipalityName.textContent = group[0].name;
-    els.questionNo.textContent = String(state.questionIndex).padStart(2, '0');
-    els.questionTotal.textContent = finite ? `/ ${state.actualGameTotal}` : '/ ∞';
-    els.progressBar.style.width = finite
-      ? `${Math.min(100, (state.questionIndex / state.actualGameTotal) * 100)}%`
-      : '100%';
-    els.progressBar.classList.toggle('endless-progress', !finite);
-
-    const count = group.length;
-    els.duplicateNotice.hidden = count <= 1;
-    els.duplicateText.innerHTML = count > 1
-      ? `「${escapeHtml(group[0].name)}」は<strong>${count}つの都道府県</strong>にあります。正しい都道府県を${count}つ選んでください。`
-      : '';
-
-    renderAnswerSlots(count);
-    clearPrefectureStates();
-    updateAnswerButton();
-    showResultPlaceholder();
+    const question = takeNextQuestion();
+    if (!question) { finishGame(); return; }
+    state.currentQuestion = question; state.lastId = question.id; state.questionIndex += 1; state.selectedPrefs = []; state.answered = false;
+    clearPrefectureStates(); renderQuestion(); renderAnswerSlots(); syncPrefectureSelection(); updateAnswerButton(); showResultPlaceholder(); warmQuestion(question); scheduleUpcomingMapWarmup();
   }
 
   // ---------------------------------------------------------------------------
-  // Answer selection / judging
+  // Question / answer interaction
   // ---------------------------------------------------------------------------
-  function renderAnswerSlots(count) {
+  function renderQuestion() {
+    const q = state.currentQuestion; if (!q) return;
+    els.questionName.textContent = q.name;
+    els.questionNo.textContent = String(state.questionIndex).padStart(2,'0');
+    if (Number.isFinite(state.questionLimit)) {
+      els.questionTotal.textContent = `/ ${state.actualGameTotal}`;
+      els.progressBar.style.width = `${Math.min(100,(state.questionIndex/state.actualGameTotal)*100)}%`;
+    } else { els.questionTotal.textContent = '/ ∞'; els.progressBar.style.width = '100%'; }
+    const required = q.answers.length;
+    if (required > 1) {
+      els.duplicateNotice.hidden = false;
+      els.duplicateBadge.textContent = state.mode === 'municipality' ? '同名自治体' : '複数都道府県';
+      els.duplicateText.innerHTML = state.mode === 'municipality'
+        ? `「${escapeHtml(q.name)}」は<strong>${required}つの都道府県</strong>にあります。すべて選んでください。`
+        : `「${escapeHtml(q.name)}」は<strong>${required}つの都道府県</strong>にまたがります。すべて選んでください。`;
+    } else els.duplicateNotice.hidden = true;
+  }
+
+  function renderAnswerSlots() {
     els.answerSlots.replaceChildren();
-    els.answerSlots.dataset.count = String(count);
-    els.answerSlots.classList.toggle('single-slot', count === 1);
-
-    for (let i = 0; i < count; i += 1) {
-      const slot = document.createElement('div');
-      slot.className = 'answer-slot';
-      slot.dataset.slot = String(i);
-
-      const num = document.createElement('span');
-      num.className = 'slot-number';
-      num.textContent = String(i + 1);
-
-      const value = document.createElement('span');
-      value.className = 'slot-placeholder';
-      value.textContent = count === 1 ? '都道府県を選択' : `${i + 1}つ目を選択`;
-
-      const clear = document.createElement('button');
-      clear.type = 'button';
-      clear.className = 'slot-clear';
-      clear.setAttribute('aria-label', `${i + 1}つ目の選択を解除`);
-      clear.textContent = '×';
-      clear.hidden = true;
-      clear.addEventListener('click', () => {
-        if (state.answered) return;
-        const pref = state.selectedPrefs[i];
-        if (pref) togglePrefecture(pref);
-      });
-
-      slot.append(num, value, clear);
+    const required = currentAnswers().length || 1;
+    for (let i=0;i<required;i+=1) {
+      const slot=document.createElement('div'); slot.className='answer-slot';
+      slot.innerHTML=`<span class="slot-number">${i+1}</span><span class="slot-placeholder">${required===1?'都道府県を選択':`${i+1}つ目を選択`}</span><button type="button" class="slot-clear" hidden aria-label="選択を解除">×</button>`;
+      slot.querySelector('.slot-clear').addEventListener('click', () => { if (state.answered) return; state.selectedPrefs.splice(i,1); syncPrefectureSelection(); syncAnswerSlots(); updateAnswerButton(); });
       els.answerSlots.appendChild(slot);
     }
   }
-
   function syncAnswerSlots() {
-    const slots = [...els.answerSlots.querySelectorAll('.answer-slot')];
-    slots.forEach((slot, i) => {
-      const value = slot.querySelector('.slot-placeholder, .slot-value');
-      const clear = slot.querySelector('.slot-clear');
-      const pref = state.selectedPrefs[i];
-      if (pref) {
-        slot.classList.add('filled');
-        value.className = 'slot-value';
-        value.textContent = pref;
-        clear.hidden = false;
-      } else {
-        slot.classList.remove('filled');
-        value.className = 'slot-placeholder';
-        value.textContent = slots.length === 1 ? '都道府県を選択' : `${i + 1}つ目を選択`;
-        clear.hidden = true;
-      }
+    const slots=[...els.answerSlots.querySelectorAll('.answer-slot')];
+    slots.forEach((slot,i)=>{ const value=slot.querySelector('.slot-placeholder,.slot-value'); const clear=slot.querySelector('.slot-clear'); const pref=state.selectedPrefs[i];
+      if(pref){slot.classList.add('filled'); value.className='slot-value'; value.textContent=pref; clear.hidden=false;}
+      else{slot.classList.remove('filled'); value.className='slot-placeholder'; value.textContent=slots.length===1?'都道府県を選択':`${i+1}つ目を選択`; clear.hidden=true;}
     });
   }
-
   function togglePrefecture(pref) {
-    if (state.answered || !state.currentGroup) return;
-
-    const required = state.currentGroup.length;
-    const existingIndex = state.selectedPrefs.indexOf(pref);
-
-    if (existingIndex >= 0) {
-      // Clicking a selected prefecture toggles it off.
-      state.selectedPrefs.splice(existingIndex, 1);
-    } else if (required === 1) {
-      // Single-answer questions always replace the previous choice.
-      state.selectedPrefs = [pref];
-    } else if (state.selectedPrefs.length < required) {
-      state.selectedPrefs.push(pref);
-    } else {
-      // If every slot is full, replace the last slot instead of ignoring the click.
-      state.selectedPrefs[required - 1] = pref;
-    }
-
-    syncPrefectureSelection();
-    syncAnswerSlots();
-    updateAnswerButton();
+    if (state.answered || !state.currentQuestion) return;
+    const required=currentAnswers().length; const existing=state.selectedPrefs.indexOf(pref);
+    if(existing>=0) state.selectedPrefs.splice(existing,1);
+    else if(required===1) state.selectedPrefs=[pref];
+    else if(state.selectedPrefs.length<required) state.selectedPrefs.push(pref);
+    else state.selectedPrefs[required-1]=pref;
+    syncPrefectureSelection(); syncAnswerSlots(); updateAnswerButton();
   }
+  function syncPrefectureSelection(){ for(const button of els.prefectureButtons) button.classList.toggle('selected',state.selectedPrefs.includes(button.dataset.pref)); }
+  function clearPrefectureStates(){ for(const button of els.prefectureButtons){button.classList.remove('selected','correct-answer','wrong-answer','missed-answer');button.disabled=false;} }
+  function updateAnswerButton(){const required=currentAnswers().length||1;els.answerButton.disabled=state.answered||state.selectedPrefs.length!==required;els.answerButton.textContent=required===1?'回答する':`${required}つ選んで回答する`;els.resetButton.disabled=state.answered||state.selectedPrefs.length===0;}
 
-  function syncPrefectureSelection() {
-    for (const button of els.prefectureButtons) {
-      button.classList.toggle('selected', state.selectedPrefs.includes(button.dataset.pref));
-    }
+  function submitAnswer(){
+    if(state.answered||!state.currentQuestion)return; const answers=currentAnswers(); const correctPrefs=answers.map(x=>x.pref).sort(); const selected=state.selectedPrefs.slice().sort(); if(selected.length!==correctPrefs.length)return;
+    const isCorrect=correctPrefs.every((pref,i)=>pref===selected[i]); state.answered=true; state.answeredCount+=1;
+    if(isCorrect){state.correct+=1;state.streak+=1;state.maxStreak=Math.max(state.maxStreak,state.streak);} else {state.streak=0;state.mistakes.push({name:state.currentQuestion.name,correctPrefs:answers.map(x=>x.pref),selectedPrefs:state.selectedPrefs.slice()});}
+    updateStats(); markAnswerButtons(correctPrefs); renderResult(isCorrect); updateAnswerButton();
   }
+  function markAnswerButtons(correctPrefs){const correctSet=new Set(correctPrefs),selectedSet=new Set(state.selectedPrefs);for(const button of els.prefectureButtons){const pref=button.dataset.pref;button.disabled=true;if(correctSet.has(pref))button.classList.add('correct-answer');if(selectedSet.has(pref)&&!correctSet.has(pref))button.classList.add('wrong-answer');if(correctSet.has(pref)&&!selectedSet.has(pref))button.classList.add('missed-answer');}}
+  function updateStats(){const rate=state.answeredCount?Math.round((state.correct/state.answeredCount)*100):0;els.correctRate.textContent=`${rate}%`;els.scoreCount.textContent=`${state.correct} / ${state.answeredCount}`;els.streak.textContent=String(state.streak);}
 
-  function clearPrefectureStates() {
-    for (const button of els.prefectureButtons) {
-      button.classList.remove('selected', 'correct-answer', 'wrong-answer', 'missed-answer');
-      button.disabled = false;
-    }
+  // ---------------------------------------------------------------------------
+  // Result cards
+  // ---------------------------------------------------------------------------
+  function showResultPlaceholder(){els.resultPanel.classList.remove('has-result','result-correct','result-wrong');els.resultStatus.textContent='？';els.resultStatus.className='result-status waiting';els.resultTitle.textContent='ANSWER';els.resultSentence.textContent='都道府県を選んで「回答する」を押してください。';els.resultEmpty.hidden=false;els.resultCards.replaceChildren();els.resultCards.dataset.count='0';els.nextButton.hidden=true;}
+  function renderResult(isCorrect){
+    const q=state.currentQuestion,answers=currentAnswers(); els.resultPanel.classList.add('has-result');els.resultPanel.classList.toggle('result-correct',isCorrect);els.resultPanel.classList.toggle('result-wrong',!isCorrect);els.resultStatus.textContent=isCorrect?'○':'×';els.resultStatus.className=`result-status ${isCorrect?'correct':'incorrect'}`;els.resultTitle.textContent=isCorrect?'正解！':'不正解';
+    const prefs=answers.map(item=>`<strong>${escapeHtml(item.pref)}</strong>`);els.resultSentence.innerHTML=`${escapeHtml(q.name)}は ${joinJapanese(prefs)} にあります。`;els.resultEmpty.hidden=true;els.resultCards.replaceChildren();els.resultCards.dataset.count=String(answers.length);
+    for(const item of answers){const card=state.mode==='municipality'?createMunicipalityResultCard(item):createTouristResultCard(item,q.spot);els.resultCards.appendChild(card);const map=card.querySelector('.municipality-map');window.MunicipalityMap?.render(map,item.pref,item.mapName||item.name);}
+    const isLast=Number.isFinite(state.questionLimit)&&state.questionIndex>=state.actualGameTotal;els.nextButton.textContent=isLast?'結果を見る':'次の問題へ';els.nextButton.hidden=false;
   }
-
-  function updateAnswerButton() {
-    const required = state.currentGroup?.length || 1;
-    els.answerButton.disabled = state.answered || state.selectedPrefs.length !== required;
-    els.answerButton.textContent = required === 1 ? '回答する' : `${required}つ選んで回答する`;
-    els.resetButton.disabled = state.answered || state.selectedPrefs.length === 0;
+  function createMapCard(){const mapCard=document.createElement('div');mapCard.className='map-card';const map=document.createElement('div');map.className='map-placeholder municipality-map';mapCard.appendChild(map);return mapCard;}
+  function createMunicipalityResultCard(item){
+    const article=document.createElement('article');article.className='municipality-card';const info=document.createElement('div');info.className='municipality-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');title.innerHTML=`<span class="pref-label">${escapeHtml(item.pref)}</span><h3>${escapeHtml(item.name)}</h3>`;titleRow.append(title);
+    const dl=document.createElement('dl');dl.className='data-grid';const areaText=item.area==null?'—':`${formatNumber(item.area,2)} km²`;const densityText=item.density==null?'—':`${formatNumber(item.density,1)}人/km²`;const populationText=item.population==null?'—':`${formatInteger(item.population)}人`;const populationRank=item.populationRank==null?'—':`${item.populationRank}位/ ${item.prefMunicipalityCount}自治体`;const areaRank=item.areaRank==null?'—':`${item.areaRank}位/ ${item.prefMunicipalityCount}自治体`;
+    dl.innerHTML=[['人口',populationText],['面積',areaText],['人口密度',densityText],['県内人口順位',populationRank],['県内面積順位',areaRank]].map(([dt,dd])=>`<div><dt>${dt}</dt><dd>${dd}</dd></div>`).join('');info.append(titleRow,dl);article.append(info,createMapCard());return article;
   }
-
-  function submitAnswer() {
-    if (state.answered || !state.currentGroup) return;
-    const correctPrefs = state.currentGroup.map(item => item.pref).sort();
-    const selected = state.selectedPrefs.slice().sort();
-    if (selected.length !== correctPrefs.length) return;
-
-    const isCorrect = correctPrefs.every((pref, i) => pref === selected[i]);
-    state.answered = true;
-    state.answeredCount += 1;
-
-    if (isCorrect) {
-      state.correct += 1;
-      state.streak += 1;
-      state.maxStreak = Math.max(state.maxStreak, state.streak);
-    } else {
-      state.streak = 0;
-      state.mistakes.push({
-        name: state.currentGroup[0].name,
-        correctPrefs: state.currentGroup.map(item => item.pref),
-        selectedPrefs: state.selectedPrefs.slice(),
-      });
-    }
-
-    updateStats();
-    markAnswerButtons(correctPrefs);
-    renderResult(isCorrect);
-    updateAnswerButton();
-  }
-
-  function markAnswerButtons(correctPrefs) {
-    const correctSet = new Set(correctPrefs);
-    const selectedSet = new Set(state.selectedPrefs);
-    for (const button of els.prefectureButtons) {
-      const pref = button.dataset.pref;
-      button.disabled = true;
-      if (correctSet.has(pref)) button.classList.add('correct-answer');
-      if (selectedSet.has(pref) && !correctSet.has(pref)) button.classList.add('wrong-answer');
-      if (correctSet.has(pref) && !selectedSet.has(pref)) button.classList.add('missed-answer');
-    }
-  }
-
-  function updateStats() {
-    const rate = state.answeredCount ? Math.round((state.correct / state.answeredCount) * 100) : 0;
-    els.correctRate.textContent = `${rate}%`;
-    els.scoreCount.textContent = `${state.correct} / ${state.answeredCount}`;
-    els.streak.textContent = String(state.streak);
+  function createTouristResultCard(item,spot){
+    const article=document.createElement('article');article.className='municipality-card tourist-card';const info=document.createElement('div');info.className='municipality-info tourist-result-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');title.innerHTML=`<span class="pref-label">${escapeHtml(item.pref)}</span><h3 class="tourist-location-name">${escapeHtml(item.location||'所在地情報なし')}</h3>`;titleRow.append(title);info.appendChild(titleRow);
+    const meta=document.createElement('div');meta.className='tourist-meta-list';meta.innerHTML=`<div class="tourist-meta-row"><span>カテゴリ</span><strong>${escapeHtml(spot.category||item.category||'観光地')}</strong></div>`;
+    if(spot.worldHeritage){const badge=document.createElement('div');badge.className='world-heritage-badge';badge.textContent=`世界遺産：${spot.worldHeritage}`;info.appendChild(badge);} info.appendChild(meta);article.append(info,createMapCard());return article;
   }
 
   // ---------------------------------------------------------------------------
-  // Result panel
+  // End screen / controls
   // ---------------------------------------------------------------------------
-  function showResultPlaceholder() {
-    els.resultPanel.classList.remove('has-result', 'result-correct', 'result-wrong');
-    els.resultStatus.textContent = '？';
-    els.resultStatus.className = 'result-status waiting';
-    els.resultTitle.textContent = 'ANSWER';
-    els.resultSentence.textContent = '都道府県を選んで「回答する」を押してください。';
-    els.resultEmpty.hidden = false;
-    els.resultCards.replaceChildren();
-    els.resultCards.dataset.count = '0';
-    els.nextButton.hidden = true;
+  function renderMistakes(){els.wrongList.replaceChildren();els.wrongEmpty.hidden=state.mistakes.length!==0;if(!state.mistakes.length)return;for(const mistake of state.mistakes){const li=document.createElement('li');li.className='wrong-item';const selected=mistake.selectedPrefs.length?joinJapanese(mistake.selectedPrefs):'未回答';li.innerHTML=`<strong>${escapeHtml(mistake.name)}</strong><span>正解：${escapeHtml(joinJapanese(mistake.correctPrefs))}</span><span>回答：${escapeHtml(selected)}</span>`;els.wrongList.appendChild(li);}}
+  function advanceAfterAnswer(){if(!state.answered)return;const isLast=Number.isFinite(state.questionLimit)&&state.questionIndex>=state.actualGameTotal;if(isLast)finishGame();else showNextQuestion();}
+  function bindControls(){
+    for(const button of els.prefectureButtons)button.addEventListener('click',()=>{togglePrefecture(button.dataset.pref);button.blur();});
+    els.resetButton.addEventListener('click',()=>{if(state.answered)return;state.selectedPrefs=[];syncPrefectureSelection();syncAnswerSlots();updateAnswerButton();});els.answerButton.addEventListener('click',submitAnswer);els.nextButton.addEventListener('click',advanceAfterAnswer);els.startButton.addEventListener('click',startGame);els.restartSameButton.addEventListener('click',startGame);els.restartSettingsButton.addEventListener('click',showStartScreen);
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'){if(!els.settingsPopover.hidden){event.preventDefault();setSettingsOpen(false);els.settingsButton?.focus();}return;}if(event.key!=='Enter'||event.repeat||!els.settingsPopover.hidden)return;const target=event.target;if(target instanceof HTMLElement&&target.closest('input,select,textarea,a,[contenteditable="true"]'))return;if(state.phase==='playing'){if(!state.answered&&!els.answerButton.disabled){event.preventDefault();submitAnswer();}else if(state.answered&&!els.nextButton.hidden){event.preventDefault();advanceAfterAnswer();}}});
   }
 
-  function renderResult(isCorrect) {
-    els.resultPanel.classList.add('has-result');
-    els.resultPanel.classList.toggle('result-correct', isCorrect);
-    els.resultPanel.classList.toggle('result-wrong', !isCorrect);
-    els.resultStatus.textContent = isCorrect ? '○' : '×';
-    els.resultStatus.className = `result-status ${isCorrect ? 'correct' : 'incorrect'}`;
-    els.resultTitle.textContent = isCorrect ? '正解！' : '不正解';
-    const prefs = state.currentGroup.map(item => `<strong>${escapeHtml(item.pref)}</strong>`);
-    els.resultSentence.innerHTML = `${escapeHtml(state.currentGroup[0].name)}は ${joinJapanese(prefs)} にあります。`;
-    els.resultEmpty.hidden = true;
-    els.resultCards.replaceChildren();
-    els.resultCards.dataset.count = String(state.currentGroup.length);
-
-    for (const item of state.currentGroup) {
-      els.resultCards.appendChild(createResultCard(item));
-    }
-    for (const container of els.resultCards.querySelectorAll('.municipality-map')) {
-      window.MunicipalityMap?.render(container, container.dataset.pref, container.dataset.name);
-    }
-
-    const isLast = Number.isFinite(state.questionLimit) && state.questionIndex >= state.actualGameTotal;
-    els.nextButton.textContent = isLast ? '結果を見る' : '次の問題へ';
-    els.nextButton.hidden = false;
-  }
-
-  function createResultCard(item) {
-    const article = document.createElement('article');
-    article.className = 'municipality-card';
-
-    const info = document.createElement('div');
-    info.className = 'municipality-info';
-
-    const titleRow = document.createElement('div');
-    titleRow.className = 'municipality-title-row';
-    const title = document.createElement('div');
-    title.innerHTML = `<span class="pref-label">${escapeHtml(item.pref)}</span><h3>${escapeHtml(item.name)}</h3>`;
-    titleRow.append(title);
-
-    const dl = document.createElement('dl');
-    dl.className = 'data-grid';
-    const areaText = item.area == null ? '—' : `${formatNumber(item.area, 2)} km²`;
-    const densityText = item.density == null ? '—' : `${formatNumber(item.density, 1)}人/km²`;
-    const populationText = item.population == null ? '—' : `${formatInteger(item.population)}人`;
-    const populationRank = item.populationRank == null ? '—' : `${item.populationRank}位/ ${item.prefMunicipalityCount}自治体`;
-    const areaRank = item.areaRank == null ? '—' : `${item.areaRank}位/ ${item.prefMunicipalityCount}自治体`;
-    dl.innerHTML = [
-      ['人口', populationText],
-      ['面積', areaText],
-      ['人口密度', densityText],
-      ['県内人口順位', populationRank],
-      ['県内面積順位', areaRank],
-    ].map(([dt, dd]) => `<div><dt>${dt}</dt><dd>${dd}</dd></div>`).join('');
-
-    info.append(titleRow, dl);
-
-    const mapCard = document.createElement('div');
-    mapCard.className = 'map-card';
-    const map = document.createElement('div');
-    map.className = 'map-placeholder municipality-map';
-    map.dataset.pref = item.pref;
-    map.dataset.name = item.name;
-    mapCard.appendChild(map);
-
-    article.append(info, mapCard);
-    return article;
-  }
-
-  // ---------------------------------------------------------------------------
-  // End screen
-  // ---------------------------------------------------------------------------
-  function renderMistakes() {
-    els.wrongList.replaceChildren();
-    els.wrongEmpty.hidden = state.mistakes.length !== 0;
-    if (!state.mistakes.length) return;
-
-    for (const mistake of state.mistakes) {
-      const li = document.createElement('li');
-      li.className = 'wrong-item';
-      const selected = mistake.selectedPrefs.length ? joinJapanese(mistake.selectedPrefs) : '未回答';
-      li.innerHTML = `
-        <strong>${escapeHtml(mistake.name)}</strong>
-        <span>正解：${escapeHtml(joinJapanese(mistake.correctPrefs))}</span>
-        <span>回答：${escapeHtml(selected)}</span>
-      `;
-      els.wrongList.appendChild(li);
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // Controls / keyboard
-  // ---------------------------------------------------------------------------
-  function advanceAfterAnswer() {
-    if (!state.answered) return;
-    const isLast = Number.isFinite(state.questionLimit) && state.questionIndex >= state.actualGameTotal;
-    if (isLast) finishGame();
-    else showNextQuestion();
-  }
-
-  function bindControls() {
-    for (const button of els.prefectureButtons) {
-      button.addEventListener('click', () => {
-        togglePrefecture(button.dataset.pref);
-        button.blur();
-      });
-    }
-
-    els.resetButton.addEventListener('click', () => {
-      if (state.answered) return;
-      state.selectedPrefs = [];
-      syncPrefectureSelection();
-      syncAnswerSlots();
-      updateAnswerButton();
-    });
-    els.answerButton.addEventListener('click', submitAnswer);
-    els.nextButton.addEventListener('click', advanceAfterAnswer);
-
-    els.startButton.addEventListener('click', startGame);
-    els.restartSameButton.addEventListener('click', startGame);
-    els.restartSettingsButton.addEventListener('click', () => {
-      showStartScreen();
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        if (!els.settingsPopover.hidden) {
-          event.preventDefault();
-          setSettingsOpen(false);
-          els.settingsButton?.focus();
-        }
-        return;
-      }
-
-      if (event.key !== 'Enter' || event.repeat || !els.settingsPopover.hidden) return;
-      const target = event.target;
-      if (target instanceof HTMLElement && target.closest('button, input, select, textarea, a, [contenteditable="true"]')) return;
-
-      if (state.phase === 'playing') {
-        if (!state.answered && !els.answerButton.disabled) {
-          event.preventDefault();
-          submitAnswer();
-        } else if (state.answered && !els.nextButton.hidden) {
-          event.preventDefault();
-          advanceAfterAnswer();
-        }
-      }
-    });
-  }
-
-  bindSettings();
-  bindControls();
-  syncSettingsButtons();
-  updateStats();
-  showStartScreen();
+  bindSettingsAndMode(); bindControls(); updateModeUI(); updateStats(); showStartScreen();
 })();
