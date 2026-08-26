@@ -2522,6 +2522,157 @@ body { min-width: 0; }
   }
 }
 
+
+/* === Start screen settings overflow fix === */
+.start-screen .screen-copy {
+  width: min(980px, 100%);
+  max-width: none;
+  min-width: 0;
+}
+
+.start-settings {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.start-settings .settings-grid {
+  width: 100%;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: 28px;
+}
+
+.start-settings .setting-group {
+  min-width: 0;
+}
+
+.start-settings .segmented,
+.start-settings .region-filter {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.start-settings .segment,
+.start-settings .region-chip {
+  min-width: 0;
+}
+
+.start-settings .segment {
+  padding-inline: 10px;
+}
+
+.start-settings .region-filter {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.start-settings .region-chip {
+  width: 100%;
+  padding-inline: 7px;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+@media (max-width: 1040px) {
+  .start-screen .screen-copy {
+    width: 100%;
+  }
+
+  .start-settings .settings-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    column-gap: 20px;
+  }
+
+  .start-settings .region-filter {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .start-settings {
+    padding-inline: 14px;
+  }
+
+  .start-settings .settings-grid {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
+
+  .start-settings .setting-group-wide {
+    grid-column: auto;
+  }
+
+  .start-settings .region-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* === Start screen: keep region choices on one row === */
+.start-settings .settings-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: 28px;
+  row-gap: 16px;
+}
+
+.start-settings .setting-group-wide {
+  grid-column: 1 / -1;
+}
+
+.start-settings .region-filter {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+}
+
+.start-settings .region-chip {
+  min-width: 0;
+  width: 100%;
+  padding-inline: 5px;
+  white-space: nowrap;
+  font-size: 10px;
+}
+
+@media (max-width: 1040px) {
+  .start-settings .settings-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    column-gap: 18px;
+  }
+
+  .start-settings .region-filter {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .start-settings .region-chip {
+    min-height: 32px;
+    padding-inline: 3px;
+    font-size: 9px;
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (max-width: 760px) {
+  .start-settings .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .start-settings .setting-group-wide {
+    grid-column: auto;
+  }
+
+  .start-settings .region-filter {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .start-settings .region-chip {
+    font-size: 10px;
+    white-space: normal;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2789,8 +2940,8 @@ body { min-width: 0; }
   </div>
 
 <script src="municipalities.js"></script>
-<script src="map-loader.js?v=20260826e"></script>
-<script src="quiz.js?v=20260826e"></script>
+<script src="map-loader.js?v=20260826g"></script>
+<script src="quiz.js?v=20260826g"></script>
 
 
 
