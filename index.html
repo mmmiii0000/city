@@ -1738,6 +1738,194 @@ footer {
   flex: 0 0 260px;
 }
 
+
+
+/* === vNext: larger answer area + info-above-map cards === */
+.game-layout {
+  grid-template-columns: minmax(0, 1.62fr) minmax(500px, 1fr);
+  gap: 14px;
+}
+
+.quiz-card {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.result-panel {
+  padding: 14px;
+}
+
+.result-head {
+  margin-bottom: 10px;
+}
+
+.result-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.municipality-card,
+.result-cards[data-count="1"] .municipality-card,
+.result-cards[data-count="2"] .municipality-card,
+.result-cards[data-count="3"] .municipality-card,
+.result-cards[data-count="4"] .municipality-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.municipality-info,
+.result-cards[data-count="3"] .municipality-info,
+.result-cards[data-count="4"] .municipality-info {
+  order: 1;
+  padding: 10px 11px 9px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.municipality-title-row,
+.result-cards[data-count="3"] .municipality-title-row,
+.result-cards[data-count="4"] .municipality-title-row {
+  margin-bottom: 7px;
+}
+
+.municipality-title-row h3,
+.result-cards[data-count="3"] .municipality-title-row h3,
+.result-cards[data-count="4"] .municipality-title-row h3 {
+  font-size: 20px;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.data-grid > div,
+.data-grid > div:first-child,
+.result-cards[data-count="3"] .data-grid > div,
+.result-cards[data-count="4"] .data-grid > div {
+  grid-column: auto;
+  min-width: 0;
+  padding: 6px 6px;
+  text-align: center;
+}
+
+.data-grid dt,
+.result-cards[data-count="3"] .data-grid dt,
+.result-cards[data-count="4"] .data-grid dt {
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.data-grid dd,
+.result-cards[data-count="3"] .data-grid dd,
+.result-cards[data-count="4"] .data-grid dd {
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.map-card {
+  order: 2;
+  flex: 1 1 auto;
+  padding: 7px;
+  border-right: 0;
+  border-bottom: 0;
+  background: #eef4f0;
+}
+
+.map-placeholder,
+.result-cards[data-count="1"] .map-placeholder,
+.result-cards[data-count="3"] .map-placeholder,
+.result-cards[data-count="4"] .map-placeholder {
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.result-cards[data-count="1"] .municipality-card {
+  height: 440px;
+}
+
+.result-cards[data-count="2"] .municipality-card {
+  height: 220px;
+}
+
+.result-cards[data-count="3"] .municipality-card {
+  height: 153px;
+}
+
+.result-cards[data-count="4"] .municipality-card {
+  height: 126px;
+}
+
+.result-cards[data-count="3"] .municipality-info,
+.result-cards[data-count="4"] .municipality-info {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.result-cards[data-count="3"] .municipality-title-row,
+.result-cards[data-count="4"] .municipality-title-row {
+  margin-bottom: 4px;
+}
+
+.result-cards[data-count="3"] .municipality-title-row h3,
+.result-cards[data-count="4"] .municipality-title-row h3 {
+  font-size: 15px;
+}
+
+.result-cards[data-count="3"] .municipality-type,
+.result-cards[data-count="4"] .municipality-type {
+  width: 26px;
+  height: 26px;
+  font-size: 9px;
+}
+
+.result-cards[data-count="3"] .data-grid > div,
+.result-cards[data-count="4"] .data-grid > div {
+  padding: 3px 4px;
+}
+
+.result-cards[data-count="3"] .data-grid dt,
+.result-cards[data-count="4"] .data-grid dt {
+  font-size: 7px;
+}
+
+.result-cards[data-count="3"] .data-grid dd,
+.result-cards[data-count="4"] .data-grid dd {
+  font-size: 8px;
+}
+
+.result-empty {
+  min-height: 390px;
+}
+
+.result-actions {
+  margin-top: 8px;
+}
+
+@media (max-width: 1320px) {
+  .game-layout {
+    grid-template-columns: minmax(0, 1.55fr) minmax(460px, 1fr);
+  }
+  .data-grid dt { font-size: 7px; }
+  .data-grid dd { font-size: 9px; }
+}
+
+@media (max-height: 900px) {
+  .result-cards[data-count="1"] .municipality-card { height: 395px; }
+  .result-cards[data-count="2"] .municipality-card { height: 197px; }
+  .result-cards[data-count="3"] .municipality-card { height: 136px; }
+  .result-cards[data-count="4"] .municipality-card { height: 112px; }
+  .result-empty { min-height: 345px; }
+}
+
 </style>
 </head>
 <body>
@@ -1929,7 +2117,7 @@ footer {
     </main>
 
     <footer>
-      <p>市町村クイズ — 行政区域: 国土数値情報 N03（2026-01-01） / 面積: 国土地理院（2026-04-01） / 人口: 住民基本台帳（2024-01-01）</p>
+      <p>市町村クイズ — 行政区域: 国土数値情報 N03（2026-01-01） / 面積: 国土地理院（2026-04-01） / 人口: 住民基本台帳（<span id="population-source-date">2026-01-01</span>）</p>
     </footer>
   </div>
 

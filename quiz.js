@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   'use strict';
 
   const municipalities = Array.isArray(window.MUNICIPALITIES) ? window.MUNICIPALITIES : [];
@@ -6,6 +6,119 @@
     console.error('municipalities.js が読み込まれていません。');
     return;
   }
+
+  const POPULATION_2026_URLS = [
+    'https://huggingface.co/datasets/yhay81/japan-municipal-open-data-atlas-2026/raw/d388159/municipalities_city_level.csv',
+    'https://huggingface.co/datasets/yhay81/japan-municipal-open-data-atlas-2026/raw/main/municipalities_city_level.csv',
+  ];
+
+  function parseCsvLine(line) {
+    const values = [];
+    let value = '';
+    let quoted = false;
+
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') {
+        if (quoted && line[i + 1] === '"') {
+          value += '"';
+          i += 1;
+        } else {
+          quoted = !quoted;
+        }
+      } else if (ch === ',' && !quoted) {
+        values.push(value);
+        value = '';
+      } else {
+        value += ch;
+      }
+    }
+    values.push(value);
+    return values;
+  }
+
+  function recalculatePopulationStats() {
+    const byPref = new Map();
+    for (const item of municipalities) {
+      if (item.population != null && item.area != null && item.area > 0) {
+        item.density = Math.round((item.population / item.area) * 10) / 10;
+      } else {
+        item.density = null;
+      }
+      if (!byPref.has(item.pref)) byPref.set(item.pref, []);
+      byPref.get(item.pref).push(item);
+    }
+
+    for (const items of byPref.values()) {
+      const ranked = items
+        .filter(item => Number.isFinite(item.population))
+        .slice()
+        .sort((a, b) => b.population - a.population || a.code.localeCompare(b.code));
+      ranked.forEach((item, index) => {
+        item.populationRank = index + 1;
+      });
+    }
+  }
+
+  async function updatePopulation2026() {
+    let lastError = null;
+    for (const url of POPULATION_2026_URLS) {
+      try {
+        const response = await fetch(url, { mode: 'cors', cache: 'force-cache' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const text = await response.text();
+        const lines = text.split(/\r?\n/).filter(Boolean);
+        if (lines.length < 2) throw new Error('人口CSVが空です');
+
+        const header = parseCsvLine(lines[0]);
+        const codeIndex = header.indexOf('standard_area_code');
+        const populationIndex = header.indexOf('resident_register_population_total');
+        const dateIndex = header.indexOf('resident_register_population_observation_date');
+        if (codeIndex < 0 || populationIndex < 0 || dateIndex < 0) {
+          throw new Error('人口CSVの列構成を認識できません');
+        }
+
+        const populationByCode = new Map();
+        let observationDate = '2026-01-01';
+        for (let i = 1; i < lines.length; i++) {
+          const row = parseCsvLine(lines[i]);
+          const code = row[codeIndex];
+          const population = Number(row[populationIndex]);
+          if (!/^\d{5}$/.test(code) || !Number.isFinite(population)) continue;
+          populationByCode.set(code, population);
+          if (row[dateIndex]) observationDate = row[dateIndex];
+        }
+
+        let updated = 0;
+        for (const item of municipalities) {
+          if (!populationByCode.has(item.code)) continue;
+          item.population = populationByCode.get(item.code);
+          item.populationDate = observationDate;
+          updated += 1;
+        }
+        if (updated < municipalities.length * 0.98) {
+          throw new Error(`人口データの突合件数が不足しています (${updated}/${municipalities.length})`);
+        }
+
+        recalculatePopulationStats();
+        document.documentElement.dataset.populationDate = observationDate;
+        const sourceDate = document.querySelector('#population-source-date');
+        if (sourceDate) sourceDate.textContent = observationDate;
+        console.info(`2026年人口データを${updated}市町村に反映しました。`);
+        return true;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    console.warn('2026年人口データを取得できなかったため、同梱の人口データを使用します。', lastError);
+    recalculatePopulationStats();
+    const sourceDate = document.querySelector('#population-source-date');
+    if (sourceDate) sourceDate.textContent = municipalities[0]?.populationDate || '2024-01-01';
+    return false;
+  }
+
+  await updatePopulation2026();
 
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -194,11 +307,20 @@
     if (state.answered) return;
     const required = state.currentGroup.length;
     const idx = state.selectedPrefs.indexOf(pref);
+
     if (idx >= 0) {
+      // 選択済みの都道府県をもう一度押した場合は解除。
       state.selectedPrefs.splice(idx, 1);
+    } else if (required === 1) {
+      // 1回答問題では、別の都道府県を押したらその場で選択を置き換える。
+      state.selectedPrefs = [pref];
     } else if (state.selectedPrefs.length < required) {
       state.selectedPrefs.push(pref);
+    } else {
+      // 複数回答がすでに埋まっている場合は、最後に選んだ回答を差し替える。
+      state.selectedPrefs[state.selectedPrefs.length - 1] = pref;
     }
+
     syncPrefectureSelection();
     syncAnswerSlots();
     updateAnswerButton();
@@ -343,7 +465,7 @@
     ].map(([dt, dd]) => `<div><dt>${dt}</dt><dd>${dd}</dd></div>`).join('');
 
     info.append(titleRow, dl);
-    article.append(mapCard, info);
+    article.append(info, mapCard);
     return article;
   }
 
