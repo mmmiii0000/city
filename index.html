@@ -3013,6 +3013,67 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
   }
 }
 
+
+/* === v2.4: equal-size larger mode buttons === */
+.quiz-mode-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.mode-tab,
+.mode-tab[data-mode="municipality"],
+.mode-tab[data-mode="municipality"]:not(.active),
+.mode-tab[data-mode="tourism"],
+.mode-tab[data-mode="tourism"]:not(.active) {
+  margin-left: 0;
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .72);
+  color: var(--muted);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.mode-tab.active,
+.mode-tab[data-mode="municipality"].active,
+.mode-tab[data-mode="tourism"].active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .mode-tab,
+  .mode-tab[data-mode="municipality"],
+  .mode-tab[data-mode="municipality"]:not(.active),
+  .mode-tab[data-mode="tourism"],
+  .mode-tab[data-mode="tourism"]:not(.active) {
+    padding: 9px 12px;
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 620px) {
+  .quiz-mode-switch {
+    gap: 5px;
+  }
+
+  .mode-tab,
+  .mode-tab[data-mode="municipality"],
+  .mode-tab[data-mode="municipality"]:not(.active),
+  .mode-tab[data-mode="tourism"],
+  .mode-tab[data-mode="tourism"]:not(.active) {
+    padding: 8px 9px;
+    font-size: 17px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3306,10 +3367,10 @@ body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,5
     </footer>
   </div>
 
-<script src="municipalities.js?v=2.3"></script>
-<script src="tourist-spots.js?v=2.3"></script>
-<script src="map-loader.js?v=2.3"></script>
-<script src="quiz.js?v=2.3"></script>
+<script src="municipalities.js?v=2.4"></script>
+<script src="tourist-spots.js?v=2.4"></script>
+<script src="map-loader.js?v=2.4"></script>
+<script src="quiz.js?v=2.4"></script>
 
 
 

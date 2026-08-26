@@ -4,6 +4,7 @@
   // ---------------------------------------------------------------------------
   // Cache model
   // ---------------------------------------------------------------------------
+  const MAP_DATA_VERSION = '2.4';
   const geojsonCache = new Map();          // map file -> Promise<GeoJSON>
   const prefectureCache = new Map();       // map file + prefecture -> prepared geometry
   const svgCache = new Map();              // prefecture + municipality -> Promise<SVGElement>
@@ -17,7 +18,12 @@
 
   function loadGeoJSON(file) {
     if (!geojsonCache.has(file)) {
-      geojsonCache.set(file, fetch(`./${file}`, { cache: 'force-cache' }).then(response => {
+      // GeoJSON files can change when ward boundaries/background features are
+      // added. A versioned URL prevents an older GitHub/browser cache from
+      // hiding newly added wards, while no-cache still allows normal HTTP
+      // revalidation (304) without repeatedly downloading unchanged data.
+      const url = `./${file}?v=${encodeURIComponent(MAP_DATA_VERSION)}`;
+      geojsonCache.set(file, fetch(url, { cache: 'no-cache' }).then(response => {
         if (!response.ok) throw new Error(`${file}: HTTP ${response.status}`);
         return response.json();
       }));
