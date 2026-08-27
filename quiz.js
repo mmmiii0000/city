@@ -9,90 +9,10 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Population refresh for municipality mode
+  // Population data
   // ---------------------------------------------------------------------------
-  const POPULATION_2026_URLS = [
-    'https://huggingface.co/datasets/yhay81/japan-municipal-open-data-atlas-2026/raw/d388159/municipalities_city_level.csv',
-    'https://huggingface.co/datasets/yhay81/japan-municipal-open-data-atlas-2026/raw/main/municipalities_city_level.csv',
-  ];
-
-  function parseCsvLine(line) {
-    const values = [];
-    let value = '';
-    let quoted = false;
-    for (let i = 0; i < line.length; i += 1) {
-      const ch = line[i];
-      if (ch === '"') {
-        if (quoted && line[i + 1] === '"') { value += '"'; i += 1; }
-        else quoted = !quoted;
-      } else if (ch === ',' && !quoted) {
-        values.push(value); value = '';
-      } else value += ch;
-    }
-    values.push(value);
-    return values;
-  }
-
-  function recalculatePopulationStats() {
-    const byPref = new Map();
-    for (const item of municipalities) {
-      item.density = Number.isFinite(item.population) && Number.isFinite(item.area) && item.area > 0
-        ? Math.round((item.population / item.area) * 10) / 10 : null;
-      if (!byPref.has(item.pref)) byPref.set(item.pref, []);
-      byPref.get(item.pref).push(item);
-    }
-    for (const items of byPref.values()) {
-      items.filter(item => Number.isFinite(item.population)).slice()
-        .sort((a, b) => b.population - a.population || a.code.localeCompare(b.code))
-        .forEach((item, index) => { item.populationRank = index + 1; });
-    }
-  }
-
-  async function updatePopulation2026() {
-    let lastError = null;
-    for (const url of POPULATION_2026_URLS) {
-      try {
-        const response = await fetch(url, { mode: 'cors', cache: 'force-cache' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const text = await response.text();
-        const lines = text.split(/\r?\n/).filter(Boolean);
-        const header = parseCsvLine(lines[0] || '');
-        const codeIndex = header.indexOf('standard_area_code');
-        const populationIndex = header.indexOf('resident_register_population_total');
-        const dateIndex = header.indexOf('resident_register_population_observation_date');
-        if (codeIndex < 0 || populationIndex < 0 || dateIndex < 0) throw new Error('人口CSVの列構成を認識できません');
-        const populationByCode = new Map();
-        let observationDate = '2026-01-01';
-        for (let i = 1; i < lines.length; i += 1) {
-          const row = parseCsvLine(lines[i]);
-          const code = row[codeIndex];
-          const population = Number(row[populationIndex]);
-          if (!/^\d{5}$/.test(code) || !Number.isFinite(population)) continue;
-          populationByCode.set(code, population);
-          if (row[dateIndex]) observationDate = row[dateIndex];
-        }
-        let updated = 0;
-        for (const item of municipalities) {
-          const population = populationByCode.get(item.code);
-          if (!Number.isFinite(population)) continue;
-          item.population = population;
-          item.populationDate = observationDate;
-          updated += 1;
-        }
-        if (updated < municipalities.length * 0.98) throw new Error(`人口データの突合件数が不足しています (${updated}/${municipalities.length})`);
-        recalculatePopulationStats();
-        const sourceDate = document.querySelector('#population-source-date');
-        if (sourceDate) sourceDate.textContent = observationDate;
-        return true;
-      } catch (error) { lastError = error; }
-    }
-    console.warn('2026年人口データを取得できなかったため、同梱値を使用します。', lastError);
-    recalculatePopulationStats();
-    const sourceDate = document.querySelector('#population-source-date');
-    if (sourceDate) sourceDate.textContent = municipalities[0]?.populationDate || '2024-01-01';
-    return false;
-  }
-  await updatePopulation2026();
+  // 2026-01-01 Basic Resident Register population is embedded in municipalities.js.
+  // No external population request is required.
 
   // ---------------------------------------------------------------------------
   // DOM

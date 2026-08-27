@@ -4956,17 +4956,7 @@ window.TOURIST_SPOTS = [
         "location": "十和田市",
         "mapName": "十和田市",
         "quizRegion": "北海道・東北"
-      }
-    ]
-  },
-  {
-    "id": "t0275",
-    "name": "十和田湖（秋田側）",
-    "categories": [
-      "自然・絶景"
-    ],
-    "type": "湖・絶景",
-    "locations": [
+      },
       {
         "pref": "秋田県",
         "location": "小坂町",
@@ -7723,7 +7713,7 @@ window.TOURIST_SPOTS = [
   },
   {
     "id": "t0447",
-    "name": "しまなみ海道（広島側）",
+    "name": "しまなみ海道",
     "categories": [
       "自然・絶景"
     ],
@@ -7734,6 +7724,12 @@ window.TOURIST_SPOTS = [
         "location": "尾道市",
         "mapName": "尾道市",
         "quizRegion": "中国"
+      },
+      {
+        "pref": "愛媛県",
+        "location": "今治市",
+        "mapName": "今治市",
+        "quizRegion": "四国"
       }
     ]
   },
@@ -7989,22 +7985,6 @@ window.TOURIST_SPOTS = [
         "pref": "愛媛県",
         "location": "松山市",
         "mapName": "松山市",
-        "quizRegion": "四国"
-      }
-    ]
-  },
-  {
-    "id": "t0464",
-    "name": "しまなみ海道（愛媛側）",
-    "categories": [
-      "自然・絶景"
-    ],
-    "type": "海峡・橋",
-    "locations": [
-      {
-        "pref": "愛媛県",
-        "location": "今治市",
-        "mapName": "今治市",
         "quizRegion": "四国"
       }
     ]
