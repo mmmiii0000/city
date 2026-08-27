@@ -2892,7 +2892,9 @@ body { min-width: 0; }
 .tourist-meta-row { padding:8px 10px; border-radius:9px; background:var(--surface-soft); }
 .tourist-meta-row span { display:block; color:var(--muted); font-size:10px; font-weight:700; margin-bottom:2px; }
 .tourist-meta-row strong { font-size:13px; line-height:1.35; }
-.world-heritage-badge { display:inline-flex; align-items:center; width:max-content; max-width:100%; padding:5px 8px; border-radius:999px; background:var(--warm-soft); color:#76431b; font-size:10px; font-weight:800; }
+.spot-badges { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 6px; }
+.spot-badge { display:inline-flex; align-items:center; width:max-content; max-width:100%; padding:5px 9px; border-radius:999px; background:var(--warm-soft); color:#76431b; font-size:10px; font-weight:800; line-height:1.25; }
+.world-heritage-badge { display:inline-flex; align-items:center; width:max-content; max-width:100%; padding:5px 8px; border-radius:8px; background:var(--surface-soft); color:var(--muted); font-size:10px; font-weight:700; }
 body[data-quiz-mode="tourism"] .municipality-name { font-size:clamp(36px,4.3vw,58px); }
 @media (max-width:900px){ .quiz-mode-switch{flex-wrap:wrap;} .mode-tab[data-mode="municipality"]{font-size:30px;} .mode-tab[data-mode="municipality"]:not(.active){font-size:21px;} .mode-tab[data-mode="tourism"]{font-size:13px;} }
 @media (max-width:620px){ .quiz-mode-switch{gap:5px;} .mode-tab[data-mode="municipality"]{font-size:25px;} .mode-tab[data-mode="tourism"]{padding:8px 11px;} .tourism-category-segmented{grid-template-columns:repeat(2,minmax(0,1fr));} }
@@ -3378,10 +3380,10 @@ body[data-quiz-mode="tourism"] .settings-popover .setting-group {
     </footer>
   </div>
 
-<script src="municipalities.js?v=2.11"></script>
-<script src="tourist-spots.js?v=2.11"></script>
-<script src="map-loader.js?v=2.11"></script>
-<script src="quiz.js?v=2.11"></script>
+<script src="municipalities.js?v=2.13"></script>
+<script src="tourist-spots.js?v=2.13"></script>
+<script src="map-loader.js?v=2.13"></script>
+<script src="quiz.js?v=2.13"></script>
 
 
 

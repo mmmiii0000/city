@@ -1,4 +1,5 @@
 // 観光地クイズ用データ。categories は5カテゴリ内で複数指定できます。
+// badges は、公的指定または歴史的に定着した客観的な呼称のみを表示します。
 window.TOURIST_SPOTS = [
   {
     "id": "t0001",
@@ -16,7 +17,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0002",
@@ -34,7 +38,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0003",
@@ -52,7 +59,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0004",
@@ -70,7 +80,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0005",
@@ -88,7 +101,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0006",
@@ -106,7 +122,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0007",
@@ -124,7 +143,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0008",
@@ -142,7 +165,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0009",
@@ -160,7 +186,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0010",
@@ -178,7 +207,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0011",
@@ -196,7 +229,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0012",
@@ -214,7 +250,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0013",
@@ -232,7 +271,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0014",
@@ -250,7 +293,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0015",
@@ -268,7 +314,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0016",
@@ -286,7 +336,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0017",
@@ -304,7 +357,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0018",
@@ -322,7 +378,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0019",
@@ -340,7 +400,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "飛鳥・藤原の宮都"
+    "worldHeritage": "飛鳥・藤原の宮都",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0020",
@@ -358,7 +422,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "法隆寺地域の仏教建造物"
+    "worldHeritage": "法隆寺地域の仏教建造物",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0021",
@@ -376,7 +444,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "法隆寺地域の仏教建造物"
+    "worldHeritage": "法隆寺地域の仏教建造物",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0022",
@@ -394,7 +466,13 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "姫路城"
+    "worldHeritage": "姫路城",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別史跡",
+      "現存十二天守"
+    ]
   },
   {
     "id": "t0023",
@@ -412,7 +490,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "屋久島"
+    "worldHeritage": "屋久島",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0024",
@@ -440,7 +521,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "白神山地"
+    "worldHeritage": "白神山地",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0025",
@@ -458,7 +542,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0026",
@@ -476,7 +564,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0027",
@@ -494,7 +586,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0028",
@@ -512,7 +608,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0029",
@@ -530,7 +630,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0030",
@@ -548,7 +652,13 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別史跡",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0031",
@@ -566,7 +676,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0032",
@@ -584,7 +698,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0033",
@@ -602,7 +720,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0034",
@@ -620,7 +742,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0035",
@@ -638,7 +764,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0036",
@@ -656,7 +786,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0037",
@@ -674,7 +808,12 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "特別史跡",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0038",
@@ -692,7 +831,13 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別史跡",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0039",
@@ -710,7 +855,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0040",
@@ -728,7 +877,12 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0041",
@@ -746,7 +900,12 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都京都の文化財"
+    "worldHeritage": "古都京都の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0042",
@@ -764,7 +923,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "白川郷・五箇山の合掌造り集落"
+    "worldHeritage": "白川郷・五箇山の合掌造り集落",
+    "badges": [
+      "世界遺産",
+      "重要伝統的建造物群保存地区"
+    ]
   },
   {
     "id": "t0043",
@@ -782,7 +945,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "白川郷・五箇山の合掌造り集落"
+    "worldHeritage": "白川郷・五箇山の合掌造り集落",
+    "badges": [
+      "世界遺産",
+      "重要伝統的建造物群保存地区"
+    ]
   },
   {
     "id": "t0044",
@@ -800,7 +967,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "白川郷・五箇山の合掌造り集落"
+    "worldHeritage": "白川郷・五箇山の合掌造り集落",
+    "badges": [
+      "世界遺産",
+      "重要伝統的建造物群保存地区"
+    ]
   },
   {
     "id": "t0045",
@@ -818,7 +989,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "原爆ドーム"
+    "worldHeritage": "原爆ドーム",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0046",
@@ -836,7 +1011,14 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "厳島神社"
+    "worldHeritage": "厳島神社",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別史跡",
+      "特別名勝",
+      "日本三景"
+    ]
   },
   {
     "id": "t0047",
@@ -854,7 +1036,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0048",
@@ -872,7 +1058,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0049",
@@ -890,7 +1080,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0050",
@@ -908,7 +1102,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "特別天然記念物"
+    ]
   },
   {
     "id": "t0051",
@@ -926,7 +1124,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0052",
@@ -944,7 +1146,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0053",
@@ -962,7 +1168,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0054",
@@ -980,7 +1190,12 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "古都奈良の文化財"
+    "worldHeritage": "古都奈良の文化財",
+    "badges": [
+      "世界遺産",
+      "特別史跡",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0055",
@@ -998,7 +1213,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "日光の社寺"
+    "worldHeritage": "日光の社寺",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0056",
@@ -1016,7 +1235,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "日光の社寺"
+    "worldHeritage": "日光の社寺",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0057",
@@ -1034,7 +1256,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "日光の社寺"
+    "worldHeritage": "日光の社寺",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0058",
@@ -1052,7 +1278,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0059",
@@ -1070,7 +1299,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0060",
@@ -1088,7 +1320,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0061",
@@ -1106,7 +1341,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0062",
@@ -1124,7 +1362,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0063",
@@ -1142,7 +1383,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0064",
@@ -1160,7 +1404,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0065",
@@ -1178,7 +1425,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0066",
@@ -1196,7 +1447,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "琉球王国のグスク及び関連遺産群"
+    "worldHeritage": "琉球王国のグスク及び関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0067",
@@ -1214,7 +1468,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0068",
@@ -1232,7 +1489,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0069",
@@ -1250,7 +1510,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0070",
@@ -1268,7 +1531,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0071",
@@ -1286,7 +1553,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0072",
@@ -1304,7 +1574,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0073",
@@ -1322,7 +1595,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0074",
@@ -1340,7 +1616,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0075",
@@ -1358,7 +1637,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0076",
@@ -1376,7 +1658,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0077",
@@ -1394,7 +1679,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0078",
@@ -1412,7 +1700,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0079",
@@ -1430,7 +1721,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0080",
@@ -1448,7 +1742,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0081",
@@ -1466,7 +1763,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0082",
@@ -1484,7 +1784,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0083",
@@ -1502,7 +1805,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0084",
@@ -1524,7 +1830,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0085",
@@ -1542,7 +1851,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0086",
@@ -1563,7 +1875,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0087",
@@ -1585,7 +1900,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0088",
@@ -1606,7 +1924,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0089",
@@ -1627,7 +1948,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "紀伊山地の霊場と参詣道"
+    "worldHeritage": "紀伊山地の霊場と参詣道",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0090",
@@ -1645,7 +1969,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0091",
@@ -1663,7 +1990,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0092",
@@ -1681,7 +2011,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0093",
@@ -1699,7 +2032,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0094",
@@ -1717,7 +2053,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0095",
@@ -1735,7 +2074,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産",
+      "重要伝統的建造物群保存地区"
+    ]
   },
   {
     "id": "t0096",
@@ -1753,7 +2096,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0097",
@@ -1771,7 +2117,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0098",
@@ -1789,7 +2138,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0099",
@@ -1807,7 +2159,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0100",
@@ -1825,7 +2180,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0101",
@@ -1843,7 +2201,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0102",
@@ -1861,7 +2222,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0103",
@@ -1879,7 +2243,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "石見銀山遺跡とその文化的景観"
+    "worldHeritage": "石見銀山遺跡とその文化的景観",
+    "badges": [
+      "世界遺産",
+      "重要伝統的建造物群保存地区"
+    ]
   },
   {
     "id": "t0104",
@@ -1897,7 +2265,12 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "平泉"
+    "worldHeritage": "平泉",
+    "badges": [
+      "世界遺産",
+      "国宝",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0105",
@@ -1915,7 +2288,12 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "平泉"
+    "worldHeritage": "平泉",
+    "badges": [
+      "世界遺産",
+      "特別史跡",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0106",
@@ -1933,7 +2311,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "平泉"
+    "worldHeritage": "平泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0107",
@@ -1951,7 +2332,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "平泉"
+    "worldHeritage": "平泉",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0108",
@@ -1969,7 +2354,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "平泉"
+    "worldHeritage": "平泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0109",
@@ -2005,7 +2393,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産",
+      "特別名勝"
+    ]
   },
   {
     "id": "t0110",
@@ -2023,7 +2415,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0111",
@@ -2041,7 +2436,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0112",
@@ -2059,7 +2457,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0113",
@@ -2077,7 +2478,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0114",
@@ -2095,7 +2499,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0115",
@@ -2113,7 +2520,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0116",
@@ -2131,7 +2541,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0117",
@@ -2149,7 +2562,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0118",
@@ -2167,7 +2583,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0119",
@@ -2185,7 +2604,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0120",
@@ -2203,7 +2625,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0121",
@@ -2221,7 +2646,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0122",
@@ -2239,7 +2667,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0123",
@@ -2257,7 +2688,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0124",
@@ -2275,7 +2709,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0125",
@@ -2293,7 +2730,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0126",
@@ -2311,7 +2751,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0127",
@@ -2329,7 +2772,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0128",
@@ -2347,7 +2793,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0129",
@@ -2365,7 +2814,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0130",
@@ -2383,7 +2835,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0131",
@@ -2401,7 +2856,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0132",
@@ -2419,7 +2877,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0133",
@@ -2437,7 +2898,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "富士山－信仰の対象と芸術の源泉"
+    "worldHeritage": "富士山－信仰の対象と芸術の源泉",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0134",
@@ -2455,7 +2919,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "富岡製糸場と絹産業遺産群"
+    "worldHeritage": "富岡製糸場と絹産業遺産群",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0135",
@@ -2473,7 +2941,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "富岡製糸場と絹産業遺産群"
+    "worldHeritage": "富岡製糸場と絹産業遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0136",
@@ -2491,7 +2962,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "富岡製糸場と絹産業遺産群"
+    "worldHeritage": "富岡製糸場と絹産業遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0137",
@@ -2509,7 +2983,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "富岡製糸場と絹産業遺産群"
+    "worldHeritage": "富岡製糸場と絹産業遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0138",
@@ -2527,7 +3004,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0139",
@@ -2545,7 +3025,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0140",
@@ -2563,7 +3046,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0141",
@@ -2581,7 +3067,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0142",
@@ -2599,7 +3088,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中国"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0143",
@@ -2617,7 +3109,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0144",
@@ -2635,7 +3130,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0145",
@@ -2653,7 +3151,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0146",
@@ -2671,7 +3172,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0147",
@@ -2689,7 +3193,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0148",
@@ -2707,7 +3214,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0149",
@@ -2725,7 +3235,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0150",
@@ -2743,7 +3256,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0151",
@@ -2761,7 +3277,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0152",
@@ -2779,7 +3298,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0153",
@@ -2797,7 +3319,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0154",
@@ -2815,7 +3340,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0155",
@@ -2833,7 +3361,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0156",
@@ -2851,7 +3382,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0157",
@@ -2869,7 +3403,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0158",
@@ -2887,7 +3424,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0159",
@@ -2905,7 +3445,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0160",
@@ -2923,7 +3466,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "明治日本の産業革命遺産"
+    "worldHeritage": "明治日本の産業革命遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0161",
@@ -2941,7 +3487,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "ル・コルビュジエの建築作品"
+    "worldHeritage": "ル・コルビュジエの建築作品",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0162",
@@ -2959,7 +3508,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0163",
@@ -2977,7 +3529,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0164",
@@ -2995,7 +3550,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0165",
@@ -3013,7 +3571,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0166",
@@ -3031,7 +3592,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0167",
@@ -3049,7 +3613,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0168",
@@ -3067,7 +3634,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0169",
@@ -3085,7 +3655,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群"
+    "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0170",
@@ -3103,7 +3676,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0171",
@@ -3121,7 +3697,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0172",
@@ -3139,7 +3718,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0173",
@@ -3157,7 +3739,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0174",
@@ -3175,7 +3760,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0175",
@@ -3193,7 +3781,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0176",
@@ -3211,7 +3802,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0177",
@@ -3229,7 +3823,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0178",
@@ -3247,7 +3844,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0179",
@@ -3265,7 +3865,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0180",
@@ -3283,7 +3886,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0181",
@@ -3301,7 +3907,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産"
+    "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
+    "badges": [
+      "世界遺産",
+      "国宝"
+    ]
   },
   {
     "id": "t0182",
@@ -3319,7 +3929,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0183",
@@ -3337,7 +3950,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0184",
@@ -3355,7 +3971,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0185",
@@ -3373,7 +3992,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0186",
@@ -3391,7 +4013,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0187",
@@ -3409,7 +4034,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0188",
@@ -3427,7 +4055,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0189",
@@ -3445,7 +4076,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0190",
@@ -3463,7 +4097,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0191",
@@ -3481,7 +4118,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0192",
@@ -3499,7 +4139,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0193",
@@ -3517,7 +4160,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0194",
@@ -3535,7 +4181,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0195",
@@ -3553,7 +4202,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0196",
@@ -3571,7 +4223,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0197",
@@ -3589,7 +4244,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0198",
@@ -3607,7 +4265,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0199",
@@ -3625,7 +4286,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0200",
@@ -3643,7 +4307,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0201",
@@ -3661,7 +4328,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0202",
@@ -3679,7 +4349,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0203",
@@ -3697,7 +4370,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0204",
@@ -3715,7 +4391,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0205",
@@ -3733,7 +4412,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0206",
@@ -3751,7 +4433,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0207",
@@ -3769,7 +4454,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0208",
@@ -3787,7 +4475,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0209",
@@ -3805,7 +4496,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0210",
@@ -3823,7 +4517,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0211",
@@ -3841,7 +4538,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0212",
@@ -3859,7 +4559,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0213",
@@ -3877,7 +4580,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0214",
@@ -3895,7 +4601,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0215",
@@ -3913,7 +4622,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0216",
@@ -3931,7 +4643,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0217",
@@ -3949,7 +4664,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0218",
@@ -3967,7 +4685,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0219",
@@ -3985,7 +4706,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0220",
@@ -4003,7 +4727,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0221",
@@ -4021,7 +4748,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0222",
@@ -4039,7 +4769,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0223",
@@ -4057,7 +4790,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0224",
@@ -4075,7 +4811,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0225",
@@ -4093,7 +4832,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0226",
@@ -4111,7 +4853,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0227",
@@ -4129,7 +4874,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0228",
@@ -4147,7 +4895,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0229",
@@ -4165,7 +4916,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0230",
@@ -4183,7 +4937,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "近畿"
       }
     ],
-    "worldHeritage": "百舌鳥・古市古墳群"
+    "worldHeritage": "百舌鳥・古市古墳群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0231",
@@ -4201,7 +4958,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0232",
@@ -4219,7 +4979,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0233",
@@ -4237,7 +5000,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0234",
@@ -4255,7 +5021,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0235",
@@ -4273,7 +5042,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0236",
@@ -4291,7 +5063,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0237",
@@ -4309,7 +5084,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0238",
@@ -4327,7 +5106,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0239",
@@ -4345,7 +5127,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0240",
@@ -4363,7 +5148,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0241",
@@ -4381,7 +5169,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0242",
@@ -4399,7 +5190,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0243",
@@ -4417,7 +5211,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0244",
@@ -4435,7 +5232,11 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産",
+      "特別史跡"
+    ]
   },
   {
     "id": "t0245",
@@ -4453,7 +5254,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0246",
@@ -4471,7 +5275,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0247",
@@ -4489,7 +5296,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "北海道・北東北の縄文遺跡群"
+    "worldHeritage": "北海道・北東北の縄文遺跡群",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0248",
@@ -4507,7 +5317,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "佐渡島の金山"
+    "worldHeritage": "佐渡島の金山",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0249",
@@ -4525,7 +5338,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "佐渡島の金山"
+    "worldHeritage": "佐渡島の金山",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0250",
@@ -4543,7 +5359,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "中部"
       }
     ],
-    "worldHeritage": "佐渡島の金山"
+    "worldHeritage": "佐渡島の金山",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0251",
@@ -4564,7 +5383,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "北海道・東北"
       }
     ],
-    "worldHeritage": "知床"
+    "worldHeritage": "知床",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0252",
@@ -4582,7 +5404,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "関東"
       }
     ],
-    "worldHeritage": "小笠原諸島"
+    "worldHeritage": "小笠原諸島",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0253",
@@ -4606,7 +5431,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島"
+    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0254",
@@ -4628,7 +5456,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島"
+    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0255",
@@ -4650,7 +5481,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島"
+    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0256",
@@ -4668,7 +5502,10 @@ window.TOURIST_SPOTS = [
         "quizRegion": "九州・沖縄"
       }
     ],
-    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島"
+    "worldHeritage": "奄美大島、徳之島、沖縄島北部及び西表島",
+    "badges": [
+      "世界遺産"
+    ]
   },
   {
     "id": "t0257",
@@ -4684,6 +5521,9 @@ window.TOURIST_SPOTS = [
         "mapName": "函館市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "特別史跡"
     ]
   },
   {
@@ -4900,6 +5740,9 @@ window.TOURIST_SPOTS = [
         "mapName": "東川町",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "特別天然記念物"
     ]
   },
   {
@@ -4932,6 +5775,9 @@ window.TOURIST_SPOTS = [
         "mapName": "弘前市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -4948,6 +5794,9 @@ window.TOURIST_SPOTS = [
         "mapName": "十和田市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "特別名勝"
     ]
   },
   {
@@ -4970,6 +5819,9 @@ window.TOURIST_SPOTS = [
         "mapName": "小坂町",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "特別名勝"
     ]
   },
   {
@@ -5091,6 +5943,10 @@ window.TOURIST_SPOTS = [
         ],
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "特別名勝",
+      "日本三景"
     ]
   },
   {
@@ -5107,6 +5963,9 @@ window.TOURIST_SPOTS = [
         "mapName": "松島町",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -5139,6 +5998,9 @@ window.TOURIST_SPOTS = [
         "mapName": "仙台市青葉区",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -5171,6 +6033,9 @@ window.TOURIST_SPOTS = [
         "mapName": "仙北市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -5315,6 +6180,9 @@ window.TOURIST_SPOTS = [
         "mapName": "下郷町",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -5383,6 +6251,9 @@ window.TOURIST_SPOTS = [
         "mapName": "水戸市",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "日本三名園"
     ]
   },
   {
@@ -5591,6 +6462,9 @@ window.TOURIST_SPOTS = [
         "mapName": "川越市",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -5834,6 +6708,9 @@ window.TOURIST_SPOTS = [
         "mapName": "港区",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -5866,6 +6743,9 @@ window.TOURIST_SPOTS = [
         "mapName": "千代田区",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "特別史跡"
     ]
   },
   {
@@ -6218,6 +7098,9 @@ window.TOURIST_SPOTS = [
         "mapName": "高岡市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -6234,6 +7117,10 @@ window.TOURIST_SPOTS = [
         "mapName": "金沢市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "特別名勝",
+      "日本三名園"
     ]
   },
   {
@@ -6266,6 +7153,9 @@ window.TOURIST_SPOTS = [
         "mapName": "金沢市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -6346,6 +7236,9 @@ window.TOURIST_SPOTS = [
         "mapName": "坂井市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -6381,6 +7274,9 @@ window.TOURIST_SPOTS = [
         ],
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "特別名勝"
     ]
   },
   {
@@ -6445,6 +7341,10 @@ window.TOURIST_SPOTS = [
         "mapName": "松本市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "国宝",
+      "現存十二天守"
     ]
   },
   {
@@ -6461,6 +7361,9 @@ window.TOURIST_SPOTS = [
         "mapName": "長野市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -6477,6 +7380,10 @@ window.TOURIST_SPOTS = [
         "mapName": "松本市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "特別名勝",
+      "特別天然記念物"
     ]
   },
   {
@@ -6544,6 +7451,9 @@ window.TOURIST_SPOTS = [
         "mapName": "高山市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -6608,6 +7518,9 @@ window.TOURIST_SPOTS = [
         "mapName": "静岡市駿河区",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -6692,6 +7605,9 @@ window.TOURIST_SPOTS = [
         "mapName": "名古屋市中区",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "特別史跡"
     ]
   },
   {
@@ -6724,6 +7640,10 @@ window.TOURIST_SPOTS = [
         "mapName": "犬山市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "国宝",
+      "現存十二天守"
     ]
   },
   {
@@ -6884,6 +7804,11 @@ window.TOURIST_SPOTS = [
         "mapName": "彦根市",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "国宝",
+      "特別史跡",
+      "現存十二天守"
     ]
   },
   {
@@ -6991,6 +7916,9 @@ window.TOURIST_SPOTS = [
         "mapName": "京都市左京区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7007,6 +7935,9 @@ window.TOURIST_SPOTS = [
         "mapName": "京都市東山区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7055,6 +7986,10 @@ window.TOURIST_SPOTS = [
         "mapName": "宮津市",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "特別名勝",
+      "日本三景"
     ]
   },
   {
@@ -7071,6 +8006,9 @@ window.TOURIST_SPOTS = [
         "mapName": "伊根町",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -7087,6 +8025,9 @@ window.TOURIST_SPOTS = [
         "mapName": "大阪市中央区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "特別史跡"
     ]
   },
   {
@@ -7167,6 +8108,9 @@ window.TOURIST_SPOTS = [
         "mapName": "大阪市住吉区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7231,6 +8175,9 @@ window.TOURIST_SPOTS = [
         "mapName": "神戸市中央区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -7327,6 +8274,9 @@ window.TOURIST_SPOTS = [
         "mapName": "桜井市",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7359,6 +8309,9 @@ window.TOURIST_SPOTS = [
         "mapName": "宇陀市",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7503,6 +8456,9 @@ window.TOURIST_SPOTS = [
         "mapName": "三朝町",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7551,6 +8507,9 @@ window.TOURIST_SPOTS = [
         "mapName": "出雲市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -7567,6 +8526,10 @@ window.TOURIST_SPOTS = [
         "mapName": "松江市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "国宝",
+      "現存十二天守"
     ]
   },
   {
@@ -7615,6 +8578,10 @@ window.TOURIST_SPOTS = [
         "mapName": "岡山市北区",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "特別名勝",
+      "日本三名園"
     ]
   },
   {
@@ -7647,6 +8614,9 @@ window.TOURIST_SPOTS = [
         "mapName": "倉敷市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -7679,6 +8649,9 @@ window.TOURIST_SPOTS = [
         "mapName": "高梁市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -7797,6 +8770,9 @@ window.TOURIST_SPOTS = [
         "mapName": "美祢市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "特別天然記念物"
     ]
   },
   {
@@ -7813,6 +8789,9 @@ window.TOURIST_SPOTS = [
         "mapName": "美祢市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "特別天然記念物"
     ]
   },
   {
@@ -7941,6 +8920,9 @@ window.TOURIST_SPOTS = [
         "mapName": "高松市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "特別名勝"
     ]
   },
   {
@@ -7957,6 +8939,9 @@ window.TOURIST_SPOTS = [
         "mapName": "丸亀市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -8005,6 +8990,9 @@ window.TOURIST_SPOTS = [
         "mapName": "松山市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -8053,6 +9041,9 @@ window.TOURIST_SPOTS = [
         "mapName": "高知市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -8222,6 +9213,9 @@ window.TOURIST_SPOTS = [
         ],
         "quizRegion": "九州・沖縄"
       }
+    ],
+    "badges": [
+      "特別史跡"
     ]
   },
   {
@@ -8382,6 +9376,9 @@ window.TOURIST_SPOTS = [
         "mapName": "熊本市中央区",
         "quizRegion": "九州・沖縄"
       }
+    ],
+    "badges": [
+      "特別史跡"
     ]
   },
   {
@@ -8661,6 +9658,9 @@ window.TOURIST_SPOTS = [
         "mapName": "霧島市",
         "quizRegion": "九州・沖縄"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -8824,6 +9824,9 @@ window.TOURIST_SPOTS = [
         "mapName": "竹富町",
         "quizRegion": "九州・沖縄"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -8923,6 +9926,9 @@ window.TOURIST_SPOTS = [
         "mapName": "松本市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -9215,6 +10221,10 @@ window.TOURIST_SPOTS = [
         "mapName": "備前市",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "国宝",
+      "特別史跡"
     ]
   },
   {
@@ -9317,6 +10327,9 @@ window.TOURIST_SPOTS = [
         "mapName": "鶴岡市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "国宝"
     ]
   },
   {
@@ -9381,6 +10394,9 @@ window.TOURIST_SPOTS = [
         "mapName": "美馬市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -9448,6 +10464,9 @@ window.TOURIST_SPOTS = [
         "mapName": "宇和島市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "現存十二天守"
     ]
   },
   {
@@ -9464,6 +10483,9 @@ window.TOURIST_SPOTS = [
         "mapName": "内子町",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "重要伝統的建造物群保存地区"
     ]
   },
   {
@@ -9480,6 +10502,10 @@ window.TOURIST_SPOTS = [
         "mapName": "福井市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "特別史跡",
+      "特別名勝"
     ]
   },
   {
@@ -9661,6 +10687,1295 @@ window.TOURIST_SPOTS = [
         "location": "米子市",
         "mapName": "米子市",
         "quizRegion": "中国"
+      }
+    ]
+  },
+  {
+    "id": "t0563",
+    "name": "旧浜離宮庭園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡・特別名勝",
+    "locations": [
+      {
+        "pref": "東京都",
+        "location": "中央区",
+        "mapName": "中央区",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡",
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0564",
+    "name": "小石川後楽園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡・特別名勝",
+    "locations": [
+      {
+        "pref": "東京都",
+        "location": "文京区",
+        "mapName": "文京区",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡",
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0565",
+    "name": "六義園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "東京都",
+        "location": "文京区",
+        "mapName": "文京区",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0566",
+    "name": "黒部峡谷 附 猿飛ならびに奥鐘山",
+    "categories": [
+      "自然・絶景"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "富山県",
+        "location": "黒部市",
+        "mapName": "黒部市",
+        "quizRegion": "中部"
+      }
+    ],
+    "badges": [
+      "特別名勝",
+      "特別天然記念物"
+    ]
+  },
+  {
+    "id": "t0567",
+    "name": "金地院庭園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "京都市左京区",
+        "mapName": "京都市左京区",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0568",
+    "name": "浄瑠璃寺庭園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "木津川市",
+        "mapName": "木津川市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0569",
+    "name": "大仙院書院庭園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "京都市北区",
+        "mapName": "京都市北区",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0570",
+    "name": "大徳寺方丈庭園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "京都市北区",
+        "mapName": "京都市北区",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0571",
+    "name": "法金剛院青女滝 附 五位山",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "京都市右京区",
+        "mapName": "京都市右京区",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0572",
+    "name": "平城京左京三条二坊宮跡庭園",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡・特別名勝",
+    "locations": [
+      {
+        "pref": "奈良県",
+        "location": "奈良市",
+        "mapName": "奈良市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡",
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0573",
+    "name": "瀞八丁",
+    "categories": [
+      "自然・絶景"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "和歌山県",
+        "location": "新宮市",
+        "mapName": "新宮市",
+        "quizRegion": "近畿"
+      },
+      {
+        "pref": "三重県",
+        "location": "熊野市",
+        "mapName": "熊野市",
+        "quizRegion": "近畿"
+      },
+      {
+        "pref": "奈良県",
+        "location": "十津川村",
+        "mapName": "十津川村",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0574",
+    "name": "三段峡",
+    "categories": [
+      "自然・絶景"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "広島県",
+        "location": "安芸太田町",
+        "mapName": "安芸太田町",
+        "quizRegion": "中国"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0575",
+    "name": "虹ノ松原",
+    "categories": [
+      "自然・絶景"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "佐賀県",
+        "location": "唐津市",
+        "mapName": "唐津市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0576",
+    "name": "温泉岳（雲仙岳）",
+    "categories": [
+      "自然・絶景"
+    ],
+    "type": "特別名勝",
+    "locations": [
+      {
+        "pref": "長崎県",
+        "location": "雲仙市・島原市・南島原市",
+        "mapName": [
+          "雲仙市",
+          "島原市",
+          "南島原市"
+        ],
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別名勝"
+    ]
+  },
+  {
+    "id": "t0577",
+    "name": "多賀城跡 附 寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "宮城県",
+        "location": "多賀城市",
+        "mapName": "多賀城市",
+        "quizRegion": "北海道・東北"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0578",
+    "name": "旧弘道館",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "茨城県",
+        "location": "水戸市",
+        "mapName": "水戸市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0579",
+    "name": "常陸国分寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "茨城県",
+        "location": "石岡市",
+        "mapName": "石岡市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0580",
+    "name": "常陸国分尼寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "茨城県",
+        "location": "石岡市",
+        "mapName": "石岡市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0581",
+    "name": "大谷磨崖仏",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "栃木県",
+        "location": "宇都宮市",
+        "mapName": "宇都宮市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0582",
+    "name": "日光杉並木街道 附 並木寄進碑",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "栃木県",
+        "location": "日光市・鹿沼市",
+        "mapName": [
+          "日光市",
+          "鹿沼市"
+        ],
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡",
+      "特別天然記念物"
+    ]
+  },
+  {
+    "id": "t0583",
+    "name": "金井沢碑",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "群馬県",
+        "location": "高崎市",
+        "mapName": "高崎市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0584",
+    "name": "多胡碑",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "群馬県",
+        "location": "高崎市",
+        "mapName": "高崎市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0585",
+    "name": "山上碑および古墳",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "群馬県",
+        "location": "高崎市",
+        "mapName": "高崎市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0586",
+    "name": "埼玉古墳群",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "埼玉県",
+        "location": "行田市",
+        "mapName": "行田市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0587",
+    "name": "加曽利貝塚",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "千葉県",
+        "location": "千葉市若葉区",
+        "mapName": "千葉市若葉区",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0588",
+    "name": "尖石石器時代遺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "長野県",
+        "location": "茅野市",
+        "mapName": "茅野市",
+        "quizRegion": "中部"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0589",
+    "name": "新居関跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "静岡県",
+        "location": "湖西市",
+        "mapName": "湖西市",
+        "quizRegion": "中部"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0590",
+    "name": "遠江国分寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "静岡県",
+        "location": "磐田市",
+        "mapName": "磐田市",
+        "quizRegion": "中部"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0591",
+    "name": "登呂遺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "静岡県",
+        "location": "静岡市駿河区",
+        "mapName": "静岡市駿河区",
+        "quizRegion": "中部"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0592",
+    "name": "本居宣長旧宅同宅跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "三重県",
+        "location": "松阪市",
+        "mapName": "松阪市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0593",
+    "name": "安土城跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "滋賀県",
+        "location": "近江八幡市",
+        "mapName": "近江八幡市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0594",
+    "name": "恭仁宮跡（山城国分寺跡）",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "木津川市",
+        "mapName": "木津川市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0595",
+    "name": "百済寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "大阪府",
+        "location": "枚方市",
+        "mapName": "枚方市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0596",
+    "name": "巣山古墳",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "奈良県",
+        "location": "広陵町",
+        "mapName": "広陵町",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0597",
+    "name": "文殊院西古墳",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "奈良県",
+        "location": "桜井市",
+        "mapName": "桜井市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0598",
+    "name": "岩橋千塚古墳群",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "和歌山県",
+        "location": "和歌山市",
+        "mapName": "和歌山市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0599",
+    "name": "斎尾廃寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "鳥取県",
+        "location": "琴浦町",
+        "mapName": "琴浦町",
+        "quizRegion": "中国"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0600",
+    "name": "廉塾ならびに菅茶山旧宅",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "広島県",
+        "location": "福山市",
+        "mapName": "福山市",
+        "quizRegion": "中国"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0601",
+    "name": "讃岐国分寺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "香川県",
+        "location": "高松市",
+        "mapName": "高松市",
+        "quizRegion": "四国"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0602",
+    "name": "王塚古墳",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "福岡県",
+        "location": "桂川町",
+        "mapName": "桂川町",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0603",
+    "name": "大野城跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "福岡県",
+        "location": "太宰府市・宇美町・大野城市",
+        "mapName": [
+          "太宰府市",
+          "宇美町",
+          "大野城市"
+        ],
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0604",
+    "name": "大宰府跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "福岡県",
+        "location": "太宰府市",
+        "mapName": "太宰府市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0605",
+    "name": "水城跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "福岡県",
+        "location": "太宰府市・大野城市・春日市",
+        "mapName": [
+          "太宰府市",
+          "大野城市",
+          "春日市"
+        ],
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0606",
+    "name": "基肄城跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "福岡県",
+        "location": "筑紫野市",
+        "mapName": "筑紫野市",
+        "quizRegion": "九州・沖縄"
+      },
+      {
+        "pref": "佐賀県",
+        "location": "基山町",
+        "mapName": "基山町",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0607",
+    "name": "名護屋城跡並陣跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "佐賀県",
+        "location": "唐津市・玄海町",
+        "mapName": [
+          "唐津市",
+          "玄海町"
+        ],
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0608",
+    "name": "金田城跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "長崎県",
+        "location": "対馬市",
+        "mapName": "対馬市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0609",
+    "name": "原の辻遺跡",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "長崎県",
+        "location": "壱岐市",
+        "mapName": "壱岐市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0610",
+    "name": "福井洞窟",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "長崎県",
+        "location": "佐世保市",
+        "mapName": "佐世保市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0611",
+    "name": "臼杵磨崖仏",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "大分県",
+        "location": "臼杵市",
+        "mapName": "臼杵市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0612",
+    "name": "西都原古墳群",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "特別史跡",
+    "locations": [
+      {
+        "pref": "宮崎県",
+        "location": "西都市",
+        "mapName": "西都市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "特別史跡"
+    ]
+  },
+  {
+    "id": "t0613",
+    "name": "正福寺地蔵堂",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "東京都",
+        "location": "東村山市",
+        "mapName": "東村山市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0614",
+    "name": "円覚寺舎利殿",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "神奈川県",
+        "location": "鎌倉市",
+        "mapName": "鎌倉市",
+        "quizRegion": "関東"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0615",
+    "name": "如庵",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "愛知県",
+        "location": "犬山市",
+        "mapName": "犬山市",
+        "quizRegion": "中部"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0616",
+    "name": "石山寺多宝塔",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "滋賀県",
+        "location": "大津市",
+        "mapName": "大津市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0617",
+    "name": "根来寺大塔",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "和歌山県",
+        "location": "岩出市",
+        "mapName": "岩出市",
+        "quizRegion": "近畿"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0618",
+    "name": "吉備津神社本殿・拝殿",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "岡山県",
+        "location": "岡山市北区",
+        "mapName": "岡山市北区",
+        "quizRegion": "中国"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0619",
+    "name": "明王院五重塔",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "広島県",
+        "location": "福山市",
+        "mapName": "福山市",
+        "quizRegion": "中国"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0620",
+    "name": "瑠璃光寺五重塔",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "山口県",
+        "location": "山口市",
+        "mapName": "山口市",
+        "quizRegion": "中国"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0621",
+    "name": "石手寺二王門",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "愛媛県",
+        "location": "松山市",
+        "mapName": "松山市",
+        "quizRegion": "四国"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0622",
+    "name": "太山寺本堂",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "愛媛県",
+        "location": "松山市",
+        "mapName": "松山市",
+        "quizRegion": "四国"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0623",
+    "name": "青井阿蘇神社",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "熊本県",
+        "location": "人吉市",
+        "mapName": "人吉市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0624",
+    "name": "宇佐神宮本殿",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "大分県",
+        "location": "宇佐市",
+        "mapName": "宇佐市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0625",
+    "name": "富貴寺大堂",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "大分県",
+        "location": "豊後高田市",
+        "mapName": "豊後高田市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0626",
+    "name": "崇福寺大雄宝殿",
+    "categories": [
+      "歴史・文化"
+    ],
+    "type": "国宝建造物",
+    "locations": [
+      {
+        "pref": "長崎県",
+        "location": "長崎市",
+        "mapName": "長崎市",
+        "quizRegion": "九州・沖縄"
+      }
+    ],
+    "badges": [
+      "国宝"
+    ]
+  },
+  {
+    "id": "t0627",
+    "name": "ポーラ美術館",
+    "categories": [
+      "その他"
+    ],
+    "type": "美術館",
+    "locations": [
+      {
+        "pref": "神奈川県",
+        "location": "箱根町",
+        "mapName": "箱根町",
+        "quizRegion": "関東"
+      }
+    ]
+  },
+  {
+    "id": "t0628",
+    "name": "京都市京セラ美術館",
+    "categories": [
+      "その他"
+    ],
+    "type": "美術館",
+    "locations": [
+      {
+        "pref": "京都府",
+        "location": "京都市左京区",
+        "mapName": "京都市左京区",
+        "quizRegion": "近畿"
       }
     ]
   }

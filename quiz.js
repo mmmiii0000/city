@@ -328,7 +328,9 @@
   function createTouristResultCard(item,spot){
     const article=document.createElement('article');article.className='municipality-card tourist-card';const info=document.createElement('div');info.className='municipality-info tourist-result-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');title.innerHTML=`<span class="pref-label">${escapeHtml(item.pref)}</span><h3 class="tourist-location-name">${escapeHtml(item.location||'所在地情報なし')}</h3>`;titleRow.append(title);info.appendChild(titleRow);
     const meta=document.createElement('div');meta.className='tourist-meta-list';const categoryText=(spot.categories||[]).join(' / ')||'その他';meta.innerHTML=`<div class="tourist-meta-row"><span>カテゴリ</span><strong>${escapeHtml(categoryText)}</strong></div>`;
-    if(spot.worldHeritage){const badge=document.createElement('div');badge.className='world-heritage-badge';badge.textContent=`世界遺産：${spot.worldHeritage}`;info.appendChild(badge);} info.appendChild(meta);article.append(info,createMapCard());return article;
+    const badges=Array.isArray(spot.badges)?spot.badges:[];
+    if(badges.length){const badgeWrap=document.createElement('div');badgeWrap.className='spot-badges';for(const badgeText of badges){const badge=document.createElement('span');badge.className='spot-badge';badge.textContent=badgeText;badgeWrap.appendChild(badge);}info.appendChild(badgeWrap);}
+    if(spot.worldHeritage){const detail=document.createElement('div');detail.className='world-heritage-badge';detail.textContent=`世界遺産登録名：${spot.worldHeritage}`;info.appendChild(detail);} info.appendChild(meta);article.append(info,createMapCard());return article;
   }
 
   // ---------------------------------------------------------------------------
