@@ -1,5 +1,6 @@
 // 観光地クイズ用データ。categories は5カテゴリ内で複数指定できます。
 // badges は、公的指定または歴史的に定着した客観的な呼称のみを表示します。
+// 「重要文化財」は国指定の建造物のみを対象とし、「国宝」とは重複表示しません。
 window.TOURIST_SPOTS = [
   {
     "id": "t0001",
@@ -1237,7 +1238,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "日光の社寺",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1280,7 +1282,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "琉球王国のグスク及び関連遺産群",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "国宝"
     ]
   },
   {
@@ -1301,7 +1304,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "琉球王国のグスク及び関連遺産群",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1555,7 +1559,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1597,7 +1602,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1639,7 +1645,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1660,7 +1667,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1744,7 +1752,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1765,7 +1774,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1786,7 +1796,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -1807,7 +1818,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "紀伊山地の霊場と参詣道",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -3636,7 +3648,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "「神宿る島」宗像・沖ノ島と関連遺産群",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -3888,7 +3901,8 @@ window.TOURIST_SPOTS = [
     ],
     "worldHeritage": "長崎と天草地方の潜伏キリシタン関連遺産",
     "badges": [
-      "世界遺産"
+      "世界遺産",
+      "重要文化財"
     ]
   },
   {
@@ -5777,6 +5791,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -6100,6 +6115,9 @@ window.TOURIST_SPOTS = [
         "mapName": "山形市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -6561,6 +6579,9 @@ window.TOURIST_SPOTS = [
         "mapName": "成田市",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -6644,6 +6665,9 @@ window.TOURIST_SPOTS = [
         "mapName": "渋谷区",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -6692,6 +6716,9 @@ window.TOURIST_SPOTS = [
         "mapName": "千代田区",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -6874,6 +6901,9 @@ window.TOURIST_SPOTS = [
         "mapName": "鎌倉市",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -7137,6 +7167,9 @@ window.TOURIST_SPOTS = [
         "mapName": "金沢市",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -7204,6 +7237,9 @@ window.TOURIST_SPOTS = [
         "mapName": "永平寺町",
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -7238,6 +7274,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -7435,6 +7472,9 @@ window.TOURIST_SPOTS = [
         ],
         "quizRegion": "中部"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -7607,6 +7647,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "特別史跡"
     ]
   },
@@ -7884,6 +7925,9 @@ window.TOURIST_SPOTS = [
         "mapName": "京都市伏見区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -7900,6 +7944,9 @@ window.TOURIST_SPOTS = [
         "mapName": "京都市左京区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -8027,6 +8074,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "特別史跡"
     ]
   },
@@ -8092,6 +8140,9 @@ window.TOURIST_SPOTS = [
         "mapName": "大阪市北区",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -8360,6 +8411,9 @@ window.TOURIST_SPOTS = [
         "mapName": "和歌山市",
         "quizRegion": "近畿"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -8598,6 +8652,9 @@ window.TOURIST_SPOTS = [
         "mapName": "岡山市北区",
         "quizRegion": "中国"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -8651,6 +8708,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -8904,6 +8962,9 @@ window.TOURIST_SPOTS = [
         "mapName": "琴平町",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -8941,6 +9002,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -8992,6 +9054,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -9043,6 +9106,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -9130,6 +9194,9 @@ window.TOURIST_SPOTS = [
         "mapName": "太宰府市",
         "quizRegion": "九州・沖縄"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -9378,6 +9445,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "特別史跡"
     ]
   },
@@ -9862,6 +9930,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -9878,6 +9949,9 @@ window.TOURIST_SPOTS = [
         "mapName": "札幌市中央区",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -9894,6 +9968,9 @@ window.TOURIST_SPOTS = [
         "mapName": "札幌市中央区",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -9910,6 +9987,9 @@ window.TOURIST_SPOTS = [
         "mapName": "函館市",
         "quizRegion": "北海道・東北"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -9948,6 +10028,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10059,6 +10142,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10094,6 +10180,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10110,6 +10199,9 @@ window.TOURIST_SPOTS = [
         "mapName": "中央区",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10148,6 +10240,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10167,6 +10262,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10263,6 +10361,9 @@ window.TOURIST_SPOTS = [
     ],
     "tags": [
       "建築"
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10448,6 +10549,9 @@ window.TOURIST_SPOTS = [
         "mapName": "今治市",
         "quizRegion": "四国"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -10466,6 +10570,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "現存十二天守"
     ]
   },
@@ -10592,6 +10697,9 @@ window.TOURIST_SPOTS = [
         "mapName": "鹿嶋市",
         "quizRegion": "関東"
       }
+    ],
+    "badges": [
+      "重要文化財"
     ]
   },
   {
@@ -11011,6 +11119,7 @@ window.TOURIST_SPOTS = [
       }
     ],
     "badges": [
+      "重要文化財",
       "特別史跡"
     ]
   },
