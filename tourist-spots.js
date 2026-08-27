@@ -425,19 +425,18 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "青森県",
-        "location": "西目屋村・深浦町",
+        "location": "鰺ヶ沢町・深浦町・西目屋村",
         "mapName": [
-          "西目屋村",
-          "深浦町"
+          "鰺ヶ沢町",
+          "深浦町",
+          "西目屋村"
         ],
         "quizRegion": "北海道・東北"
       },
       {
         "pref": "秋田県",
         "location": "藤里町",
-        "mapName": [
-          "藤里町"
-        ],
+        "mapName": "藤里町",
         "quizRegion": "北海道・東北"
       }
     ],
@@ -1983,19 +1982,24 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "山梨県",
-        "location": "富士吉田市・富士河口湖町など",
+        "location": "富士吉田市・忍野村・山中湖村・鳴沢村・富士河口湖町",
         "mapName": [
           "富士吉田市",
+          "忍野村",
+          "山中湖村",
+          "鳴沢村",
           "富士河口湖町"
         ],
         "quizRegion": "中部"
       },
       {
         "pref": "静岡県",
-        "location": "富士宮市・御殿場市・小山町など",
+        "location": "富士宮市・富士市・御殿場市・裾野市・小山町",
         "mapName": [
           "富士宮市",
+          "富士市",
           "御殿場市",
+          "裾野市",
           "小山町"
         ],
         "quizRegion": "中部"
@@ -4591,12 +4595,13 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "鹿児島県",
-        "location": "奄美市・大和村・宇検村・瀬戸内町など",
+        "location": "奄美市・大和村・宇検村・瀬戸内町・龍郷町",
         "mapName": [
           "奄美市",
           "大和村",
           "宇検村",
-          "瀬戸内町"
+          "瀬戸内町",
+          "龍郷町"
         ],
         "quizRegion": "九州・沖縄"
       }
@@ -4870,9 +4875,11 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "北海道",
-        "location": "釧路市・鶴居村など",
+        "location": "釧路市・釧路町・標茶町・鶴居村",
         "mapName": [
           "釧路市",
+          "釧路町",
+          "標茶町",
           "鶴居村"
         ],
         "quizRegion": "北海道・東北"
@@ -4975,8 +4982,11 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "青森県",
-        "location": "青森市",
-        "mapName": "青森市",
+        "location": "青森市・十和田市",
+        "mapName": [
+          "青森市",
+          "十和田市"
+        ],
         "quizRegion": "北海道・東北"
       }
     ]
@@ -5071,8 +5081,14 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "宮城県",
-        "location": "松島町",
-        "mapName": "松島町",
+        "location": "塩竈市・東松島市・七ヶ浜町・利府町・松島町",
+        "mapName": [
+          "塩竈市",
+          "東松島市",
+          "七ヶ浜町",
+          "利府町",
+          "松島町"
+        ],
         "quizRegion": "北海道・東北"
       }
     ]
@@ -6358,8 +6374,11 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "山梨県",
-        "location": "甲府市",
-        "mapName": "甲府市",
+        "location": "甲府市・甲斐市",
+        "mapName": [
+          "甲府市",
+          "甲斐市"
+        ],
         "quizRegion": "中部"
       }
     ]
@@ -6649,8 +6668,12 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "静岡県",
-        "location": "浜松市中央区",
-        "mapName": "浜松市中央区",
+        "location": "浜松市中央区・浜松市浜名区・湖西市",
+        "mapName": [
+          "浜松市中央区",
+          "浜松市浜名区",
+          "湖西市"
+        ],
         "quizRegion": "中部"
       }
     ]
@@ -6873,8 +6896,19 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "滋賀県",
-        "location": "大津市ほか",
-        "mapName": "大津市",
+        "location": "大津市・彦根市・長浜市・近江八幡市・草津市・守山市・野洲市・高島市・東近江市・米原市",
+        "mapName": [
+          "大津市",
+          "彦根市",
+          "長浜市",
+          "近江八幡市",
+          "草津市",
+          "守山市",
+          "野洲市",
+          "高島市",
+          "東近江市",
+          "米原市"
+        ],
         "quizRegion": "近畿"
       }
     ]
@@ -8047,8 +8081,14 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "高知県",
-        "location": "四万十市ほか",
-        "mapName": "四万十市",
+        "location": "四万十市・四万十町・中土佐町・津野町・檮原町",
+        "mapName": [
+          "四万十市",
+          "四万十町",
+          "中土佐町",
+          "津野町",
+          "檮原町"
+        ],
         "quizRegion": "四国"
       }
     ]
@@ -8454,8 +8494,11 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "大分県",
-        "location": "由布市",
-        "mapName": "由布市",
+        "location": "由布市・別府市",
+        "mapName": [
+          "由布市",
+          "別府市"
+        ],
         "quizRegion": "九州・沖縄"
       }
     ]
@@ -9500,8 +9543,11 @@ window.TOURIST_SPOTS = [
     "locations": [
       {
         "pref": "茨城県",
-        "location": "つくば市",
-        "mapName": "つくば市",
+        "location": "つくば市・桜川市",
+        "mapName": [
+          "つくば市",
+          "桜川市"
+        ],
         "quizRegion": "関東"
       }
     ]
