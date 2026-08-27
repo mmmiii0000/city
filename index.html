@@ -3087,6 +3087,60 @@ body[data-quiz-mode="tourism"] .settings-popover .setting-group {
   align-self: start;
 }
 
+
+/* --------------------------------------------------------------------------
+   Municipality furigana
+   -------------------------------------------------------------------------- */
+body[data-quiz-mode="municipality"] .municipality-name {
+  margin-bottom: 2px;
+}
+
+.municipality-reading-question {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+.municipality-reading-question[hidden] {
+  display: none;
+}
+
+.municipality-name-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 9px;
+  min-width: 0;
+}
+
+.municipality-name-line h3 {
+  flex: 0 1 auto;
+}
+
+.municipality-reading-inline {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .municipality-reading-question {
+    margin-bottom: 11px;
+    font-size: 11px;
+  }
+
+  .municipality-reading-inline {
+    font-size: 9px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3279,6 +3333,7 @@ body[data-quiz-mode="tourism"] .settings-popover .setting-group {
         <div class="question-block">
           <p class="question-label" id="question-label">この市町村がある都道府県を選んでください</p>
           <h2 id="question-title" class="municipality-name"><span id="municipality-name">読み込み中…</span></h2>
+          <div id="municipality-reading" class="municipality-reading-question" hidden></div>
 
           <div class="duplicate-notice" id="duplicate-notice" hidden>
             <span class="duplicate-badge" id="duplicate-badge">同名自治体</span>
@@ -3380,10 +3435,11 @@ body[data-quiz-mode="tourism"] .settings-popover .setting-group {
     </footer>
   </div>
 
-<script src="municipalities.js?v=2.15"></script>
-<script src="tourist-spots.js?v=2.15"></script>
-<script src="map-loader.js?v=2.15"></script>
-<script src="quiz.js?v=2.15"></script>
+<script src="https://code4fukui.github.io/localgovjp/localgovjp.js?v=20260709"></script>
+<script src="municipalities.js?v=2.16"></script>
+<script src="tourist-spots.js?v=2.16"></script>
+<script src="map-loader.js?v=2.16"></script>
+<script src="quiz.js?v=2.16"></script>
 
 
 

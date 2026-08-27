@@ -15,6 +15,36 @@
   // No external population request is required.
 
   // ---------------------------------------------------------------------------
+  // Municipality readings
+  // ---------------------------------------------------------------------------
+  // LOCALGOV_JP provides current municipality names and their hiragana readings.
+  // Match by prefecture + municipality name so designated-city code collisions do
+  // not affect the reading lookup.
+  const municipalityReadingByPrefName = new Map();
+  if (typeof LOCALGOV_JP !== 'undefined' && Array.isArray(LOCALGOV_JP)) {
+    for (const item of LOCALGOV_JP) {
+      const pref = String(item?.pref || '').trim();
+      const name = String(item?.city || '').trim();
+      const reading = String(item?.citykana || '').trim();
+      if (!pref || !name || !reading) continue;
+      municipalityReadingByPrefName.set(`${pref}\u0000${name}`, reading);
+    }
+  } else {
+    console.warn('市町村ふりがなデータを読み込めませんでした。クイズ本体はそのまま利用できます。');
+  }
+
+  function municipalityReading(item) {
+    if (!item) return '';
+    return municipalityReadingByPrefName.get(`${item.pref}\u0000${item.name}`) || '';
+  }
+
+  function municipalityQuestionReading(question) {
+    if (!question || question.mode !== 'municipality') return '';
+    const readings = [...new Set((question.answers || []).map(municipalityReading).filter(Boolean))];
+    return readings.join('／');
+  }
+
+  // ---------------------------------------------------------------------------
   // DOM
   // ---------------------------------------------------------------------------
   const $ = selector => document.querySelector(selector);
@@ -25,7 +55,7 @@
     endScreen: $('#end-screen'), endCorrect: $('#end-correct'), endTotal: $('#end-total'), endRate: $('#end-rate'), endMaxStreak: $('#end-max-streak'),
     wrongList: $('#wrong-list'), wrongEmpty: $('#wrong-empty'), restartSameButton: $('#restart-same-button'), restartSettingsButton: $('#restart-settings-button'),
     questionNo: $('#question-no'), questionTotal: $('#question-total'), progressBar: $('#question-progress'), questionLabel: $('#question-label'),
-    questionName: $('#municipality-name'), duplicateNotice: $('#duplicate-notice'), duplicateBadge: $('#duplicate-badge'), duplicateText: $('#duplicate-text'),
+    questionName: $('#municipality-name'), questionReading: $('#municipality-reading'), duplicateNotice: $('#duplicate-notice'), duplicateBadge: $('#duplicate-badge'), duplicateText: $('#duplicate-text'),
     answerSlots: $('#answer-slots'), prefectureButtons: $$('.prefecture[data-pref]'), resetButton: $('#reset-selection'), answerButton: $('#answer-button'),
     correctRate: $('#correct-rate'), scoreCount: $('#score-count'), streak: $('#current-streak'), resultPanel: $('#result-panel'), resultStatus: $('#result-status'),
     resultTitle: $('#result-title'), resultSentence: $('#result-sentence'), resultEmpty: $('#result-empty'), resultCards: $('#result-cards'), nextButton: $('#next-button'),
@@ -253,6 +283,9 @@
   function renderQuestion() {
     const q = state.currentQuestion; if (!q) return;
     els.questionName.textContent = q.name;
+    const reading = municipalityQuestionReading(q);
+    els.questionReading.textContent = reading;
+    els.questionReading.hidden = !reading || state.mode !== 'municipality';
     els.questionNo.textContent = String(state.questionIndex).padStart(2,'0');
     if (Number.isFinite(state.questionLimit)) {
       els.questionTotal.textContent = `/ ${state.actualGameTotal}`;
@@ -321,7 +354,7 @@
   }
   function createMapCard(){const mapCard=document.createElement('div');mapCard.className='map-card';const map=document.createElement('div');map.className='map-placeholder municipality-map';mapCard.appendChild(map);return mapCard;}
   function createMunicipalityResultCard(item){
-    const article=document.createElement('article');article.className='municipality-card';const info=document.createElement('div');info.className='municipality-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');title.innerHTML=`<span class="pref-label">${escapeHtml(item.pref)}</span><h3>${escapeHtml(item.name)}</h3>`;titleRow.append(title);
+    const article=document.createElement('article');article.className='municipality-card';const info=document.createElement('div');info.className='municipality-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');const prefLabel=document.createElement('span');prefLabel.className='pref-label';prefLabel.textContent=item.pref;const nameLine=document.createElement('div');nameLine.className='municipality-name-line';const name=document.createElement('h3');name.textContent=item.name;nameLine.appendChild(name);const reading=municipalityReading(item);if(reading){const readingEl=document.createElement('span');readingEl.className='municipality-reading-inline';readingEl.textContent=reading;nameLine.appendChild(readingEl);}title.append(prefLabel,nameLine);titleRow.append(title);
     const dl=document.createElement('dl');dl.className='data-grid';const areaText=item.area==null?'—':`${formatNumber(item.area,2)} km²`;const densityText=item.density==null?'—':`${formatNumber(item.density,1)}人/km²`;const populationText=item.population==null?'—':`${formatInteger(item.population)}人`;const populationRank=item.populationRank==null?'—':`${item.populationRank}位/ ${item.prefMunicipalityCount}自治体`;const areaRank=item.areaRank==null?'—':`${item.areaRank}位/ ${item.prefMunicipalityCount}自治体`;
     dl.innerHTML=[['人口',populationText],['面積',areaText],['人口密度',densityText],['県内人口順位',populationRank],['県内面積順位',areaRank]].map(([dt,dd])=>`<div><dt>${dt}</dt><dd>${dd}</dd></div>`).join('');info.append(titleRow,dl);article.append(info,createMapCard());return article;
   }
