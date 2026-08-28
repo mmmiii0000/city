@@ -3141,6 +3141,96 @@ body[data-quiz-mode="municipality"] .municipality-name {
   }
 }
 
+
+/* --------------------------------------------------------------------------
+   Tourism furigana
+   -------------------------------------------------------------------------- */
+.result-reading {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+}
+
+.result-reading[hidden] {
+  display: none;
+}
+
+.tourist-location-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 9px;
+  min-width: 0;
+}
+
+.tourist-location-line .tourist-location-name {
+  flex: 0 1 auto;
+}
+
+.tourist-location-reading {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .result-reading {
+    font-size: 10px;
+  }
+
+  .tourist-location-reading {
+    font-size: 9px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   v2.18 Safari: stable ANSWER map sizing
+   Safari can mis-resolve height:100% on a descendant of a flex item whose
+   remaining height is determined by flexbox. Let flexbox size the map itself,
+   then absolutely fill that resolved box with the SVG.
+   -------------------------------------------------------------------------- */
+.result-cards .map-card {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.result-cards .map-placeholder,
+.result-cards[data-count="1"] .map-placeholder,
+.result-cards[data-count="2"] .map-placeholder,
+.result-cards[data-count="3"] .map-placeholder,
+.result-cards[data-count="4"] .map-placeholder {
+  position: relative;
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.result-cards .municipality-map svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: visible;
+}
+
 </style>
 </head>
 <body>
@@ -3414,6 +3504,7 @@ body[data-quiz-mode="municipality"] .municipality-name {
             <span class="section-kicker">ANSWER</span>
             <h2 id="result-title">ANSWER</h2>
             <p id="result-sentence">都道府県を選んで「回答する」を押してください。</p>
+            <p id="result-reading" class="result-reading" hidden></p>
           </div>
         </div>
 
@@ -3436,10 +3527,12 @@ body[data-quiz-mode="municipality"] .municipality-name {
   </div>
 
 <script src="https://code4fukui.github.io/localgovjp/localgovjp.js?v=20260709"></script>
-<script src="municipalities.js?v=2.16"></script>
-<script src="tourist-spots.js?v=2.16"></script>
-<script src="map-loader.js?v=2.16"></script>
-<script src="quiz.js?v=2.16"></script>
+<script src="https://cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script>
+<script src="municipalities.js?v=2.18"></script>
+<script src="tourist-spots.js?v=2.18"></script>
+<script src="map-loader.js?v=2.18"></script>
+<script src="quiz.js?v=2.18"></script>
 
 
 

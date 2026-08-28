@@ -5590,7 +5590,7 @@ window.TOURIST_SPOTS = [
   },
   {
     "id": "t0261",
-    "name": "白金の滝",
+    "name": "白ひげの滝",
     "categories": [
       "自然・絶景"
     ],

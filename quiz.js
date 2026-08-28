@@ -44,6 +44,252 @@
     return readings.join('／');
   }
 
+  function municipalityNameReading(pref, name) {
+    if (!pref || !name) return '';
+    return municipalityReadingByPrefName.get(`${pref}\u0000${name}`) || '';
+  }
+
+  function touristLocationReading(item) {
+    if (!item) return '';
+    const names = Array.isArray(item.mapName) ? item.mapName : [item.mapName];
+    const readings = names
+      .filter(Boolean)
+      .map(name => municipalityNameReading(item.pref, name))
+      .filter(Boolean);
+    return [...new Set(readings)].join('・');
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tourist-spot readings
+  // ---------------------------------------------------------------------------
+  // Kuroshiro + Kuromoji generates hiragana for ordinary Japanese names.
+  // Difficult proper nouns that are especially prone to morphological misreading
+  // are corrected here explicitly.
+  const touristReadingOverrides = new Map(Object.entries({
+    '檜隈寺跡': 'ひのくまでらあと',
+    '牽牛子塚古墳': 'けんごしづかこふん',
+    '西芳寺（苔寺）': 'さいほうじ（こけでら）',
+    '厳島神社': 'いつくしまじんじゃ',
+    '園比屋武御嶽石門': 'そのひゃんうたきいしもん',
+    '斎場御嶽': 'せーふぁうたき',
+    '大峯奥駈道': 'おおみねおくがけみち',
+    '熊野古道 中辺路': 'くまのこどう なかへち',
+    '熊野古道 小辺路': 'くまのこどう こへち',
+    '熊野古道 大辺路': 'くまのこどう おおへち',
+    '熊野古道 伊勢路': 'くまのこどう いせじ',
+    '温泉津温泉街': 'ゆのつおんせんがい',
+    '石見銀山街道 温泉津・沖泊道': 'いわみぎんざんかいどう ゆのつ・おきどまりみち',
+    '毛越寺': 'もうつうじ',
+    '金鶏山': 'きんけいさん',
+    '冨士御室浅間神社': 'ふじおむろせんげんじんじゃ',
+    '御師住宅 旧外川家住宅': 'おしじゅうたく きゅうとがわけじゅうたく',
+    '御師住宅 小佐野家住宅': 'おしじゅうたく おさのけじゅうたく',
+    '忍野八海 出口池': 'おしのはっかい でぐちいけ',
+    '忍野八海 お釜池': 'おしのはっかい おかまいけ',
+    '忍野八海 底抜池': 'おしのはっかい そこなしいけ',
+    '忍野八海 銚子池': 'おしのはっかい ちょうしいけ',
+    '忍野八海 湧池': 'おしのはっかい わくいけ',
+    '忍野八海 濁池': 'おしのはっかい にごりいけ',
+    '忍野八海 鏡池': 'おしのはっかい かがみいけ',
+    '忍野八海 菖蒲池': 'おしのはっかい しょうぶいけ',
+    '恵美須ヶ鼻造船所跡': 'えびすがはなぞうせんじょあと',
+    '韮山反射炉': 'にらやまはんしゃろ',
+    '三重津海軍所跡': 'みえつかいぐんしょあと',
+    '遠賀川水源地ポンプ室': 'おんががわすいげんちぽんぷしつ',
+    '宗像大社 沖津宮遙拝所': 'むなかたたいしゃ おきつみやようはいしょ',
+    '宗像大社 辺津宮': 'むなかたたいしゃ へつみや',
+    '新原・奴山古墳群': 'しんばる・ぬやまこふんぐん',
+    '﨑津集落': 'さきつしゅうらく',
+    '外海の出津集落': 'そとめのしつしゅうらく',
+    '外海の大野集落': 'そとめのおおのしゅうらく',
+    '頭ヶ島の集落': 'かしらがしまのしゅうらく',
+    '垣ノ島遺跡': 'かきのしまいせき',
+    '北黄金貝塚': 'きたこがねかいづか',
+    '田小屋野貝塚': 'たごやのかいづか',
+    '伊勢堂岱遺跡': 'いせどうたいいせき',
+    '是川石器時代遺跡': 'これかわせっきじだいいせき',
+    '五稜郭': 'ごりょうかく',
+    '摩周湖': 'ましゅうこ',
+    '屈斜路湖': 'くっしゃろこ',
+    '阿寒湖': 'あかんこ',
+    '宗谷岬': 'そうやみさき',
+    '奥入瀬渓流': 'おいらせけいりゅう',
+    '八甲田山': 'はっこうださん',
+    '龍泉洞': 'りゅうせんどう',
+    '厳美渓': 'げんびけい',
+    '猊鼻渓': 'げいびけい',
+    '瑞巌寺': 'ずいがんじ',
+    '角館武家屋敷': 'かくのだてぶけやしき',
+    '乳頭温泉郷': 'にゅうとうおんせんきょう',
+    '抱返り渓谷': 'だきがえりけいこく',
+    '山寺（立石寺）': 'やまでら（りっしゃくじ）',
+    '吹割の滝': 'ふきわれのたき',
+    '長瀞': 'ながとろ',
+    '埼玉古墳群': 'さきたまこふんぐん',
+    '鋸山': 'のこぎりやま',
+    '浅草寺': 'せんそうじ',
+    '葛西臨海水族園': 'かさいりんかいすいぞくえん',
+    '大涌谷': 'おおわくだに',
+    '清津峡': 'きよつきょう',
+    '星峠の棚田': 'ほしとうげのたなだ',
+    '彌彦神社': 'やひこじんじゃ',
+    '雨晴海岸': 'あまはらしかいがん',
+    '瑞龍寺': 'ずいりゅうじ',
+    '東尋坊': 'とうじんぼう',
+    '昇仙峡': 'しょうせんきょう',
+    '新倉山浅間公園': 'あらくらやませんげんこうえん',
+    '白馬八方尾根': 'はくばはっぽうおね',
+    '白ひげの滝': 'しらひげのたき',
+    '諏訪大社': 'すわたいしゃ',
+    '下呂温泉': 'げろおんせん',
+    '新穂高ロープウェイ': 'しんほたかろーぷうぇい',
+    '久能山東照宮': 'くのうざんとうしょうぐう',
+    '大室山': 'おおむろやま',
+    '英虞湾': 'あごわん',
+    '三十三間堂': 'さんじゅうさんげんどう',
+    '伊根の舟屋': 'いねのふなや',
+    '城崎温泉': 'きのさきおんせん',
+    '曽爾高原': 'そにこうげん',
+    '谷瀬の吊り橋': 'たにぜのつりばし',
+    '白良浜': 'しららはま',
+    '橋杭岩': 'はしぐいいわ',
+    '三徳山三佛寺投入堂': 'みとくさんさんぶつじなげいれどう',
+    '稲佐の浜': 'いなさのはま',
+    '出雲大社': 'いづもおおやしろ',
+    '縮景園': 'しゅっけいえん',
+    '大久野島': 'おおくのしま',
+    '錦帯橋': 'きんたいきょう',
+    '秋芳洞': 'あきよしどう',
+    '元乃隅神社': 'もとのすみじんじゃ',
+    '角島大橋': 'つのしまおおはし',
+    '祖谷のかずら橋': 'いやのかずらばし',
+    '大歩危・小歩危': 'おおぼけ・こぼけ',
+    '金刀比羅宮': 'ことひらぐう',
+    '栗林公園': 'りつりんこうえん',
+    '父母ヶ浜': 'ちちぶがはま',
+    '下灘駅': 'しもなだえき',
+    '仁淀ブルー（にこ淵）': 'によどぶるー（にこぶち）',
+    '足摺岬': 'あしずりみさき',
+    '門司港レトロ': 'もじこうれとろ',
+    '祐徳稲荷神社': 'ゆうとくいなりじんじゃ',
+    '御船山楽園': 'みふねやまらくえん',
+    '九十九島': 'くじゅうくしま',
+    '稲佐山': 'いなさやま',
+    '水前寺成趣園': 'すいぜんじじょうじゅえん',
+    '阿蘇山': 'あそさん',
+    '鍋ヶ滝': 'なべがたき',
+    '由布院温泉': 'ゆふいんおんせん',
+    '由布岳': 'ゆふだけ',
+    '九重夢大吊橋': 'ここのえゆめおおつりはし',
+    '高千穂峡': 'たかちほきょう',
+    '天岩戸神社': 'あまのいわとじんじゃ',
+    '鵜戸神宮': 'うどじんぐう',
+    '都井岬': 'といみさき',
+    '仙巌園': 'せんがんえん',
+    '指宿温泉・砂むし温泉': 'いぶすきおんせん・すなむしおんせん',
+    '白谷雲水峡': 'しらたにうんすいきょう',
+    '古宇利大橋': 'こうりおおはし',
+    '万座毛': 'まんざもう',
+    '残波岬': 'ざんぱみさき',
+    '川平湾': 'かびらわん',
+    '波照間島 ニシ浜': 'はてるまじま にしはま',
+    'MIHO MUSEUM': 'みほみゅーじあむ',
+    '海ほたるPA': 'うみほたるぱーきんぐえりあ',
+    '東京国立博物館 表慶館': 'とうきょうこくりつはくぶつかん ひょうけいかん',
+    '旧閑谷学校': 'きゅうしずたにがっこう',
+    '三峯神社': 'みつみねじんじゃ',
+    '羽黒山五重塔': 'はぐろさんごじゅうのとう',
+    '山居倉庫': 'さんきょそうこ',
+    '眉山': 'びざん',
+    '石鎚山': 'いしづちさん',
+    '大山祇神社': 'おおやまづみじんじゃ',
+    '内子町八日市護国の町並み': 'うちこちょうようかいちごこくのまちなみ',
+    '三方五湖': 'みかたごこ',
+    '氣比神宮': 'けひじんぐう',
+    '大洗磯前神社': 'おおあらいいそさきじんじゃ',
+    '白兎神社': 'はくとじんじゃ',
+    '米子城跡': 'よなごじょうあと',
+    '瀞八丁': 'どろはっちょう',
+    '虹ノ松原': 'にじのまつばら',
+    '加曽利貝塚': 'かそりかいづか',
+    '尖石石器時代遺跡': 'とがりいしせっきじだいいせき',
+    '登呂遺跡': 'とろいせき',
+    '恭仁宮跡（山城国分寺跡）': 'くにきゅうせき（やましろこくぶんじあと）',
+    '斎尾廃寺跡': 'さいのおはいじあと',
+    '廉塾ならびに菅茶山旧宅': 'れんじゅくならびにかんちゃざんきゅうたく',
+    '讃岐国分寺跡': 'さぬきこくぶんじあと',
+    '大宰府跡': 'だざいふあと',
+    '水城跡': 'みずきあと',
+    '基肄城跡': 'きいじょうあと',
+    '名護屋城跡並陣跡': 'なごやじょうあとならびにじんあと',
+    '金田城跡': 'かねだじょうあと',
+    '原の辻遺跡': 'はるのつじいせき',
+    '臼杵磨崖仏': 'うすきまがいぶつ',
+    '西都原古墳群': 'さいとばるこふんぐん',
+    '如庵': 'じょあん',
+    '吉備津神社本殿・拝殿': 'きびつじんじゃほんでん・はいでん',
+    '瑠璃光寺五重塔': 'るりこうじごじゅうのとう',
+    '太山寺本堂': 'たいさんじほんどう',
+    '富貴寺大堂': 'ふきじおおどう',
+    '崇福寺大雄宝殿': 'そうふくじだいゆうほうでん'
+  }));
+
+  const touristReadingCache = new Map();
+  let touristReaderPromise = null;
+
+  function initializeTouristReader() {
+    if (touristReaderPromise) return touristReaderPromise;
+    touristReaderPromise = (async () => {
+      if (typeof Kuroshiro === 'undefined' || typeof KuromojiAnalyzer === 'undefined') {
+        throw new Error('Kuroshiro libraries are unavailable.');
+      }
+      const reader = new Kuroshiro();
+      await reader.init(new KuromojiAnalyzer({
+        dictPath: 'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/'
+      }));
+      return reader;
+    })().catch(error => {
+      console.warn('観光地のふりがな変換を初期化できませんでした。', error);
+      return null;
+    });
+    return touristReaderPromise;
+  }
+
+  async function touristSpotReading(name) {
+    const text = String(name || '').trim();
+    if (!text) return '';
+    if (touristReadingOverrides.has(text)) return touristReadingOverrides.get(text);
+    if (touristReadingCache.has(text)) return touristReadingCache.get(text);
+
+    if (!/[一-龯々〆ヶ﨑]/u.test(text)) {
+      const kana = text.replace(/[ァ-ヶ]/g, ch =>
+        String.fromCharCode(ch.charCodeAt(0) - 0x60)
+      );
+      touristReadingCache.set(text, kana);
+      return kana;
+    }
+
+    const reader = await initializeTouristReader();
+    if (!reader) return '';
+    try {
+      const reading = await reader.convert(text, { to: 'hiragana', mode: 'normal' });
+      const normalized = String(reading || '').trim();
+      if (normalized) touristReadingCache.set(text, normalized);
+      return normalized;
+    } catch (error) {
+      console.warn(`観光地「${text}」のふりがな変換に失敗しました。`, error);
+      return '';
+    }
+  }
+
+  async function showTouristReading(target, name, questionRef = null) {
+    if (!target) return;
+    const reading = await touristSpotReading(name);
+    if (questionRef && state.currentQuestion !== questionRef) return;
+    target.textContent = reading;
+    target.hidden = !reading;
+  }
+
   // ---------------------------------------------------------------------------
   // DOM
   // ---------------------------------------------------------------------------
@@ -58,7 +304,7 @@
     questionName: $('#municipality-name'), questionReading: $('#municipality-reading'), duplicateNotice: $('#duplicate-notice'), duplicateBadge: $('#duplicate-badge'), duplicateText: $('#duplicate-text'),
     answerSlots: $('#answer-slots'), prefectureButtons: $$('.prefecture[data-pref]'), resetButton: $('#reset-selection'), answerButton: $('#answer-button'),
     correctRate: $('#correct-rate'), scoreCount: $('#score-count'), streak: $('#current-streak'), resultPanel: $('#result-panel'), resultStatus: $('#result-status'),
-    resultTitle: $('#result-title'), resultSentence: $('#result-sentence'), resultEmpty: $('#result-empty'), resultCards: $('#result-cards'), nextButton: $('#next-button'),
+    resultTitle: $('#result-title'), resultSentence: $('#result-sentence'), resultReading: $('#result-reading'), resultEmpty: $('#result-empty'), resultCards: $('#result-cards'), nextButton: $('#next-button'),
     settingsButton: $('.settings-button'), settingsPopover: $('#settings-popover'), settingsClose: $('.settings-close'),
   };
 
@@ -283,9 +529,15 @@
   function renderQuestion() {
     const q = state.currentQuestion; if (!q) return;
     els.questionName.textContent = q.name;
-    const reading = municipalityQuestionReading(q);
-    els.questionReading.textContent = reading;
-    els.questionReading.hidden = !reading || state.mode !== 'municipality';
+    if (state.mode === 'municipality') {
+      const reading = municipalityQuestionReading(q);
+      els.questionReading.textContent = reading;
+      els.questionReading.hidden = !reading;
+    } else {
+      els.questionReading.textContent = '';
+      els.questionReading.hidden = true;
+      showTouristReading(els.questionReading, q.name, q);
+    }
     els.questionNo.textContent = String(state.questionIndex).padStart(2,'0');
     if (Number.isFinite(state.questionLimit)) {
       els.questionTotal.textContent = `/ ${state.actualGameTotal}`;
@@ -345,10 +597,10 @@
   // ---------------------------------------------------------------------------
   // Result cards
   // ---------------------------------------------------------------------------
-  function showResultPlaceholder(){els.resultPanel.classList.remove('has-result','result-correct','result-wrong');els.resultStatus.textContent='？';els.resultStatus.className='result-status waiting';els.resultTitle.textContent='ANSWER';els.resultSentence.textContent='都道府県を選んで「回答する」を押してください。';els.resultEmpty.hidden=false;els.resultCards.replaceChildren();els.resultCards.dataset.count='0';els.nextButton.hidden=true;}
+  function showResultPlaceholder(){els.resultPanel.classList.remove('has-result','result-correct','result-wrong');els.resultStatus.textContent='？';els.resultStatus.className='result-status waiting';els.resultTitle.textContent='ANSWER';els.resultSentence.textContent='都道府県を選んで「回答する」を押してください。';els.resultReading.textContent='';els.resultReading.hidden=true;els.resultEmpty.hidden=false;els.resultCards.replaceChildren();els.resultCards.dataset.count='0';els.nextButton.hidden=true;}
   function renderResult(isCorrect){
     const q=state.currentQuestion,answers=currentAnswers(); els.resultPanel.classList.add('has-result');els.resultPanel.classList.toggle('result-correct',isCorrect);els.resultPanel.classList.toggle('result-wrong',!isCorrect);els.resultStatus.textContent=isCorrect?'○':'×';els.resultStatus.className=`result-status ${isCorrect?'correct':'incorrect'}`;els.resultTitle.textContent=isCorrect?'正解！':'不正解';
-    const prefs=answers.map(item=>`<strong>${escapeHtml(item.pref)}</strong>`);els.resultSentence.innerHTML=`${escapeHtml(q.name)}は ${joinJapanese(prefs)} にあります。`;els.resultEmpty.hidden=true;els.resultCards.replaceChildren();els.resultCards.dataset.count=String(answers.length);
+    const prefs=answers.map(item=>`<strong>${escapeHtml(item.pref)}</strong>`);els.resultSentence.innerHTML=`${escapeHtml(q.name)}は ${joinJapanese(prefs)} にあります。`;els.resultReading.textContent='';els.resultReading.hidden=true;if(state.mode==='tourism')showTouristReading(els.resultReading,q.name,q);els.resultEmpty.hidden=true;els.resultCards.replaceChildren();els.resultCards.dataset.count=String(answers.length);
     for(const item of answers){const card=state.mode==='municipality'?createMunicipalityResultCard(item):createTouristResultCard(item,q.spot);els.resultCards.appendChild(card);const map=card.querySelector('.municipality-map');window.MunicipalityMap?.render(map,item.pref,item.mapName||item.name);}
     const isLast=Number.isFinite(state.questionLimit)&&state.questionIndex>=state.actualGameTotal;els.nextButton.textContent=isLast?'結果を見る':'次の問題へ';els.nextButton.hidden=false;
   }
@@ -359,7 +611,7 @@
     dl.innerHTML=[['人口',populationText],['面積',areaText],['人口密度',densityText],['県内人口順位',populationRank],['県内面積順位',areaRank]].map(([dt,dd])=>`<div><dt>${dt}</dt><dd>${dd}</dd></div>`).join('');info.append(titleRow,dl);article.append(info,createMapCard());return article;
   }
   function createTouristResultCard(item,spot){
-    const article=document.createElement('article');article.className='municipality-card tourist-card';const info=document.createElement('div');info.className='municipality-info tourist-result-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');title.innerHTML=`<span class="pref-label">${escapeHtml(item.pref)}</span><h3 class="tourist-location-name">${escapeHtml(item.location||'所在地情報なし')}</h3>`;titleRow.append(title);info.appendChild(titleRow);
+    const article=document.createElement('article');article.className='municipality-card tourist-card';const info=document.createElement('div');info.className='municipality-info tourist-result-info';const titleRow=document.createElement('div');titleRow.className='municipality-title-row';const title=document.createElement('div');const prefLabel=document.createElement('span');prefLabel.className='pref-label';prefLabel.textContent=item.pref;const locationLine=document.createElement('div');locationLine.className='tourist-location-line';const locationName=document.createElement('h3');locationName.className='tourist-location-name';locationName.textContent=item.location||'所在地情報なし';locationLine.appendChild(locationName);const locationReading=touristLocationReading(item);if(locationReading){const readingEl=document.createElement('span');readingEl.className='tourist-location-reading';readingEl.textContent=locationReading;locationLine.appendChild(readingEl);}title.append(prefLabel,locationLine);titleRow.append(title);info.appendChild(titleRow);
     const meta=document.createElement('div');meta.className='tourist-meta-list';const categoryText=(spot.categories||[]).join(' / ')||'その他';meta.innerHTML=`<div class="tourist-meta-row"><span>カテゴリ</span><strong>${escapeHtml(categoryText)}</strong></div>`;
     const badges=Array.isArray(spot.badges)?spot.badges:[];
     if(badges.length){const badgeWrap=document.createElement('div');badgeWrap.className='spot-badges';for(const badgeText of badges){const badge=document.createElement('span');badge.className='spot-badge';badge.textContent=badgeText;badgeWrap.appendChild(badge);}info.appendChild(badgeWrap);}
