@@ -1,10 +1,11 @@
-// 観光地クイズ用データ。categories は5カテゴリ内で複数指定できます。
+// 観光地クイズ用データ。reading は観光地名の固定ふりがなです。categories は5カテゴリ内で複数指定できます。
 // badges は、公的指定または歴史的に定着した客観的な呼称のみを表示します。
 // 「重要文化財」は国指定の建造物のみを対象とし、「国宝」とは重複表示しません。
 window.TOURIST_SPOTS = [
   {
     "id": "t0001",
     "name": "飛鳥宮跡",
+    "reading": "あすかきゅうせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -26,6 +27,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0002",
     "name": "飛鳥京跡苑池",
+    "reading": "あすかきょうあとえんち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -47,6 +49,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0003",
     "name": "飛鳥水落遺跡",
+    "reading": "あすかみずおちいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -68,6 +71,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0004",
     "name": "酒船石遺跡",
+    "reading": "さかふねいしいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -89,6 +93,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0005",
     "name": "飛鳥寺跡",
+    "reading": "あすかでらあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -110,6 +115,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0006",
     "name": "橘寺跡",
+    "reading": "たちばなでらあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -131,6 +137,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0007",
     "name": "山田寺跡",
+    "reading": "やまだでらあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -153,6 +160,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0008",
     "name": "川原寺跡",
+    "reading": "かわらでらあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -174,6 +182,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0009",
     "name": "檜隈寺跡",
+    "reading": "ひのくまでらあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -195,6 +204,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0010",
     "name": "石舞台古墳",
+    "reading": "いしぶたいこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -217,6 +227,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0011",
     "name": "菖蒲池古墳",
+    "reading": "しょうぶいけこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -238,6 +249,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0012",
     "name": "牽牛子塚古墳",
+    "reading": "けんごしづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -259,6 +271,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0013",
     "name": "藤原宮跡",
+    "reading": "ふじわらきゅうせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -281,6 +294,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0014",
     "name": "大官大寺跡",
+    "reading": "だいかんだいじあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -302,6 +316,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0015",
     "name": "本薬師寺跡",
+    "reading": "もとやくしじあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -324,6 +339,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0016",
     "name": "天武・持統天皇陵古墳",
+    "reading": "てんむ・じとうてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -345,6 +361,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0017",
     "name": "中尾山古墳",
+    "reading": "なかおやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -366,6 +383,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0018",
     "name": "キトラ古墳",
+    "reading": "きとらこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -388,6 +406,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0019",
     "name": "高松塚古墳",
+    "reading": "たかまつづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -410,6 +429,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0020",
     "name": "法隆寺",
+    "reading": "ほうりゅうじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -432,6 +452,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0021",
     "name": "法起寺",
+    "reading": "ほうきじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -454,6 +475,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0022",
     "name": "姫路城",
+    "reading": "ひめじじょう",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -478,6 +500,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0023",
     "name": "屋久島",
+    "reading": "やくしま",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -499,6 +522,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0024",
     "name": "白神山地",
+    "reading": "しらかみさんち",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -530,6 +554,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0025",
     "name": "上賀茂神社",
+    "reading": "かみがもじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -552,6 +577,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0026",
     "name": "下鴨神社",
+    "reading": "しもがもじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -574,6 +600,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0027",
     "name": "東寺",
+    "reading": "とうじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -596,6 +623,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0028",
     "name": "清水寺",
+    "reading": "きよみずでら",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -618,6 +646,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0029",
     "name": "延暦寺",
+    "reading": "えんりゃくじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -640,6 +669,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0030",
     "name": "醍醐寺",
+    "reading": "だいごじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -664,6 +694,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0031",
     "name": "仁和寺",
+    "reading": "にんなじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -686,6 +717,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0032",
     "name": "平等院",
+    "reading": "びょうどういん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -708,6 +740,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0033",
     "name": "宇治上神社",
+    "reading": "うじがみじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -730,6 +763,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0034",
     "name": "高山寺",
+    "reading": "こうざんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -752,6 +786,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0035",
     "name": "西芳寺（苔寺）",
+    "reading": "さいほうじ（こけでら）",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -774,6 +809,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0036",
     "name": "天龍寺",
+    "reading": "てんりゅうじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -796,6 +832,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0037",
     "name": "金閣寺（鹿苑寺）",
+    "reading": "きんかくじ（ろくおんじ）",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -819,6 +856,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0038",
     "name": "銀閣寺（慈照寺）",
+    "reading": "ぎんかくじ（じしょうじ）",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -843,6 +881,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0039",
     "name": "龍安寺",
+    "reading": "りょうあんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -865,6 +904,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0040",
     "name": "西本願寺",
+    "reading": "にしほんがんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -888,6 +928,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0041",
     "name": "二条城",
+    "reading": "にじょうじょう",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -911,6 +952,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0042",
     "name": "白川郷・荻町合掌造り集落",
+    "reading": "しらかわごう・おぎまちがっしょうづくりしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -933,6 +975,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0043",
     "name": "五箇山・相倉合掌造り集落",
+    "reading": "ごかやま・あいのくらがっしょうづくりしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -955,6 +998,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0044",
     "name": "五箇山・菅沼合掌造り集落",
+    "reading": "ごかやま・すがぬまがっしょうづくりしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -977,6 +1021,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0045",
     "name": "原爆ドーム",
+    "reading": "げんばくどーむ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -999,6 +1044,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0046",
     "name": "厳島神社",
+    "reading": "いつくしまじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1024,6 +1070,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0047",
     "name": "東大寺",
+    "reading": "とうだいじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1046,6 +1093,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0048",
     "name": "興福寺",
+    "reading": "こうふくじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1068,6 +1116,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0049",
     "name": "春日大社",
+    "reading": "かすがたいしゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1090,6 +1139,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0050",
     "name": "春日山原始林",
+    "reading": "かすがやまげんしりん",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -1112,6 +1162,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0051",
     "name": "元興寺",
+    "reading": "がんごうじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1134,6 +1185,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0052",
     "name": "薬師寺",
+    "reading": "やくしじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1156,6 +1208,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0053",
     "name": "唐招提寺",
+    "reading": "とうしょうだいじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1178,6 +1231,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0054",
     "name": "平城宮跡",
+    "reading": "へいじょうきゅうせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1201,6 +1255,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0055",
     "name": "日光東照宮",
+    "reading": "にっこうとうしょうぐう",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1223,6 +1278,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0056",
     "name": "日光二荒山神社",
+    "reading": "にっこうふたらさんじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1245,6 +1301,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0057",
     "name": "輪王寺",
+    "reading": "りんのうじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1267,6 +1324,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0058",
     "name": "玉陵",
+    "reading": "たまうどぅん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1289,6 +1347,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0059",
     "name": "園比屋武御嶽石門",
+    "reading": "そのひゃんうたきいしもん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1311,6 +1370,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0060",
     "name": "今帰仁城跡",
+    "reading": "なきじんじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1332,6 +1392,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0061",
     "name": "座喜味城跡",
+    "reading": "ざきみじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1353,6 +1414,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0062",
     "name": "勝連城跡",
+    "reading": "かつれんじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1374,6 +1436,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0063",
     "name": "中城城跡",
+    "reading": "なかぐすくじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1395,6 +1458,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0064",
     "name": "首里城跡",
+    "reading": "しゅりじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1416,6 +1480,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0065",
     "name": "識名園",
+    "reading": "しきなえん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1438,6 +1503,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0066",
     "name": "斎場御嶽",
+    "reading": "せーふぁうたき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1459,6 +1525,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0067",
     "name": "吉野山",
+    "reading": "よしのやま",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1480,6 +1547,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0068",
     "name": "吉野水分神社",
+    "reading": "よしのみくまりじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1501,6 +1569,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0069",
     "name": "金峯神社",
+    "reading": "きんぷじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1522,6 +1591,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0070",
     "name": "金峯山寺",
+    "reading": "きんぷせんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1544,6 +1614,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0071",
     "name": "吉水神社",
+    "reading": "よしみずじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1566,6 +1637,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0072",
     "name": "大峯山寺",
+    "reading": "おおみねさんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1587,6 +1659,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0073",
     "name": "熊野本宮大社",
+    "reading": "くまのほんぐうたいしゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1609,6 +1682,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0074",
     "name": "熊野速玉大社",
+    "reading": "くまのはやたまたいしゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1630,6 +1704,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0075",
     "name": "熊野那智大社",
+    "reading": "くまのなちたいしゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1652,6 +1727,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0076",
     "name": "青岸渡寺",
+    "reading": "せいがんとじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1674,6 +1750,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0077",
     "name": "那智の滝",
+    "reading": "なちのたき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1695,6 +1772,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0078",
     "name": "那智原始林",
+    "reading": "なちげんしりん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1716,6 +1794,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0079",
     "name": "補陀洛山寺",
+    "reading": "ふだらくさんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1737,6 +1816,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0080",
     "name": "丹生都比売神社",
+    "reading": "にうつひめじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1759,6 +1839,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0081",
     "name": "金剛峯寺",
+    "reading": "こんごうぶじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1781,6 +1862,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0082",
     "name": "慈尊院",
+    "reading": "じそんいん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1803,6 +1885,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0083",
     "name": "丹生官省符神社",
+    "reading": "にうかんしょうぶじんじゃ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1825,6 +1908,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0084",
     "name": "大峯奥駈道",
+    "reading": "おおみねおくがけみち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1850,6 +1934,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0085",
     "name": "熊野古道 中辺路",
+    "reading": "くまのこどう なかへち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1871,6 +1956,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0086",
     "name": "熊野古道 小辺路",
+    "reading": "くまのこどう こへち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1895,6 +1981,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0087",
     "name": "熊野古道 大辺路",
+    "reading": "くまのこどう おおへち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1920,6 +2007,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0088",
     "name": "熊野古道 伊勢路",
+    "reading": "くまのこどう いせじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1944,6 +2032,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0089",
     "name": "高野参詣道",
+    "reading": "こうやさんけいみち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1968,6 +2057,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0090",
     "name": "銀山柵内",
+    "reading": "ぎんざんさくのうち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -1989,6 +2079,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0091",
     "name": "代官所跡",
+    "reading": "だいかんしょあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2010,6 +2101,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0092",
     "name": "矢滝城跡",
+    "reading": "やたきじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2031,6 +2123,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0093",
     "name": "矢筈城跡",
+    "reading": "やはずじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2052,6 +2145,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0094",
     "name": "石見城跡",
+    "reading": "いわみじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2073,6 +2167,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0095",
     "name": "大森銀山重要伝統的建造物群保存地区",
+    "reading": "おおもりぎんざんじゅうようでんとうてきけんぞうぶつぐんほぞんちく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2095,6 +2190,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0096",
     "name": "宮ノ前地区",
+    "reading": "みやのまえちく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2116,6 +2212,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0097",
     "name": "熊谷家住宅",
+    "reading": "くまがいけじゅうたく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2137,6 +2234,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0098",
     "name": "羅漢寺五百羅漢",
+    "reading": "らかんじごひゃくらかん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2158,6 +2256,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0099",
     "name": "石見銀山街道 鞆ヶ浦道",
+    "reading": "いわみぎんざんかいどう ともがうらみち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2179,6 +2278,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0100",
     "name": "石見銀山街道 温泉津・沖泊道",
+    "reading": "いわみぎんざんかいどう ゆのつ・おきどまりみち",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2200,6 +2300,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0101",
     "name": "鞆ヶ浦",
+    "reading": "ともがうら",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2221,6 +2322,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0102",
     "name": "沖泊",
+    "reading": "おきどまり",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2242,6 +2344,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0103",
     "name": "温泉津温泉街",
+    "reading": "ゆのつおんせんがい",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2264,6 +2367,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0104",
     "name": "中尊寺",
+    "reading": "ちゅうそんじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2287,6 +2391,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0105",
     "name": "毛越寺",
+    "reading": "もうつうじ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2310,6 +2415,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0106",
     "name": "観自在王院跡",
+    "reading": "かんじざいおういんあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2331,6 +2437,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0107",
     "name": "無量光院跡",
+    "reading": "むりょうこういんあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2353,6 +2460,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0108",
     "name": "金鶏山",
+    "reading": "きんけいさん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -2374,6 +2482,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0109",
     "name": "富士山域",
+    "reading": "ふじさんいき",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2414,6 +2523,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0110",
     "name": "富士山本宮浅間大社",
+    "reading": "ふじさんほんぐうせんげんたいしゃ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2435,6 +2545,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0111",
     "name": "山宮浅間神社",
+    "reading": "やまみやせんげんじんじゃ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2456,6 +2567,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0112",
     "name": "村山浅間神社",
+    "reading": "むらやませんげんじんじゃ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2477,6 +2589,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0113",
     "name": "須山浅間神社",
+    "reading": "すやませんげんじんじゃ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2498,6 +2611,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0114",
     "name": "冨士浅間神社（須走浅間神社）",
+    "reading": "ふじせんげんじんじゃ（すばしりせんげんじんじゃ）",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2519,6 +2633,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0115",
     "name": "河口浅間神社",
+    "reading": "かわぐちあさまじんじゃ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2540,6 +2655,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0116",
     "name": "冨士御室浅間神社",
+    "reading": "ふじおむろせんげんじんじゃ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2561,6 +2677,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0117",
     "name": "御師住宅 旧外川家住宅",
+    "reading": "おしじゅうたく きゅうとがわけじゅうたく",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2582,6 +2699,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0118",
     "name": "御師住宅 小佐野家住宅",
+    "reading": "おしじゅうたく おさのけじゅうたく",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2603,6 +2721,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0119",
     "name": "山中湖",
+    "reading": "やまなかこ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2624,6 +2743,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0120",
     "name": "河口湖",
+    "reading": "かわぐちこ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2645,6 +2765,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0121",
     "name": "忍野八海 出口池",
+    "reading": "おしのはっかい でぐちいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2666,6 +2787,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0122",
     "name": "忍野八海 お釜池",
+    "reading": "おしのはっかい おかまいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2687,6 +2809,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0123",
     "name": "忍野八海 底抜池",
+    "reading": "おしのはっかい そこなしいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2708,6 +2831,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0124",
     "name": "忍野八海 銚子池",
+    "reading": "おしのはっかい ちょうしいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2729,6 +2853,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0125",
     "name": "忍野八海 湧池",
+    "reading": "おしのはっかい わくいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2750,6 +2875,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0126",
     "name": "忍野八海 濁池",
+    "reading": "おしのはっかい にごりいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2771,6 +2897,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0127",
     "name": "忍野八海 鏡池",
+    "reading": "おしのはっかい かがみいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2792,6 +2919,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0128",
     "name": "忍野八海 菖蒲池",
+    "reading": "おしのはっかい しょうぶいけ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2813,6 +2941,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0129",
     "name": "船津胎内樹型",
+    "reading": "ふなつたいないじゅけい",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2834,6 +2963,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0130",
     "name": "吉田胎内樹型",
+    "reading": "よしだたいないじゅけい",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2855,6 +2985,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0131",
     "name": "人穴富士講遺跡",
+    "reading": "ひとあなふじこういせき",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2876,6 +3007,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0132",
     "name": "白糸ノ滝",
+    "reading": "しらいとのたき",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2897,6 +3029,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0133",
     "name": "三保松原",
+    "reading": "みほのまつばら",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -2918,6 +3051,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0134",
     "name": "富岡製糸場",
+    "reading": "とみおかせいしじょう",
     "categories": [
       "世界遺産",
       "その他"
@@ -2940,6 +3074,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0135",
     "name": "田島弥平旧宅",
+    "reading": "たじまやへいきゅうたく",
     "categories": [
       "世界遺産",
       "その他"
@@ -2961,6 +3096,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0136",
     "name": "高山社跡",
+    "reading": "たかやましゃあと",
     "categories": [
       "世界遺産",
       "その他"
@@ -2982,6 +3118,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0137",
     "name": "荒船風穴",
+    "reading": "あらふねふうけつ",
     "categories": [
       "世界遺産",
       "その他"
@@ -3003,6 +3140,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0138",
     "name": "萩反射炉",
+    "reading": "はぎはんしゃろ",
     "categories": [
       "世界遺産",
       "その他"
@@ -3024,6 +3162,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0139",
     "name": "恵美須ヶ鼻造船所跡",
+    "reading": "えびすがはなぞうせんじょあと",
     "categories": [
       "世界遺産",
       "その他"
@@ -3045,6 +3184,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0140",
     "name": "大板山たたら製鉄遺跡",
+    "reading": "おおいたやまたたらせいてついせき",
     "categories": [
       "世界遺産",
       "その他"
@@ -3066,6 +3206,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0141",
     "name": "萩城下町",
+    "reading": "はぎじょうかまち",
     "categories": [
       "世界遺産",
       "その他"
@@ -3087,6 +3228,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0142",
     "name": "松下村塾",
+    "reading": "しょうかそんじゅく",
     "categories": [
       "世界遺産",
       "その他"
@@ -3108,6 +3250,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0143",
     "name": "旧集成館",
+    "reading": "きゅうしゅうせいかん",
     "categories": [
       "世界遺産",
       "その他"
@@ -3129,6 +3272,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0144",
     "name": "寺山炭窯跡",
+    "reading": "てらやますみがまあと",
     "categories": [
       "世界遺産",
       "その他"
@@ -3150,6 +3294,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0145",
     "name": "関吉の疎水溝",
+    "reading": "せきよしのそすいこう",
     "categories": [
       "世界遺産",
       "その他"
@@ -3171,6 +3316,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0146",
     "name": "韮山反射炉",
+    "reading": "にらやまはんしゃろ",
     "categories": [
       "世界遺産",
       "その他"
@@ -3192,6 +3338,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0147",
     "name": "橋野鉄鉱山・高炉跡",
+    "reading": "はしのてっこうざん・こうろあと",
     "categories": [
       "世界遺産",
       "その他"
@@ -3213,6 +3360,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0148",
     "name": "三重津海軍所跡",
+    "reading": "みえつかいぐんしょあと",
     "categories": [
       "世界遺産",
       "その他"
@@ -3234,6 +3382,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0149",
     "name": "小菅修船場跡",
+    "reading": "こすげしゅうせんばあと",
     "categories": [
       "世界遺産",
       "その他"
@@ -3255,6 +3404,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0150",
     "name": "三菱長崎造船所 第三船渠",
+    "reading": "みつびしながさきぞうせんじょ だいさんせんきょ",
     "categories": [
       "世界遺産",
       "その他"
@@ -3276,6 +3426,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0151",
     "name": "旧グラバー住宅",
+    "reading": "きゅうぐらばーじゅうたく",
     "categories": [
       "世界遺産",
       "その他"
@@ -3297,6 +3448,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0152",
     "name": "三菱長崎造船所 ジャイアント・カンチレバークレーン",
+    "reading": "みつびしながさきぞうせんじょ じゃいあんと・かんちればーくれーん",
     "categories": [
       "世界遺産",
       "その他"
@@ -3318,6 +3470,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0153",
     "name": "三菱長崎造船所 旧木型場",
+    "reading": "みつびしながさきぞうせんじょ きゅうきがたば",
     "categories": [
       "世界遺産",
       "その他"
@@ -3339,6 +3492,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0154",
     "name": "高島炭坑",
+    "reading": "たかしまたんこう",
     "categories": [
       "世界遺産",
       "その他"
@@ -3360,6 +3514,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0155",
     "name": "端島炭坑（軍艦島）",
+    "reading": "はしまたんこう（ぐんかんじま）",
     "categories": [
       "世界遺産",
       "その他"
@@ -3381,6 +3536,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0156",
     "name": "グラバー邸・オフィス",
+    "reading": "ぐらばーてい・おふぃす",
     "categories": [
       "世界遺産",
       "その他"
@@ -3402,6 +3558,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0157",
     "name": "三池炭鉱・三池港",
+    "reading": "みいけたんこう・みいけこう",
     "categories": [
       "世界遺産",
       "その他"
@@ -3423,6 +3580,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0158",
     "name": "三角西港",
+    "reading": "みすみにしこう",
     "categories": [
       "世界遺産",
       "その他"
@@ -3444,6 +3602,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0159",
     "name": "官営八幡製鐵所",
+    "reading": "かんえいやはたせいてつしょ",
     "categories": [
       "世界遺産",
       "その他"
@@ -3465,6 +3624,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0160",
     "name": "遠賀川水源地ポンプ室",
+    "reading": "おんががわすいげんちぽんぷしつ",
     "categories": [
       "世界遺産",
       "その他"
@@ -3486,6 +3646,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0161",
     "name": "国立西洋美術館",
+    "reading": "こくりつせいようびじゅつかん",
     "categories": [
       "世界遺産",
       "その他"
@@ -3507,6 +3668,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0162",
     "name": "沖ノ島",
+    "reading": "おきのしま",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3528,6 +3690,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0163",
     "name": "小屋島",
+    "reading": "こやじま",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3549,6 +3712,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0164",
     "name": "御門柱",
+    "reading": "みかどばしら",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3570,6 +3734,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0165",
     "name": "天狗岩",
+    "reading": "てんぐいわ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3591,6 +3756,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0166",
     "name": "宗像大社 沖津宮遙拝所",
+    "reading": "むなかたたいしゃ おきつみやようはいしょ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3612,6 +3778,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0167",
     "name": "宗像大社 中津宮",
+    "reading": "むなかたたいしゃ なかつみや",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3633,6 +3800,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0168",
     "name": "宗像大社 辺津宮",
+    "reading": "むなかたたいしゃ へつみや",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3655,6 +3823,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0169",
     "name": "新原・奴山古墳群",
+    "reading": "しんばる・ぬやまこふんぐん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3676,6 +3845,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0170",
     "name": "原城跡",
+    "reading": "はらじょうあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3697,6 +3867,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0171",
     "name": "春日集落と安満岳",
+    "reading": "かすがしゅうらくとやすまんだけ",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3718,6 +3889,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0172",
     "name": "中江ノ島",
+    "reading": "なかえのしま",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3739,6 +3911,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0173",
     "name": "﨑津集落",
+    "reading": "さきつしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3760,6 +3933,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0174",
     "name": "外海の出津集落",
+    "reading": "そとめのしつしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3781,6 +3955,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0175",
     "name": "外海の大野集落",
+    "reading": "そとめのおおのしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3802,6 +3977,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0176",
     "name": "黒島の集落",
+    "reading": "くろしまのしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3823,6 +3999,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0177",
     "name": "野崎島の集落跡",
+    "reading": "のざきじまのしゅうらくあと",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3844,6 +4021,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0178",
     "name": "頭ヶ島の集落",
+    "reading": "かしらがしまのしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3865,6 +4043,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0179",
     "name": "久賀島の集落",
+    "reading": "ひさかじまのしゅうらく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3886,6 +4065,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0180",
     "name": "奈留島の江上集落（江上天主堂）",
+    "reading": "なるしまのえがみしゅうらく（えがみてんしゅどう）",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3908,6 +4088,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0181",
     "name": "大浦天主堂",
+    "reading": "おおうらてんしゅどう",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3930,6 +4111,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0182",
     "name": "反正天皇陵古墳",
+    "reading": "はんぜいてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3951,6 +4133,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0183",
     "name": "仁徳天皇陵古墳",
+    "reading": "にんとくてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3972,6 +4155,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0184",
     "name": "茶山古墳",
+    "reading": "ちゃやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -3993,6 +4177,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0185",
     "name": "大安寺山古墳",
+    "reading": "だいあんじやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4014,6 +4199,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0186",
     "name": "永山古墳",
+    "reading": "ながやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4035,6 +4221,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0187",
     "name": "源右衛門山古墳",
+    "reading": "げんえもんやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4056,6 +4243,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0188",
     "name": "塚廻古墳",
+    "reading": "つかまわりこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4077,6 +4265,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0189",
     "name": "収塚古墳",
+    "reading": "おさめづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4098,6 +4287,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0190",
     "name": "孫太夫山古墳",
+    "reading": "まごだゆうやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4119,6 +4309,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0191",
     "name": "竜佐山古墳",
+    "reading": "たつさやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4140,6 +4331,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0192",
     "name": "銅亀山古墳",
+    "reading": "どうがめやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4161,6 +4353,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0193",
     "name": "菰山塚古墳",
+    "reading": "こもやまづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4182,6 +4375,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0194",
     "name": "丸保山古墳",
+    "reading": "まるほやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4203,6 +4397,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0195",
     "name": "長塚古墳",
+    "reading": "ながつかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4224,6 +4419,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0196",
     "name": "旗塚古墳",
+    "reading": "はたづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4245,6 +4441,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0197",
     "name": "銭塚古墳",
+    "reading": "ぜにづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4266,6 +4463,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0198",
     "name": "履中天皇陵古墳",
+    "reading": "りちゅうてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4287,6 +4485,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0199",
     "name": "寺山南山古墳",
+    "reading": "てらやまみなみやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4308,6 +4507,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0200",
     "name": "七観音古墳",
+    "reading": "しちかんのんこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4329,6 +4529,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0201",
     "name": "いたすけ古墳",
+    "reading": "いたすけこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4350,6 +4551,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0202",
     "name": "善右ヱ門山古墳",
+    "reading": "ぜんえもんやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4371,6 +4573,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0203",
     "name": "御廟山古墳",
+    "reading": "ごびょうやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4392,6 +4595,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0204",
     "name": "ニサンザイ古墳",
+    "reading": "にさんざいこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4413,6 +4617,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0205",
     "name": "津堂城山古墳",
+    "reading": "つどうしろやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4434,6 +4639,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0206",
     "name": "仲哀天皇陵古墳",
+    "reading": "ちゅうあいてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4455,6 +4661,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0207",
     "name": "鉢塚古墳",
+    "reading": "はちづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4476,6 +4683,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0208",
     "name": "允恭天皇陵古墳",
+    "reading": "いんぎょうてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4497,6 +4705,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0209",
     "name": "仲姫命陵古墳",
+    "reading": "なかつひめのみことりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4518,6 +4727,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0210",
     "name": "鍋塚古墳",
+    "reading": "なべづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4539,6 +4749,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0211",
     "name": "助太山古墳",
+    "reading": "すけたやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4560,6 +4771,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0212",
     "name": "中山塚古墳",
+    "reading": "なかやまづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4581,6 +4793,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0213",
     "name": "八島塚古墳",
+    "reading": "やしまづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4602,6 +4815,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0214",
     "name": "古室山古墳",
+    "reading": "こむろやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4623,6 +4837,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0215",
     "name": "大鳥塚古墳",
+    "reading": "おおとりづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4644,6 +4859,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0216",
     "name": "はざみ山古墳",
+    "reading": "はざみやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4665,6 +4881,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0217",
     "name": "応神天皇陵古墳",
+    "reading": "おうじんてんのうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4686,6 +4903,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0218",
     "name": "誉田丸山古墳",
+    "reading": "こんだまるやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4707,6 +4925,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0219",
     "name": "二ツ塚古墳",
+    "reading": "ふたつづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4728,6 +4947,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0220",
     "name": "東馬塚古墳",
+    "reading": "ひがしうまづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4749,6 +4969,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0221",
     "name": "栗塚古墳",
+    "reading": "くりづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4770,6 +4991,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0222",
     "name": "東山古墳",
+    "reading": "ひがしやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4791,6 +5013,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0223",
     "name": "墓山古墳",
+    "reading": "はかやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4812,6 +5035,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0224",
     "name": "野中古墳",
+    "reading": "のなかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4833,6 +5057,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0225",
     "name": "向墓山古墳",
+    "reading": "むこうはかやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4854,6 +5079,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0226",
     "name": "西馬塚古墳",
+    "reading": "にしうまづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4875,6 +5101,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0227",
     "name": "浄元寺山古墳",
+    "reading": "じょうがんじやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4896,6 +5123,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0228",
     "name": "青山古墳",
+    "reading": "あおやまこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4917,6 +5145,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0229",
     "name": "峯ヶ塚古墳",
+    "reading": "みねがづかこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4938,6 +5167,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0230",
     "name": "白鳥陵古墳",
+    "reading": "はくちょうりょうこふん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4959,6 +5189,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0231",
     "name": "大平山元遺跡",
+    "reading": "おおだいやまもといせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -4980,6 +5211,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0232",
     "name": "垣ノ島遺跡",
+    "reading": "かきのしまいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5001,6 +5233,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0233",
     "name": "北黄金貝塚",
+    "reading": "きたこがねかいづか",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5022,6 +5255,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0234",
     "name": "田小屋野貝塚",
+    "reading": "たごやのかいづか",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5043,6 +5277,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0235",
     "name": "亀ヶ岡石器時代遺跡",
+    "reading": "かめがおかせっきじだいいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5064,6 +5299,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0236",
     "name": "二ツ森貝塚",
+    "reading": "ふたつもりかいづか",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5085,6 +5321,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0237",
     "name": "三内丸山遺跡",
+    "reading": "さんないまるやまいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5107,6 +5344,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0238",
     "name": "大船遺跡",
+    "reading": "おおふねいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5128,6 +5366,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0239",
     "name": "御所野遺跡",
+    "reading": "ごしょのいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5149,6 +5388,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0240",
     "name": "入江貝塚",
+    "reading": "いりえかいづか",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5170,6 +5410,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0241",
     "name": "高砂貝塚",
+    "reading": "たかさごかいづか",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5191,6 +5432,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0242",
     "name": "小牧野遺跡",
+    "reading": "こまきのいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5212,6 +5454,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0243",
     "name": "伊勢堂岱遺跡",
+    "reading": "いせどうたいいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5233,6 +5476,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0244",
     "name": "大湯環状列石",
+    "reading": "おおゆかんじょうれっせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5255,6 +5499,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0245",
     "name": "キウス周堤墓群",
+    "reading": "きうすしゅうていぼぐん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5276,6 +5521,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0246",
     "name": "大森勝山遺跡",
+    "reading": "おおもりかつやまいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5297,6 +5543,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0247",
     "name": "是川石器時代遺跡",
+    "reading": "これかわせっきじだいいせき",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5318,6 +5565,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0248",
     "name": "西三川砂金山",
+    "reading": "にしみかわさきんざん",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5339,6 +5587,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0249",
     "name": "相川金銀山 相川地区",
+    "reading": "あいかわきんぎんざん あいかわちく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5360,6 +5609,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0250",
     "name": "相川鶴子金銀山 鶴子地区",
+    "reading": "あいかわつるしきんぎんざん つるしちく",
     "categories": [
       "世界遺産",
       "歴史・文化"
@@ -5381,6 +5631,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0251",
     "name": "知床",
+    "reading": "しれとこ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -5405,6 +5656,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0252",
     "name": "小笠原諸島",
+    "reading": "おがさわらしょとう",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -5426,6 +5678,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0253",
     "name": "奄美大島",
+    "reading": "あまみおおしま",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -5453,6 +5706,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0254",
     "name": "徳之島",
+    "reading": "とくのしま",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -5478,6 +5732,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0255",
     "name": "沖縄島北部",
+    "reading": "おきなわじまほくぶ",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -5503,6 +5758,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0256",
     "name": "西表島",
+    "reading": "いりおもてじま",
     "categories": [
       "世界遺産",
       "自然・絶景"
@@ -5524,6 +5780,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0257",
     "name": "五稜郭",
+    "reading": "ごりょうかく",
     "categories": [
       "歴史・文化"
     ],
@@ -5543,6 +5800,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0258",
     "name": "函館山",
+    "reading": "はこだてやま",
     "categories": [
       "自然・絶景"
     ],
@@ -5559,6 +5817,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0259",
     "name": "小樽運河",
+    "reading": "おたるうんが",
     "categories": [
       "歴史・文化"
     ],
@@ -5575,6 +5834,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0260",
     "name": "青い池",
+    "reading": "あおいいけ",
     "categories": [
       "自然・絶景"
     ],
@@ -5591,6 +5851,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0261",
     "name": "白ひげの滝",
+    "reading": "しらひげのたき",
     "categories": [
       "自然・絶景"
     ],
@@ -5607,6 +5868,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0262",
     "name": "ファーム富田",
+    "reading": "ふぁーむとみた",
     "categories": [
       "自然・絶景"
     ],
@@ -5623,6 +5885,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0263",
     "name": "旭山動物園",
+    "reading": "あさひやまどうぶつえん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -5639,6 +5902,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0264",
     "name": "登別温泉",
+    "reading": "のぼりべつおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -5655,6 +5919,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0265",
     "name": "洞爺湖",
+    "reading": "とうやこ",
     "categories": [
       "自然・絶景"
     ],
@@ -5674,6 +5939,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0266",
     "name": "摩周湖",
+    "reading": "ましゅうこ",
     "categories": [
       "自然・絶景"
     ],
@@ -5690,6 +5956,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0267",
     "name": "屈斜路湖",
+    "reading": "くっしゃろこ",
     "categories": [
       "自然・絶景"
     ],
@@ -5706,6 +5973,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0268",
     "name": "阿寒湖",
+    "reading": "あかんこ",
     "categories": [
       "自然・絶景"
     ],
@@ -5722,6 +5990,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0269",
     "name": "釧路湿原",
+    "reading": "くしろしつげん",
     "categories": [
       "自然・絶景"
     ],
@@ -5743,6 +6012,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0270",
     "name": "大雪山旭岳",
+    "reading": "だいせつざんあさひだけ",
     "categories": [
       "自然・絶景"
     ],
@@ -5762,6 +6032,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0271",
     "name": "宗谷岬",
+    "reading": "そうやみさき",
     "categories": [
       "自然・絶景"
     ],
@@ -5778,6 +6049,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0272",
     "name": "弘前城",
+    "reading": "ひろさきじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -5798,6 +6070,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0273",
     "name": "奥入瀬渓流",
+    "reading": "おいらせけいりゅう",
     "categories": [
       "自然・絶景"
     ],
@@ -5817,6 +6090,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0274",
     "name": "十和田湖",
+    "reading": "とわだこ",
     "categories": [
       "自然・絶景"
     ],
@@ -5842,6 +6116,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0276",
     "name": "八甲田山",
+    "reading": "はっこうださん",
     "categories": [
       "自然・絶景"
     ],
@@ -5861,6 +6136,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0277",
     "name": "鶴の舞橋",
+    "reading": "つるのまいはし",
     "categories": [
       "その他"
     ],
@@ -5877,6 +6153,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0278",
     "name": "龍泉洞",
+    "reading": "りゅうせんどう",
     "categories": [
       "自然・絶景"
     ],
@@ -5893,6 +6170,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0279",
     "name": "浄土ヶ浜",
+    "reading": "じょうどがはま",
     "categories": [
       "自然・絶景"
     ],
@@ -5909,6 +6187,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0280",
     "name": "厳美渓",
+    "reading": "げんびけい",
     "categories": [
       "自然・絶景"
     ],
@@ -5925,6 +6204,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0281",
     "name": "猊鼻渓",
+    "reading": "げいびけい",
     "categories": [
       "自然・絶景"
     ],
@@ -5941,6 +6221,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0282",
     "name": "松島",
+    "reading": "まつしま",
     "categories": [
       "自然・絶景"
     ],
@@ -5967,6 +6248,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0283",
     "name": "瑞巌寺",
+    "reading": "ずいがんじ",
     "categories": [
       "歴史・文化"
     ],
@@ -5986,6 +6268,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0284",
     "name": "仙台城跡",
+    "reading": "せんだいじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -6002,6 +6285,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0285",
     "name": "大崎八幡宮",
+    "reading": "おおさきはちまんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -6021,6 +6305,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0286",
     "name": "仙台うみの杜水族館",
+    "reading": "せんだいうみのもりすいぞくかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6037,6 +6322,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0287",
     "name": "角館武家屋敷",
+    "reading": "かくのだてぶけやしき",
     "categories": [
       "歴史・文化"
     ],
@@ -6056,6 +6342,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0288",
     "name": "田沢湖",
+    "reading": "たざわこ",
     "categories": [
       "自然・絶景"
     ],
@@ -6072,6 +6359,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0289",
     "name": "乳頭温泉郷",
+    "reading": "にゅうとうおんせんきょう",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6088,6 +6376,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0290",
     "name": "抱返り渓谷",
+    "reading": "だきがえりけいこく",
     "categories": [
       "自然・絶景"
     ],
@@ -6104,6 +6393,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0291",
     "name": "山寺（立石寺）",
+    "reading": "やまでら（りっしゃくじ）",
     "categories": [
       "歴史・文化"
     ],
@@ -6123,6 +6413,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0292",
     "name": "銀山温泉",
+    "reading": "ぎんざんおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6139,6 +6430,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0293",
     "name": "蔵王の樹氷",
+    "reading": "ざおうのじゅひょう",
     "categories": [
       "自然・絶景"
     ],
@@ -6155,6 +6447,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0294",
     "name": "最上川",
+    "reading": "もがみがわ",
     "categories": [
       "自然・絶景"
     ],
@@ -6171,6 +6464,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0295",
     "name": "鶴ヶ城",
+    "reading": "つるがじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -6187,6 +6481,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0296",
     "name": "大内宿",
+    "reading": "おおうちじゅく",
     "categories": [
       "歴史・文化"
     ],
@@ -6206,6 +6501,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0297",
     "name": "五色沼",
+    "reading": "ごしきぬま",
     "categories": [
       "自然・絶景"
     ],
@@ -6222,6 +6518,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0298",
     "name": "磐梯山",
+    "reading": "ばんだいさん",
     "categories": [
       "自然・絶景"
     ],
@@ -6242,6 +6539,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0299",
     "name": "スパリゾートハワイアンズ",
+    "reading": "すぱりぞーとはわいあんず",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6258,6 +6556,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0300",
     "name": "偕楽園",
+    "reading": "かいらくえん",
     "categories": [
       "歴史・文化"
     ],
@@ -6277,6 +6576,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0301",
     "name": "袋田の滝",
+    "reading": "ふくろだのたき",
     "categories": [
       "自然・絶景"
     ],
@@ -6293,6 +6593,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0302",
     "name": "国営ひたち海浜公園",
+    "reading": "こくえいひたちかいひんこうえん",
     "categories": [
       "自然・絶景"
     ],
@@ -6309,6 +6610,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0303",
     "name": "牛久大仏",
+    "reading": "うしくだいぶつ",
     "categories": [
       "その他"
     ],
@@ -6325,6 +6627,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0304",
     "name": "華厳の滝",
+    "reading": "けごんのたき",
     "categories": [
       "自然・絶景"
     ],
@@ -6341,6 +6644,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0305",
     "name": "中禅寺湖",
+    "reading": "ちゅうぜんじこ",
     "categories": [
       "自然・絶景"
     ],
@@ -6357,6 +6661,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0306",
     "name": "足利学校",
+    "reading": "あしかががっこう",
     "categories": [
       "歴史・文化"
     ],
@@ -6373,6 +6678,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0307",
     "name": "大谷資料館",
+    "reading": "おおやしりょうかん",
     "categories": [
       "歴史・文化"
     ],
@@ -6389,6 +6695,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0308",
     "name": "那須ハイランドパーク",
+    "reading": "なすはいらんどぱーく",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6405,6 +6712,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0309",
     "name": "草津温泉",
+    "reading": "くさつおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6421,6 +6729,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0310",
     "name": "伊香保温泉",
+    "reading": "いかほおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6437,6 +6746,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0311",
     "name": "吹割の滝",
+    "reading": "ふきわれのたき",
     "categories": [
       "自然・絶景"
     ],
@@ -6453,6 +6763,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0312",
     "name": "ロックハート城",
+    "reading": "ろっくはーとじょう",
     "categories": [
       "その他"
     ],
@@ -6469,6 +6780,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0313",
     "name": "川越一番街 蔵造りの町並み",
+    "reading": "かわごえいちばんがい くらづくりのまちなみ",
     "categories": [
       "歴史・文化"
     ],
@@ -6488,6 +6800,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0314",
     "name": "川越氷川神社",
+    "reading": "かわごえひかわじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -6504,6 +6817,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0315",
     "name": "長瀞",
+    "reading": "ながとろ",
     "categories": [
       "自然・絶景"
     ],
@@ -6520,6 +6834,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0316",
     "name": "鉄道博物館",
+    "reading": "てつどうはくぶつかん",
     "categories": [
       "その他"
     ],
@@ -6536,6 +6851,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0317",
     "name": "東京ディズニーランド",
+    "reading": "とうきょうでぃずにーらんど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6552,6 +6868,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0318",
     "name": "東京ディズニーシー",
+    "reading": "とうきょうでぃずにーしー",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6568,6 +6885,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0319",
     "name": "成田山新勝寺",
+    "reading": "なりたさんしんしょうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -6587,6 +6905,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0320",
     "name": "鋸山",
+    "reading": "のこぎりやま",
     "categories": [
       "自然・絶景"
     ],
@@ -6606,6 +6925,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0321",
     "name": "鴨川シーワールド",
+    "reading": "かもがわしーわーるど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6622,6 +6942,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0322",
     "name": "海ほたるPA",
+    "reading": "うみほたるぱーきんぐえりあ",
     "categories": [
       "その他"
     ],
@@ -6638,6 +6959,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0323",
     "name": "浅草寺",
+    "reading": "せんそうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -6654,6 +6976,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0324",
     "name": "明治神宮",
+    "reading": "めいじじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -6673,6 +6996,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0325",
     "name": "東京タワー",
+    "reading": "とうきょうたわー",
     "categories": [
       "その他"
     ],
@@ -6689,6 +7013,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0326",
     "name": "東京スカイツリー",
+    "reading": "とうきょうすかいつりー",
     "categories": [
       "その他"
     ],
@@ -6705,6 +7030,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0327",
     "name": "東京駅丸の内駅舎",
+    "reading": "とうきょうえきまるのうちえきしゃ",
     "categories": [
       "その他"
     ],
@@ -6724,6 +7050,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0328",
     "name": "迎賓館赤坂離宮",
+    "reading": "げいひんかんあかさかりきゅう",
     "categories": [
       "その他"
     ],
@@ -6743,6 +7070,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0329",
     "name": "国会議事堂",
+    "reading": "こっかいぎじどう",
     "categories": [
       "その他"
     ],
@@ -6759,6 +7087,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0330",
     "name": "皇居",
+    "reading": "こうきょ",
     "categories": [
       "歴史・文化"
     ],
@@ -6778,6 +7107,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0331",
     "name": "東京都庁舎",
+    "reading": "とうきょうとちょうしゃ",
     "categories": [
       "その他"
     ],
@@ -6794,6 +7124,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0332",
     "name": "根津美術館",
+    "reading": "ねづびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -6810,6 +7141,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0333",
     "name": "東京国際フォーラム",
+    "reading": "とうきょうこくさいふぉーらむ",
     "categories": [
       "その他"
     ],
@@ -6826,6 +7158,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0334",
     "name": "サンリオピューロランド",
+    "reading": "さんりおぴゅーろらんど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6842,6 +7175,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0335",
     "name": "葛西臨海水族園",
+    "reading": "かさいりんかいすいぞくえん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6858,6 +7192,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0336",
     "name": "高尾山",
+    "reading": "たかおさん",
     "categories": [
       "自然・絶景"
     ],
@@ -6874,6 +7209,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0337",
     "name": "鎌倉大仏（高徳院）",
+    "reading": "かまくらだいぶつ（こうとくいん）",
     "categories": [
       "歴史・文化"
     ],
@@ -6890,6 +7226,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0338",
     "name": "鶴岡八幡宮",
+    "reading": "つるがおかはちまんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -6909,6 +7246,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0339",
     "name": "長谷寺（鎌倉）",
+    "reading": "はせでら（かまくら）",
     "categories": [
       "歴史・文化"
     ],
@@ -6925,6 +7263,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0340",
     "name": "横浜赤レンガ倉庫",
+    "reading": "よこはまあかれんがそうこ",
     "categories": [
       "その他"
     ],
@@ -6941,6 +7280,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0341",
     "name": "横浜ランドマークタワー",
+    "reading": "よこはまらんどまーくたわー",
     "categories": [
       "その他"
     ],
@@ -6957,6 +7297,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0342",
     "name": "八景島シーパラダイス",
+    "reading": "はっけいじましーぱらだいす",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6973,6 +7314,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0343",
     "name": "箱根温泉",
+    "reading": "はこねおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -6989,6 +7331,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0344",
     "name": "大涌谷",
+    "reading": "おおわくだに",
     "categories": [
       "自然・絶景"
     ],
@@ -7005,6 +7348,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0345",
     "name": "清津峡",
+    "reading": "きよつきょう",
     "categories": [
       "自然・絶景"
     ],
@@ -7021,6 +7365,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0346",
     "name": "星峠の棚田",
+    "reading": "ほしとうげのたなだ",
     "categories": [
       "自然・絶景"
     ],
@@ -7037,6 +7382,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0347",
     "name": "彌彦神社",
+    "reading": "やひこじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -7053,6 +7399,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0348",
     "name": "苗場ドラゴンドラ",
+    "reading": "なえばどらごんどら",
     "categories": [
       "自然・絶景"
     ],
@@ -7069,6 +7416,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0349",
     "name": "黒部ダム",
+    "reading": "くろべだむ",
     "categories": [
       "自然・絶景"
     ],
@@ -7085,6 +7433,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0350",
     "name": "立山・室堂",
+    "reading": "たてやま・むろどう",
     "categories": [
       "自然・絶景"
     ],
@@ -7101,6 +7450,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0351",
     "name": "雨晴海岸",
+    "reading": "あまはらしかいがん",
     "categories": [
       "自然・絶景"
     ],
@@ -7117,6 +7467,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0352",
     "name": "瑞龍寺",
+    "reading": "ずいりゅうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -7136,6 +7487,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0353",
     "name": "兼六園",
+    "reading": "けんろくえん",
     "categories": [
       "歴史・文化"
     ],
@@ -7156,6 +7508,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0354",
     "name": "金沢城",
+    "reading": "かなざわじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7175,6 +7528,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0355",
     "name": "ひがし茶屋街",
+    "reading": "ひがしちゃやがい",
     "categories": [
       "歴史・文化"
     ],
@@ -7194,6 +7548,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0356",
     "name": "金沢21世紀美術館",
+    "reading": "かなざわにじゅういっせいきびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -7210,6 +7565,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0357",
     "name": "のとじま水族館",
+    "reading": "のとじますいぞくかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7226,6 +7582,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0358",
     "name": "永平寺",
+    "reading": "えいへいじ",
     "categories": [
       "歴史・文化"
     ],
@@ -7245,6 +7602,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0359",
     "name": "東尋坊",
+    "reading": "とうじんぼう",
     "categories": [
       "自然・絶景"
     ],
@@ -7261,6 +7619,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0360",
     "name": "丸岡城",
+    "reading": "まるおかじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7281,6 +7640,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0361",
     "name": "福井県立恐竜博物館",
+    "reading": "ふくいけんりつきょうりゅうはくぶつかん",
     "categories": [
       "その他"
     ],
@@ -7297,6 +7657,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0362",
     "name": "昇仙峡",
+    "reading": "しょうせんきょう",
     "categories": [
       "自然・絶景"
     ],
@@ -7319,6 +7680,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0363",
     "name": "富士急ハイランド",
+    "reading": "ふじきゅうはいらんど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7335,6 +7697,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0364",
     "name": "新倉山浅間公園",
+    "reading": "あらくらやませんげんこうえん",
     "categories": [
       "自然・絶景"
     ],
@@ -7351,6 +7714,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0365",
     "name": "西沢渓谷",
+    "reading": "にしざわけいこく",
     "categories": [
       "自然・絶景"
     ],
@@ -7367,6 +7731,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0366",
     "name": "松本城",
+    "reading": "まつもとじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7387,6 +7752,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0367",
     "name": "善光寺",
+    "reading": "ぜんこうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -7406,6 +7772,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0368",
     "name": "上高地",
+    "reading": "かみこうち",
     "categories": [
       "自然・絶景"
     ],
@@ -7426,6 +7793,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0369",
     "name": "地獄谷野猿公苑",
+    "reading": "じごくだにやえんこうえん",
     "categories": [
       "自然・絶景"
     ],
@@ -7442,6 +7810,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0370",
     "name": "白馬八方尾根",
+    "reading": "はくばはっぽうおね",
     "categories": [
       "自然・絶景"
     ],
@@ -7458,6 +7827,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0371",
     "name": "諏訪大社",
+    "reading": "すわたいしゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -7480,6 +7850,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0372",
     "name": "高山古い町並",
+    "reading": "たかやまふるいまちなみ",
     "categories": [
       "歴史・文化"
     ],
@@ -7499,6 +7870,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0373",
     "name": "下呂温泉",
+    "reading": "げろおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7515,6 +7887,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0374",
     "name": "岐阜城",
+    "reading": "ぎふじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7531,6 +7904,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0375",
     "name": "新穂高ロープウェイ",
+    "reading": "しんほたかろーぷうぇい",
     "categories": [
       "自然・絶景"
     ],
@@ -7547,6 +7921,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0376",
     "name": "久能山東照宮",
+    "reading": "くのうざんとうしょうぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -7566,6 +7941,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0377",
     "name": "熱海温泉",
+    "reading": "あたみおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7582,6 +7958,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0378",
     "name": "大室山",
+    "reading": "おおむろやま",
     "categories": [
       "自然・絶景"
     ],
@@ -7598,6 +7975,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0379",
     "name": "堂ヶ島",
+    "reading": "どうがしま",
     "categories": [
       "自然・絶景"
     ],
@@ -7614,6 +7992,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0380",
     "name": "浜名湖",
+    "reading": "はまなこ",
     "categories": [
       "自然・絶景"
     ],
@@ -7634,6 +8013,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0381",
     "name": "名古屋城",
+    "reading": "なごやじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7654,6 +8034,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0382",
     "name": "熱田神宮",
+    "reading": "あつたじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -7670,6 +8051,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0383",
     "name": "犬山城",
+    "reading": "いぬやまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7690,6 +8072,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0384",
     "name": "ジブリパーク",
+    "reading": "じぶりぱーく",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7706,6 +8089,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0385",
     "name": "名古屋港水族館",
+    "reading": "なごやこうすいぞくかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7722,6 +8106,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0386",
     "name": "トヨタ産業技術記念館",
+    "reading": "とよたさんぎょうぎじゅつきねんかん",
     "categories": [
       "その他"
     ],
@@ -7738,6 +8123,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0387",
     "name": "伊勢神宮 内宮",
+    "reading": "いせじんぐう ないくう",
     "categories": [
       "歴史・文化"
     ],
@@ -7754,6 +8140,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0388",
     "name": "伊勢神宮 外宮",
+    "reading": "いせじんぐう げくう",
     "categories": [
       "歴史・文化"
     ],
@@ -7770,6 +8157,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0389",
     "name": "夫婦岩",
+    "reading": "めおといわ",
     "categories": [
       "自然・絶景"
     ],
@@ -7786,6 +8174,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0390",
     "name": "ナガシマスパーランド",
+    "reading": "ながしますぱーらんど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7802,6 +8191,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0391",
     "name": "鳥羽水族館",
+    "reading": "とばすいぞくかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -7818,6 +8208,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0392",
     "name": "英虞湾",
+    "reading": "あごわん",
     "categories": [
       "自然・絶景"
     ],
@@ -7834,6 +8225,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0393",
     "name": "彦根城",
+    "reading": "ひこねじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -7855,6 +8247,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0394",
     "name": "琵琶湖",
+    "reading": "びわこ",
     "categories": [
       "自然・絶景"
     ],
@@ -7882,6 +8275,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0395",
     "name": "メタセコイア並木",
+    "reading": "めたせこいあなみき",
     "categories": [
       "自然・絶景"
     ],
@@ -7898,6 +8292,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0396",
     "name": "MIHO MUSEUM",
+    "reading": "みほみゅーじあむ",
     "categories": [
       "その他"
     ],
@@ -7914,6 +8309,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0397",
     "name": "伏見稲荷大社",
+    "reading": "ふしみいなりたいしゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -7933,6 +8329,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0398",
     "name": "平安神宮",
+    "reading": "へいあんじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -7952,6 +8349,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0399",
     "name": "南禅寺",
+    "reading": "なんぜんじ",
     "categories": [
       "歴史・文化"
     ],
@@ -7971,6 +8369,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0400",
     "name": "三十三間堂",
+    "reading": "さんじゅうさんげんどう",
     "categories": [
       "歴史・文化"
     ],
@@ -7990,6 +8389,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0401",
     "name": "京都タワー",
+    "reading": "きょうとたわー",
     "categories": [
       "その他"
     ],
@@ -8006,6 +8406,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0402",
     "name": "京都駅ビル",
+    "reading": "きょうとえきびる",
     "categories": [
       "その他"
     ],
@@ -8022,6 +8423,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0403",
     "name": "天橋立",
+    "reading": "あまのはしだて",
     "categories": [
       "自然・絶景"
     ],
@@ -8042,6 +8444,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0404",
     "name": "伊根の舟屋",
+    "reading": "いねのふなや",
     "categories": [
       "歴史・文化"
     ],
@@ -8061,6 +8464,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0405",
     "name": "大阪城",
+    "reading": "おおさかじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8081,6 +8485,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0406",
     "name": "太陽の塔",
+    "reading": "たいようのとう",
     "categories": [
       "その他"
     ],
@@ -8097,6 +8502,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0407",
     "name": "あべのハルカス",
+    "reading": "あべのはるかす",
     "categories": [
       "その他"
     ],
@@ -8113,6 +8519,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0408",
     "name": "梅田スカイビル",
+    "reading": "うめだすかいびる",
     "categories": [
       "その他"
     ],
@@ -8129,6 +8536,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0409",
     "name": "中之島公会堂",
+    "reading": "なかのしまこうかいどう",
     "categories": [
       "その他"
     ],
@@ -8148,6 +8556,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0410",
     "name": "住吉大社",
+    "reading": "すみよしたいしゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -8167,6 +8576,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0411",
     "name": "四天王寺",
+    "reading": "してんのうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -8183,6 +8593,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0412",
     "name": "ユニバーサル・スタジオ・ジャパン",
+    "reading": "ゆにばーさる・すたじお・じゃぱん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8199,6 +8610,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0413",
     "name": "海遊館",
+    "reading": "かいゆうかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8215,6 +8627,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0414",
     "name": "神戸北野異人館街",
+    "reading": "こうべきたのいじんかんがい",
     "categories": [
       "その他"
     ],
@@ -8234,6 +8647,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0415",
     "name": "神戸ポートタワー",
+    "reading": "こうべぽーとたわー",
     "categories": [
       "その他"
     ],
@@ -8250,6 +8664,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0416",
     "name": "有馬温泉",
+    "reading": "ありまおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8266,6 +8681,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0417",
     "name": "城崎温泉",
+    "reading": "きのさきおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8282,6 +8698,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0418",
     "name": "竹田城跡",
+    "reading": "たけだじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -8298,6 +8715,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0419",
     "name": "神戸須磨シーワールド",
+    "reading": "こうべすましーわーるど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8314,6 +8732,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0420",
     "name": "長谷寺",
+    "reading": "はせでら",
     "categories": [
       "歴史・文化"
     ],
@@ -8333,6 +8752,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0421",
     "name": "大神神社",
+    "reading": "おおみわじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -8349,6 +8769,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0422",
     "name": "室生寺",
+    "reading": "むろうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -8368,6 +8789,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0423",
     "name": "曽爾高原",
+    "reading": "そにこうげん",
     "categories": [
       "自然・絶景"
     ],
@@ -8384,6 +8806,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0424",
     "name": "谷瀬の吊り橋",
+    "reading": "たにぜのつりばし",
     "categories": [
       "自然・絶景"
     ],
@@ -8400,6 +8823,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0425",
     "name": "和歌山城",
+    "reading": "わかやまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8419,6 +8843,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0426",
     "name": "アドベンチャーワールド",
+    "reading": "あどべんちゃーわーるど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8435,6 +8860,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0427",
     "name": "白良浜",
+    "reading": "しららはま",
     "categories": [
       "自然・絶景"
     ],
@@ -8451,6 +8877,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0428",
     "name": "橋杭岩",
+    "reading": "はしぐいいわ",
     "categories": [
       "自然・絶景"
     ],
@@ -8467,6 +8894,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0429",
     "name": "友ヶ島",
+    "reading": "ともがしま",
     "categories": [
       "自然・絶景"
     ],
@@ -8483,6 +8911,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0430",
     "name": "鳥取砂丘",
+    "reading": "とっとりさきゅう",
     "categories": [
       "自然・絶景"
     ],
@@ -8499,6 +8928,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0431",
     "name": "三徳山三佛寺投入堂",
+    "reading": "みとくさんさんぶつじなげいれどう",
     "categories": [
       "その他"
     ],
@@ -8518,6 +8948,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0432",
     "name": "水木しげるロード",
+    "reading": "みずきしげるろーど",
     "categories": [
       "レジャー・温泉"
     ],
@@ -8534,6 +8965,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0433",
     "name": "浦富海岸",
+    "reading": "うらどめかいがん",
     "categories": [
       "自然・絶景"
     ],
@@ -8550,6 +8982,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0434",
     "name": "出雲大社",
+    "reading": "いづもおおやしろ",
     "categories": [
       "歴史・文化"
     ],
@@ -8569,6 +9002,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0435",
     "name": "松江城",
+    "reading": "まつえじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8589,6 +9023,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0436",
     "name": "足立美術館",
+    "reading": "あだちびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -8605,6 +9040,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0437",
     "name": "稲佐の浜",
+    "reading": "いなさのはま",
     "categories": [
       "自然・絶景"
     ],
@@ -8621,6 +9057,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0438",
     "name": "岡山後楽園",
+    "reading": "おかやまこうらくえん",
     "categories": [
       "歴史・文化"
     ],
@@ -8641,6 +9078,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0439",
     "name": "岡山城",
+    "reading": "おかやまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8660,6 +9098,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0440",
     "name": "倉敷美観地区",
+    "reading": "くらしきびかんちく",
     "categories": [
       "歴史・文化"
     ],
@@ -8679,6 +9118,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0441",
     "name": "大原美術館",
+    "reading": "おおはらびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -8695,6 +9135,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0442",
     "name": "備中松山城",
+    "reading": "びっちゅうまつやまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8715,6 +9156,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0443",
     "name": "広島城",
+    "reading": "ひろしまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8731,6 +9173,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0444",
     "name": "縮景園",
+    "reading": "しゅっけいえん",
     "categories": [
       "歴史・文化"
     ],
@@ -8747,6 +9190,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0445",
     "name": "大久野島",
+    "reading": "おおくのしま",
     "categories": [
       "自然・絶景"
     ],
@@ -8763,6 +9207,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0446",
     "name": "尾道 千光寺",
+    "reading": "おのみち せんこうじ",
     "categories": [
       "歴史・文化"
     ],
@@ -8779,6 +9224,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0447",
     "name": "しまなみ海道",
+    "reading": "しまなみかいどう",
     "categories": [
       "自然・絶景"
     ],
@@ -8801,6 +9247,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0448",
     "name": "錦帯橋",
+    "reading": "きんたいきょう",
     "categories": [
       "歴史・文化"
     ],
@@ -8817,6 +9264,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0449",
     "name": "秋吉台",
+    "reading": "あきよしだい",
     "categories": [
       "自然・絶景"
     ],
@@ -8836,6 +9284,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0450",
     "name": "秋芳洞",
+    "reading": "あきよしどう",
     "categories": [
       "自然・絶景"
     ],
@@ -8855,6 +9304,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0451",
     "name": "元乃隅神社",
+    "reading": "もとのすみじんじゃ",
     "categories": [
       "自然・絶景"
     ],
@@ -8871,6 +9321,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0452",
     "name": "角島大橋",
+    "reading": "つのしまおおはし",
     "categories": [
       "自然・絶景"
     ],
@@ -8887,6 +9338,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0453",
     "name": "祖谷のかずら橋",
+    "reading": "いやのかずらばし",
     "categories": [
       "自然・絶景"
     ],
@@ -8903,6 +9355,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0454",
     "name": "大歩危・小歩危",
+    "reading": "おおぼけ・こぼけ",
     "categories": [
       "自然・絶景"
     ],
@@ -8919,6 +9372,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0455",
     "name": "鳴門の渦潮",
+    "reading": "なるとのうずしお",
     "categories": [
       "自然・絶景"
     ],
@@ -8935,6 +9389,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0456",
     "name": "大塚国際美術館",
+    "reading": "おおつかこくさいびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -8951,6 +9406,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0457",
     "name": "金刀比羅宮",
+    "reading": "ことひらぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -8970,6 +9426,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0458",
     "name": "栗林公園",
+    "reading": "りつりんこうえん",
     "categories": [
       "歴史・文化"
     ],
@@ -8989,6 +9446,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0459",
     "name": "丸亀城",
+    "reading": "まるがめじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -9009,6 +9467,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0460",
     "name": "父母ヶ浜",
+    "reading": "ちちぶがはま",
     "categories": [
       "自然・絶景"
     ],
@@ -9025,6 +9484,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0461",
     "name": "直島 地中美術館",
+    "reading": "なおしま ちちゅうびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -9041,6 +9501,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0462",
     "name": "松山城",
+    "reading": "まつやまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -9061,6 +9522,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0463",
     "name": "道後温泉本館",
+    "reading": "どうごおんせんほんかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9077,6 +9539,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0465",
     "name": "下灘駅",
+    "reading": "しもなだえき",
     "categories": [
       "自然・絶景"
     ],
@@ -9093,6 +9556,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0466",
     "name": "高知城",
+    "reading": "こうちじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -9113,6 +9577,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0467",
     "name": "桂浜",
+    "reading": "かつらはま",
     "categories": [
       "自然・絶景"
     ],
@@ -9129,6 +9594,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0468",
     "name": "四万十川",
+    "reading": "しまんとがわ",
     "categories": [
       "自然・絶景"
     ],
@@ -9151,6 +9617,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0469",
     "name": "仁淀ブルー（にこ淵）",
+    "reading": "によどぶるー（にこぶち）",
     "categories": [
       "自然・絶景"
     ],
@@ -9167,6 +9634,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0470",
     "name": "足摺岬",
+    "reading": "あしずりみさき",
     "categories": [
       "自然・絶景"
     ],
@@ -9183,6 +9651,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0471",
     "name": "太宰府天満宮",
+    "reading": "だざいふてんまんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -9202,6 +9671,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0472",
     "name": "福岡タワー",
+    "reading": "ふくおかたわー",
     "categories": [
       "その他"
     ],
@@ -9218,6 +9688,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0473",
     "name": "門司港レトロ",
+    "reading": "もじこうれとろ",
     "categories": [
       "その他"
     ],
@@ -9234,6 +9705,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0474",
     "name": "海の中道海浜公園",
+    "reading": "うみのなかみちかいひんこうえん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9250,6 +9722,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0475",
     "name": "マリンワールド海の中道",
+    "reading": "まりんわーるどうみのなかみち",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9266,6 +9739,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0476",
     "name": "吉野ヶ里遺跡",
+    "reading": "よしのがりいせき",
     "categories": [
       "歴史・文化"
     ],
@@ -9288,6 +9762,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0477",
     "name": "祐徳稲荷神社",
+    "reading": "ゆうとくいなりじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -9304,6 +9779,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0478",
     "name": "御船山楽園",
+    "reading": "みふねやまらくえん",
     "categories": [
       "歴史・文化"
     ],
@@ -9320,6 +9796,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0479",
     "name": "武雄温泉楼門",
+    "reading": "たけおおんせんろうもん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9336,6 +9813,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0480",
     "name": "平和公園",
+    "reading": "へいわこうえん",
     "categories": [
       "歴史・文化"
     ],
@@ -9352,6 +9830,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0481",
     "name": "眼鏡橋",
+    "reading": "めがねばし",
     "categories": [
       "歴史・文化"
     ],
@@ -9368,6 +9847,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0482",
     "name": "ハウステンボス",
+    "reading": "はうすてんぼす",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9384,6 +9864,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0483",
     "name": "九十九島",
+    "reading": "くじゅうくしま",
     "categories": [
       "自然・絶景"
     ],
@@ -9400,6 +9881,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0484",
     "name": "稲佐山",
+    "reading": "いなさやま",
     "categories": [
       "自然・絶景"
     ],
@@ -9416,6 +9898,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0485",
     "name": "長崎ペンギン水族館",
+    "reading": "ながさきぺんぎんすいぞくかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9432,6 +9915,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0486",
     "name": "熊本城",
+    "reading": "くまもとじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -9452,6 +9936,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0487",
     "name": "水前寺成趣園",
+    "reading": "すいぜんじじょうじゅえん",
     "categories": [
       "歴史・文化"
     ],
@@ -9468,6 +9953,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0488",
     "name": "阿蘇山",
+    "reading": "あそさん",
     "categories": [
       "自然・絶景"
     ],
@@ -9488,6 +9974,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0489",
     "name": "黒川温泉",
+    "reading": "くろかわおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9504,6 +9991,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0490",
     "name": "鍋ヶ滝",
+    "reading": "なべがたき",
     "categories": [
       "自然・絶景"
     ],
@@ -9520,6 +10008,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0491",
     "name": "別府温泉",
+    "reading": "べっぷおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9536,6 +10025,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0492",
     "name": "由布院温泉",
+    "reading": "ゆふいんおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9552,6 +10042,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0493",
     "name": "由布岳",
+    "reading": "ゆふだけ",
     "categories": [
       "自然・絶景"
     ],
@@ -9571,6 +10062,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0494",
     "name": "九重夢大吊橋",
+    "reading": "ここのえゆめおおつりはし",
     "categories": [
       "自然・絶景"
     ],
@@ -9587,6 +10079,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0495",
     "name": "うみたまご",
+    "reading": "うみたまご",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9603,6 +10096,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0496",
     "name": "高千穂峡",
+    "reading": "たかちほきょう",
     "categories": [
       "自然・絶景"
     ],
@@ -9619,6 +10113,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0497",
     "name": "天岩戸神社",
+    "reading": "あまのいわとじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -9635,6 +10130,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0498",
     "name": "青島神社",
+    "reading": "あおしまじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -9651,6 +10147,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0499",
     "name": "鵜戸神宮",
+    "reading": "うどじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -9667,6 +10164,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0500",
     "name": "都井岬",
+    "reading": "といみさき",
     "categories": [
       "自然・絶景"
     ],
@@ -9683,6 +10181,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0501",
     "name": "桜島",
+    "reading": "さくらじま",
     "categories": [
       "自然・絶景"
     ],
@@ -9699,6 +10198,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0502",
     "name": "仙巌園",
+    "reading": "せんがんえん",
     "categories": [
       "歴史・文化"
     ],
@@ -9715,6 +10215,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0503",
     "name": "霧島神宮",
+    "reading": "きりしまじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -9734,6 +10235,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0504",
     "name": "指宿温泉・砂むし温泉",
+    "reading": "いぶすきおんせん・すなむしおんせん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9750,6 +10252,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0505",
     "name": "縄文杉",
+    "reading": "じょうもんすぎ",
     "categories": [
       "自然・絶景"
     ],
@@ -9766,6 +10269,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0506",
     "name": "白谷雲水峡",
+    "reading": "しらたにうんすいきょう",
     "categories": [
       "自然・絶景"
     ],
@@ -9782,6 +10286,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0507",
     "name": "沖縄美ら海水族館",
+    "reading": "おきなわちゅらうみすいぞくかん",
     "categories": [
       "レジャー・温泉"
     ],
@@ -9798,6 +10303,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0508",
     "name": "古宇利大橋",
+    "reading": "こうりおおはし",
     "categories": [
       "自然・絶景"
     ],
@@ -9817,6 +10323,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0509",
     "name": "万座毛",
+    "reading": "まんざもう",
     "categories": [
       "自然・絶景"
     ],
@@ -9833,6 +10340,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0510",
     "name": "残波岬",
+    "reading": "ざんぱみさき",
     "categories": [
       "自然・絶景"
     ],
@@ -9849,6 +10357,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0511",
     "name": "川平湾",
+    "reading": "かびらわん",
     "categories": [
       "自然・絶景"
     ],
@@ -9865,6 +10374,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0512",
     "name": "波照間島 ニシ浜",
+    "reading": "はてるまじま にしはま",
     "categories": [
       "自然・絶景"
     ],
@@ -9881,6 +10391,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0513",
     "name": "竹富島 伝統的集落",
+    "reading": "たけとみじま でんとうてきしゅうらく",
     "categories": [
       "歴史・文化"
     ],
@@ -9900,6 +10411,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0514",
     "name": "ひめゆりの塔",
+    "reading": "ひめゆりのとう",
     "categories": [
       "歴史・文化"
     ],
@@ -9916,6 +10428,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0515",
     "name": "国立代々木競技場",
+    "reading": "こくりつよよぎきょうぎじょう",
     "categories": [
       "その他"
     ],
@@ -9938,6 +10451,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0516",
     "name": "札幌市時計台",
+    "reading": "さっぽろしとけいだい",
     "categories": [
       "その他"
     ],
@@ -9957,6 +10471,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0517",
     "name": "北海道庁旧本庁舎",
+    "reading": "ほっかいどうちょうきゅうほんちょうしゃ",
     "categories": [
       "その他"
     ],
@@ -9976,6 +10491,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0518",
     "name": "旧函館区公会堂",
+    "reading": "きゅうはこだてくこうかいどう",
     "categories": [
       "その他"
     ],
@@ -9995,6 +10511,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0519",
     "name": "旧開智学校",
+    "reading": "きゅうかいちがっこう",
     "categories": [
       "その他"
     ],
@@ -10014,6 +10531,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0520",
     "name": "広島平和記念資料館",
+    "reading": "ひろしまへいわきねんしりょうかん",
     "categories": [
       "その他"
     ],
@@ -10036,6 +10554,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0521",
     "name": "地中美術館",
+    "reading": "ちちゅうびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -10055,6 +10574,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0522",
     "name": "豊島美術館",
+    "reading": "てしまびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -10074,6 +10594,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0523",
     "name": "博物館明治村",
+    "reading": "はくぶつかんめいじむら",
     "categories": [
       "その他"
     ],
@@ -10090,6 +10611,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0524",
     "name": "三鷹の森ジブリ美術館",
+    "reading": "みたかのもりじぶりびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -10109,6 +10631,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0525",
     "name": "江戸東京たてもの園",
+    "reading": "えどとうきょうたてものえん",
     "categories": [
       "その他"
     ],
@@ -10128,6 +10651,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0526",
     "name": "自由学園明日館",
+    "reading": "じゆうがくえんみょうにちかん",
     "categories": [
       "その他"
     ],
@@ -10150,6 +10674,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0527",
     "name": "旧岩崎邸庭園",
+    "reading": "きゅういわさきていていえん",
     "categories": [
       "その他"
     ],
@@ -10166,6 +10691,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0528",
     "name": "日本銀行本店本館",
+    "reading": "にっぽんぎんこうほんてんほんかん",
     "categories": [
       "その他"
     ],
@@ -10188,6 +10714,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0529",
     "name": "日本橋",
+    "reading": "にほんばし",
     "categories": [
       "その他"
     ],
@@ -10207,6 +10734,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0530",
     "name": "兵庫県立美術館",
+    "reading": "ひょうごけんりつびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -10226,6 +10754,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0531",
     "name": "京都国立博物館 明治古都館",
+    "reading": "きょうとこくりつはくぶつかん めいじことかん",
     "categories": [
       "その他"
     ],
@@ -10248,6 +10777,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0532",
     "name": "東京国立博物館 表慶館",
+    "reading": "とうきょうこくりつはくぶつかん ひょうけいかん",
     "categories": [
       "その他"
     ],
@@ -10270,6 +10800,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0533",
     "name": "国立新美術館",
+    "reading": "こくりつしんびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -10289,6 +10820,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0534",
     "name": "豊田市美術館",
+    "reading": "とよたしびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -10308,6 +10840,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0535",
     "name": "旧閑谷学校",
+    "reading": "きゅうしずたにがっこう",
     "categories": [
       "その他"
     ],
@@ -10328,6 +10861,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0536",
     "name": "旧グッゲンハイム邸",
+    "reading": "きゅうぐっげんはいむてい",
     "categories": [
       "その他"
     ],
@@ -10347,6 +10881,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0537",
     "name": "旧居留地十五番館",
+    "reading": "きゅうきょりゅうちじゅうごばんかん",
     "categories": [
       "その他"
     ],
@@ -10369,6 +10904,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0538",
     "name": "三峯神社",
+    "reading": "みつみねじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -10385,6 +10921,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0539",
     "name": "秩父神社",
+    "reading": "ちちぶじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -10401,6 +10938,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0540",
     "name": "時の鐘",
+    "reading": "ときのかね",
     "categories": [
       "その他"
     ],
@@ -10417,6 +10955,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0541",
     "name": "羽黒山五重塔",
+    "reading": "はぐろさんごじゅうのとう",
     "categories": [
       "その他"
     ],
@@ -10436,6 +10975,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0542",
     "name": "上杉神社",
+    "reading": "うえすぎじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -10452,6 +10992,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0543",
     "name": "山居倉庫",
+    "reading": "さんきょそうこ",
     "categories": [
       "その他"
     ],
@@ -10468,6 +11009,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0544",
     "name": "眉山",
+    "reading": "びざん",
     "categories": [
       "自然・絶景"
     ],
@@ -10484,6 +11026,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0545",
     "name": "うだつの町並み",
+    "reading": "うだつのまちなみ",
     "categories": [
       "歴史・文化"
     ],
@@ -10503,6 +11046,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0546",
     "name": "阿波おどり会館",
+    "reading": "あわおどりかいかん",
     "categories": [
       "その他"
     ],
@@ -10519,6 +11063,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0547",
     "name": "石鎚山",
+    "reading": "いしづちさん",
     "categories": [
       "自然・絶景"
     ],
@@ -10538,6 +11083,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0548",
     "name": "大山祇神社",
+    "reading": "おおやまづみじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -10557,6 +11103,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0549",
     "name": "宇和島城",
+    "reading": "うわじまじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -10577,6 +11124,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0550",
     "name": "内子町八日市護国の町並み",
+    "reading": "うちこちょうようかいちごこくのまちなみ",
     "categories": [
       "歴史・文化"
     ],
@@ -10596,6 +11144,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0551",
     "name": "一乗谷朝倉氏遺跡",
+    "reading": "いちじょうだにあさくらしいせき",
     "categories": [
       "歴史・文化"
     ],
@@ -10616,6 +11165,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0552",
     "name": "三方五湖",
+    "reading": "みかたごこ",
     "categories": [
       "自然・絶景"
     ],
@@ -10635,6 +11185,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0553",
     "name": "氣比神宮",
+    "reading": "けひじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -10651,6 +11202,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0554",
     "name": "越前大野城",
+    "reading": "えちぜんおおのじょう",
     "categories": [
       "歴史・文化"
     ],
@@ -10667,6 +11219,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0555",
     "name": "筑波山",
+    "reading": "つくばさん",
     "categories": [
       "自然・絶景"
     ],
@@ -10686,6 +11239,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0556",
     "name": "鹿島神宮",
+    "reading": "かしまじんぐう",
     "categories": [
       "歴史・文化"
     ],
@@ -10705,6 +11259,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0557",
     "name": "大洗磯前神社",
+    "reading": "おおあらいいそさきじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -10721,6 +11276,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0558",
     "name": "竜神大吊橋",
+    "reading": "りゅうじんおおつりばし",
     "categories": [
       "自然・絶景"
     ],
@@ -10737,6 +11293,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0559",
     "name": "大山",
+    "reading": "だいせん",
     "categories": [
       "自然・絶景"
     ],
@@ -10753,6 +11310,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0560",
     "name": "白兎神社",
+    "reading": "はくとじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -10769,6 +11327,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0561",
     "name": "青山剛昌ふるさと館",
+    "reading": "あおやまごうしょうふるさとかん",
     "categories": [
       "その他"
     ],
@@ -10785,6 +11344,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0562",
     "name": "米子城跡",
+    "reading": "よなごじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -10801,6 +11361,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0563",
     "name": "旧浜離宮庭園",
+    "reading": "きゅうはまりきゅうていえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10821,6 +11382,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0564",
     "name": "小石川後楽園",
+    "reading": "こいしかわこうらくえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10841,6 +11403,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0565",
     "name": "六義園",
+    "reading": "りくぎえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10860,6 +11423,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0566",
     "name": "黒部峡谷 附 猿飛ならびに奥鐘山",
+    "reading": "くろべきょうこく つけたり さるとびならびにおくかねやま",
     "categories": [
       "自然・絶景"
     ],
@@ -10880,6 +11444,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0567",
     "name": "金地院庭園",
+    "reading": "こんちいんていえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10899,6 +11464,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0568",
     "name": "浄瑠璃寺庭園",
+    "reading": "じょうるりじていえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10918,6 +11484,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0569",
     "name": "大仙院書院庭園",
+    "reading": "だいせんいんしょいんていえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10937,6 +11504,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0570",
     "name": "大徳寺方丈庭園",
+    "reading": "だいとくじほうじょうていえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10956,6 +11524,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0571",
     "name": "法金剛院青女滝 附 五位山",
+    "reading": "ほうこんごういんせいじょのたき つけたり ごいさん",
     "categories": [
       "歴史・文化"
     ],
@@ -10975,6 +11544,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0572",
     "name": "平城京左京三条二坊宮跡庭園",
+    "reading": "へいじょうきょうさきょうさんじょうにぼうきゅうせきていえん",
     "categories": [
       "歴史・文化"
     ],
@@ -10995,6 +11565,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0573",
     "name": "瀞八丁",
+    "reading": "どろはっちょう",
     "categories": [
       "自然・絶景"
     ],
@@ -11026,6 +11597,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0574",
     "name": "三段峡",
+    "reading": "さんだんきょう",
     "categories": [
       "自然・絶景"
     ],
@@ -11045,6 +11617,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0575",
     "name": "虹ノ松原",
+    "reading": "にじのまつばら",
     "categories": [
       "自然・絶景"
     ],
@@ -11064,6 +11637,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0576",
     "name": "温泉岳（雲仙岳）",
+    "reading": "おんせんだけ（うんぜんだけ）",
     "categories": [
       "自然・絶景"
     ],
@@ -11087,6 +11661,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0577",
     "name": "多賀城跡 附 寺跡",
+    "reading": "たがじょうあと つけたり てらあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11106,6 +11681,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0578",
     "name": "旧弘道館",
+    "reading": "きゅうこうどうかん",
     "categories": [
       "歴史・文化"
     ],
@@ -11126,6 +11702,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0579",
     "name": "常陸国分寺跡",
+    "reading": "ひたちこくぶんじあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11145,6 +11722,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0580",
     "name": "常陸国分尼寺跡",
+    "reading": "ひたちこくぶんにじあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11164,6 +11742,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0581",
     "name": "大谷磨崖仏",
+    "reading": "おおやまがいぶつ",
     "categories": [
       "歴史・文化"
     ],
@@ -11183,6 +11762,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0582",
     "name": "日光杉並木街道 附 並木寄進碑",
+    "reading": "にっこうすぎなみきかいどう つけたり なみききしんひ",
     "categories": [
       "歴史・文化"
     ],
@@ -11206,6 +11786,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0583",
     "name": "金井沢碑",
+    "reading": "かないざわひ",
     "categories": [
       "歴史・文化"
     ],
@@ -11225,6 +11806,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0584",
     "name": "多胡碑",
+    "reading": "たごひ",
     "categories": [
       "歴史・文化"
     ],
@@ -11244,6 +11826,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0585",
     "name": "山上碑および古墳",
+    "reading": "やまのうえひおよびこふん",
     "categories": [
       "歴史・文化"
     ],
@@ -11263,6 +11846,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0586",
     "name": "埼玉古墳群",
+    "reading": "さきたまこふんぐん",
     "categories": [
       "歴史・文化"
     ],
@@ -11282,6 +11866,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0587",
     "name": "加曽利貝塚",
+    "reading": "かそりかいづか",
     "categories": [
       "歴史・文化"
     ],
@@ -11301,6 +11886,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0588",
     "name": "尖石石器時代遺跡",
+    "reading": "とがりいしせっきじだいいせき",
     "categories": [
       "歴史・文化"
     ],
@@ -11320,6 +11906,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0589",
     "name": "新居関跡",
+    "reading": "あらいせきあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11339,6 +11926,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0590",
     "name": "遠江国分寺跡",
+    "reading": "とおとうみこくぶんじあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11358,6 +11946,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0591",
     "name": "登呂遺跡",
+    "reading": "とろいせき",
     "categories": [
       "歴史・文化"
     ],
@@ -11377,6 +11966,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0592",
     "name": "本居宣長旧宅同宅跡",
+    "reading": "もとおりのりながきゅうたくどうたくあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11396,6 +11986,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0593",
     "name": "安土城跡",
+    "reading": "あづちじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11415,6 +12006,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0594",
     "name": "恭仁宮跡（山城国分寺跡）",
+    "reading": "くにきゅうせき（やましろこくぶんじあと）",
     "categories": [
       "歴史・文化"
     ],
@@ -11434,6 +12026,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0595",
     "name": "百済寺跡",
+    "reading": "くだらじあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11453,6 +12046,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0596",
     "name": "巣山古墳",
+    "reading": "すやまこふん",
     "categories": [
       "歴史・文化"
     ],
@@ -11472,6 +12066,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0597",
     "name": "文殊院西古墳",
+    "reading": "もんじゅいんにしこふん",
     "categories": [
       "歴史・文化"
     ],
@@ -11491,6 +12086,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0598",
     "name": "岩橋千塚古墳群",
+    "reading": "いわせせんづかこふんぐん",
     "categories": [
       "歴史・文化"
     ],
@@ -11510,6 +12106,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0599",
     "name": "斎尾廃寺跡",
+    "reading": "さいのおはいじあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11529,6 +12126,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0600",
     "name": "廉塾ならびに菅茶山旧宅",
+    "reading": "れんじゅくならびにかんちゃざんきゅうたく",
     "categories": [
       "歴史・文化"
     ],
@@ -11548,6 +12146,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0601",
     "name": "讃岐国分寺跡",
+    "reading": "さぬきこくぶんじあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11567,6 +12166,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0602",
     "name": "王塚古墳",
+    "reading": "おうづかこふん",
     "categories": [
       "歴史・文化"
     ],
@@ -11586,6 +12186,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0603",
     "name": "大野城跡",
+    "reading": "おおのじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11609,6 +12210,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0604",
     "name": "大宰府跡",
+    "reading": "だざいふあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11628,6 +12230,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0605",
     "name": "水城跡",
+    "reading": "みずきあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11651,6 +12254,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0606",
     "name": "基肄城跡",
+    "reading": "きいじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11676,6 +12280,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0607",
     "name": "名護屋城跡並陣跡",
+    "reading": "なごやじょうあとならびにじんあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11698,6 +12303,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0608",
     "name": "金田城跡",
+    "reading": "かねだじょうあと",
     "categories": [
       "歴史・文化"
     ],
@@ -11717,6 +12323,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0609",
     "name": "原の辻遺跡",
+    "reading": "はるのつじいせき",
     "categories": [
       "歴史・文化"
     ],
@@ -11736,6 +12343,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0610",
     "name": "福井洞窟",
+    "reading": "ふくいどうくつ",
     "categories": [
       "歴史・文化"
     ],
@@ -11755,6 +12363,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0611",
     "name": "臼杵磨崖仏",
+    "reading": "うすきまがいぶつ",
     "categories": [
       "歴史・文化"
     ],
@@ -11774,6 +12383,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0612",
     "name": "西都原古墳群",
+    "reading": "さいとばるこふんぐん",
     "categories": [
       "歴史・文化"
     ],
@@ -11793,6 +12403,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0613",
     "name": "正福寺地蔵堂",
+    "reading": "しょうふくじじぞうどう",
     "categories": [
       "歴史・文化"
     ],
@@ -11812,6 +12423,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0614",
     "name": "円覚寺舎利殿",
+    "reading": "えんがくじしゃりでん",
     "categories": [
       "歴史・文化"
     ],
@@ -11831,6 +12443,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0615",
     "name": "如庵",
+    "reading": "じょあん",
     "categories": [
       "歴史・文化"
     ],
@@ -11850,6 +12463,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0616",
     "name": "石山寺多宝塔",
+    "reading": "いしやまでらたほうとう",
     "categories": [
       "歴史・文化"
     ],
@@ -11869,6 +12483,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0617",
     "name": "根来寺大塔",
+    "reading": "ねごろじだいとう",
     "categories": [
       "歴史・文化"
     ],
@@ -11888,6 +12503,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0618",
     "name": "吉備津神社本殿・拝殿",
+    "reading": "きびつじんじゃほんでん・はいでん",
     "categories": [
       "歴史・文化"
     ],
@@ -11907,6 +12523,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0619",
     "name": "明王院五重塔",
+    "reading": "みょうおういんごじゅうのとう",
     "categories": [
       "歴史・文化"
     ],
@@ -11926,6 +12543,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0620",
     "name": "瑠璃光寺五重塔",
+    "reading": "るりこうじごじゅうのとう",
     "categories": [
       "歴史・文化"
     ],
@@ -11945,6 +12563,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0621",
     "name": "石手寺二王門",
+    "reading": "いしてじにおうもん",
     "categories": [
       "歴史・文化"
     ],
@@ -11964,6 +12583,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0622",
     "name": "太山寺本堂",
+    "reading": "たいさんじほんどう",
     "categories": [
       "歴史・文化"
     ],
@@ -11983,6 +12603,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0623",
     "name": "青井阿蘇神社",
+    "reading": "あおいあそじんじゃ",
     "categories": [
       "歴史・文化"
     ],
@@ -12002,6 +12623,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0624",
     "name": "宇佐神宮本殿",
+    "reading": "うさじんぐうほんでん",
     "categories": [
       "歴史・文化"
     ],
@@ -12021,6 +12643,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0625",
     "name": "富貴寺大堂",
+    "reading": "ふきじおおどう",
     "categories": [
       "歴史・文化"
     ],
@@ -12040,6 +12663,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0626",
     "name": "崇福寺大雄宝殿",
+    "reading": "そうふくじだいゆうほうでん",
     "categories": [
       "歴史・文化"
     ],
@@ -12059,6 +12683,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0627",
     "name": "ポーラ美術館",
+    "reading": "ぽーらびじゅつかん",
     "categories": [
       "その他"
     ],
@@ -12075,6 +12700,7 @@ window.TOURIST_SPOTS = [
   {
     "id": "t0628",
     "name": "京都市京セラ美術館",
+    "reading": "きょうとしきょうせらびじゅつかん",
     "categories": [
       "その他"
     ],

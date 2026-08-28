@@ -62,292 +62,20 @@
   // ---------------------------------------------------------------------------
   // Tourist-spot readings
   // ---------------------------------------------------------------------------
-  // Kuroshiro + Kuromoji generates hiragana for ordinary Japanese names.
-  // Difficult proper nouns that are especially prone to morphological misreading
-  // are corrected here explicitly.
-  const touristReadingOverrides = new Map(Object.entries({
-    '檜隈寺跡': 'ひのくまでらあと',
-    '牽牛子塚古墳': 'けんごしづかこふん',
-    '西芳寺（苔寺）': 'さいほうじ（こけでら）',
-    '厳島神社': 'いつくしまじんじゃ',
-    '園比屋武御嶽石門': 'そのひゃんうたきいしもん',
-    '斎場御嶽': 'せーふぁうたき',
-    '大峯奥駈道': 'おおみねおくがけみち',
-    '熊野古道 中辺路': 'くまのこどう なかへち',
-    '熊野古道 小辺路': 'くまのこどう こへち',
-    '熊野古道 大辺路': 'くまのこどう おおへち',
-    '熊野古道 伊勢路': 'くまのこどう いせじ',
-    '温泉津温泉街': 'ゆのつおんせんがい',
-    '石見銀山街道 温泉津・沖泊道': 'いわみぎんざんかいどう ゆのつ・おきどまりみち',
-    '毛越寺': 'もうつうじ',
-    '金鶏山': 'きんけいさん',
-    '冨士御室浅間神社': 'ふじおむろせんげんじんじゃ',
-    '御師住宅 旧外川家住宅': 'おしじゅうたく きゅうとがわけじゅうたく',
-    '御師住宅 小佐野家住宅': 'おしじゅうたく おさのけじゅうたく',
-    '忍野八海 出口池': 'おしのはっかい でぐちいけ',
-    '忍野八海 お釜池': 'おしのはっかい おかまいけ',
-    '忍野八海 底抜池': 'おしのはっかい そこなしいけ',
-    '忍野八海 銚子池': 'おしのはっかい ちょうしいけ',
-    '忍野八海 湧池': 'おしのはっかい わくいけ',
-    '忍野八海 濁池': 'おしのはっかい にごりいけ',
-    '忍野八海 鏡池': 'おしのはっかい かがみいけ',
-    '忍野八海 菖蒲池': 'おしのはっかい しょうぶいけ',
-    '恵美須ヶ鼻造船所跡': 'えびすがはなぞうせんじょあと',
-    '韮山反射炉': 'にらやまはんしゃろ',
-    '三重津海軍所跡': 'みえつかいぐんしょあと',
-    '遠賀川水源地ポンプ室': 'おんががわすいげんちぽんぷしつ',
-    '宗像大社 沖津宮遙拝所': 'むなかたたいしゃ おきつみやようはいしょ',
-    '宗像大社 辺津宮': 'むなかたたいしゃ へつみや',
-    '新原・奴山古墳群': 'しんばる・ぬやまこふんぐん',
-    '﨑津集落': 'さきつしゅうらく',
-    '外海の出津集落': 'そとめのしつしゅうらく',
-    '外海の大野集落': 'そとめのおおのしゅうらく',
-    '頭ヶ島の集落': 'かしらがしまのしゅうらく',
-    '垣ノ島遺跡': 'かきのしまいせき',
-    '北黄金貝塚': 'きたこがねかいづか',
-    '田小屋野貝塚': 'たごやのかいづか',
-    '伊勢堂岱遺跡': 'いせどうたいいせき',
-    '是川石器時代遺跡': 'これかわせっきじだいいせき',
-    '五稜郭': 'ごりょうかく',
-    '摩周湖': 'ましゅうこ',
-    '屈斜路湖': 'くっしゃろこ',
-    '阿寒湖': 'あかんこ',
-    '宗谷岬': 'そうやみさき',
-    '奥入瀬渓流': 'おいらせけいりゅう',
-    '八甲田山': 'はっこうださん',
-    '龍泉洞': 'りゅうせんどう',
-    '厳美渓': 'げんびけい',
-    '猊鼻渓': 'げいびけい',
-    '瑞巌寺': 'ずいがんじ',
-    '角館武家屋敷': 'かくのだてぶけやしき',
-    '乳頭温泉郷': 'にゅうとうおんせんきょう',
-    '抱返り渓谷': 'だきがえりけいこく',
-    '山寺（立石寺）': 'やまでら（りっしゃくじ）',
-    '吹割の滝': 'ふきわれのたき',
-    '長瀞': 'ながとろ',
-    '埼玉古墳群': 'さきたまこふんぐん',
-    '鋸山': 'のこぎりやま',
-    '浅草寺': 'せんそうじ',
-    '葛西臨海水族園': 'かさいりんかいすいぞくえん',
-    '大涌谷': 'おおわくだに',
-    '清津峡': 'きよつきょう',
-    '星峠の棚田': 'ほしとうげのたなだ',
-    '彌彦神社': 'やひこじんじゃ',
-    '雨晴海岸': 'あまはらしかいがん',
-    '瑞龍寺': 'ずいりゅうじ',
-    '東尋坊': 'とうじんぼう',
-    '昇仙峡': 'しょうせんきょう',
-    '新倉山浅間公園': 'あらくらやませんげんこうえん',
-    '白馬八方尾根': 'はくばはっぽうおね',
-    '白ひげの滝': 'しらひげのたき',
-    '諏訪大社': 'すわたいしゃ',
-    '下呂温泉': 'げろおんせん',
-    '新穂高ロープウェイ': 'しんほたかろーぷうぇい',
-    '久能山東照宮': 'くのうざんとうしょうぐう',
-    '大室山': 'おおむろやま',
-    '英虞湾': 'あごわん',
-    '三十三間堂': 'さんじゅうさんげんどう',
-    '伊根の舟屋': 'いねのふなや',
-    '城崎温泉': 'きのさきおんせん',
-    '曽爾高原': 'そにこうげん',
-    '谷瀬の吊り橋': 'たにぜのつりばし',
-    '白良浜': 'しららはま',
-    '橋杭岩': 'はしぐいいわ',
-    '三徳山三佛寺投入堂': 'みとくさんさんぶつじなげいれどう',
-    '稲佐の浜': 'いなさのはま',
-    '出雲大社': 'いづもおおやしろ',
-    '縮景園': 'しゅっけいえん',
-    '大久野島': 'おおくのしま',
-    '錦帯橋': 'きんたいきょう',
-    '秋芳洞': 'あきよしどう',
-    '元乃隅神社': 'もとのすみじんじゃ',
-    '角島大橋': 'つのしまおおはし',
-    '祖谷のかずら橋': 'いやのかずらばし',
-    '大歩危・小歩危': 'おおぼけ・こぼけ',
-    '金刀比羅宮': 'ことひらぐう',
-    '栗林公園': 'りつりんこうえん',
-    '父母ヶ浜': 'ちちぶがはま',
-    '下灘駅': 'しもなだえき',
-    '仁淀ブルー（にこ淵）': 'によどぶるー（にこぶち）',
-    '足摺岬': 'あしずりみさき',
-    '門司港レトロ': 'もじこうれとろ',
-    '祐徳稲荷神社': 'ゆうとくいなりじんじゃ',
-    '御船山楽園': 'みふねやまらくえん',
-    '九十九島': 'くじゅうくしま',
-    '稲佐山': 'いなさやま',
-    '水前寺成趣園': 'すいぜんじじょうじゅえん',
-    '阿蘇山': 'あそさん',
-    '鍋ヶ滝': 'なべがたき',
-    '由布院温泉': 'ゆふいんおんせん',
-    '由布岳': 'ゆふだけ',
-    '九重夢大吊橋': 'ここのえゆめおおつりはし',
-    '高千穂峡': 'たかちほきょう',
-    '天岩戸神社': 'あまのいわとじんじゃ',
-    '鵜戸神宮': 'うどじんぐう',
-    '都井岬': 'といみさき',
-    '仙巌園': 'せんがんえん',
-    '指宿温泉・砂むし温泉': 'いぶすきおんせん・すなむしおんせん',
-    '白谷雲水峡': 'しらたにうんすいきょう',
-    '古宇利大橋': 'こうりおおはし',
-    '万座毛': 'まんざもう',
-    '残波岬': 'ざんぱみさき',
-    '川平湾': 'かびらわん',
-    '波照間島 ニシ浜': 'はてるまじま にしはま',
-    'MIHO MUSEUM': 'みほみゅーじあむ',
-    '海ほたるPA': 'うみほたるぱーきんぐえりあ',
-    '東京国立博物館 表慶館': 'とうきょうこくりつはくぶつかん ひょうけいかん',
-    '旧閑谷学校': 'きゅうしずたにがっこう',
-    '三峯神社': 'みつみねじんじゃ',
-    '羽黒山五重塔': 'はぐろさんごじゅうのとう',
-    '山居倉庫': 'さんきょそうこ',
-    '眉山': 'びざん',
-    '石鎚山': 'いしづちさん',
-    '大山祇神社': 'おおやまづみじんじゃ',
-    '内子町八日市護国の町並み': 'うちこちょうようかいちごこくのまちなみ',
-    '三方五湖': 'みかたごこ',
-    '氣比神宮': 'けひじんぐう',
-    '大洗磯前神社': 'おおあらいいそさきじんじゃ',
-    '白兎神社': 'はくとじんじゃ',
-    '米子城跡': 'よなごじょうあと',
-    '瀞八丁': 'どろはっちょう',
-    '虹ノ松原': 'にじのまつばら',
-    '加曽利貝塚': 'かそりかいづか',
-    '尖石石器時代遺跡': 'とがりいしせっきじだいいせき',
-    '登呂遺跡': 'とろいせき',
-    '恭仁宮跡（山城国分寺跡）': 'くにきゅうせき（やましろこくぶんじあと）',
-    '斎尾廃寺跡': 'さいのおはいじあと',
-    '廉塾ならびに菅茶山旧宅': 'れんじゅくならびにかんちゃざんきゅうたく',
-    '讃岐国分寺跡': 'さぬきこくぶんじあと',
-    '大宰府跡': 'だざいふあと',
-    '水城跡': 'みずきあと',
-    '基肄城跡': 'きいじょうあと',
-    '名護屋城跡並陣跡': 'なごやじょうあとならびにじんあと',
-    '金田城跡': 'かねだじょうあと',
-    '原の辻遺跡': 'はるのつじいせき',
-    '臼杵磨崖仏': 'うすきまがいぶつ',
-    '西都原古墳群': 'さいとばるこふんぐん',
-    '如庵': 'じょあん',
-    '吉備津神社本殿・拝殿': 'きびつじんじゃほんでん・はいでん',
-    '瑠璃光寺五重塔': 'るりこうじごじゅうのとう',
-    '太山寺本堂': 'たいさんじほんどう',
-    '富貴寺大堂': 'ふきじおおどう',
-    '崇福寺大雄宝殿': 'そうふくじだいゆうほうでん'
-  }));
+  // Readings are stored directly in tourist-spots.js so quiz rendering does not
+  // depend on an external tokenizer, dictionary CDN, or asynchronous startup.
+  const touristReadingByName = new Map(
+    touristSpots.map(spot => [String(spot?.name || '').trim(), String(spot?.reading || '').trim()])
+  );
 
-  const touristReadingCache = new Map();
-  let touristReaderPromise = null;
-
-  const touristDictionaryPaths = [
-    'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/',
-    'https://kuromojin.netlify.app/dict/'
-  ];
-  let touristReadingsPreparedPromise = null;
-
-  function normalizeKuromojiDictionaryUrl(url) {
-    if (typeof url !== 'string') return url;
-    // kuromoji 0.1.2 uses path.join() internally, so an absolute URL such as
-    // https://... becomes https:/... before XMLHttpRequest.open() receives it.
-    // Restore the missing slash for any HTTP(S) dictionary endpoint.
-    return url
-      .replace(/^https:\/(?!\/)/, 'https://')
-      .replace(/^http:\/(?!\/)/, 'http://');
+  function touristSpotReading(name) {
+    return touristReadingByName.get(String(name || '').trim()) || '';
   }
 
-  async function initializeKuroshiroReader(reader, dictPath) {
-    const xhrPrototype = typeof XMLHttpRequest !== 'undefined' ? XMLHttpRequest.prototype : null;
-    const originalOpen = xhrPrototype?.open;
-    let patchedOpen = null;
-
-    if (xhrPrototype && typeof originalOpen === 'function') {
-      patchedOpen = function(method, url, ...rest) {
-        return originalOpen.call(this, method, normalizeKuromojiDictionaryUrl(url), ...rest);
-      };
-      xhrPrototype.open = patchedOpen;
-    }
-
-    try {
-      await reader.init(new KuromojiAnalyzer({ dictPath }));
-    } finally {
-      if (xhrPrototype && patchedOpen && xhrPrototype.open === patchedOpen) {
-        xhrPrototype.open = originalOpen;
-      }
-    }
-  }
-
-  function initializeTouristReader() {
-    if (touristReaderPromise) return touristReaderPromise;
-    touristReaderPromise = (async () => {
-      if (typeof Kuroshiro === 'undefined' || typeof KuromojiAnalyzer === 'undefined') {
-        throw new Error('Kuroshiro libraries are unavailable.');
-      }
-
-      let lastError = null;
-      for (const dictPath of touristDictionaryPaths) {
-        const reader = new Kuroshiro();
-        try {
-          await initializeKuroshiroReader(reader, dictPath);
-          return reader;
-        } catch (error) {
-          lastError = error;
-          console.warn(`観光地ふりがな辞書の読み込みに失敗しました: ${dictPath}`, error);
-        }
-      }
-      throw lastError || new Error('観光地ふりがな辞書を読み込めませんでした。');
-    })().catch(error => {
-      console.warn('観光地のふりがな変換を初期化できませんでした。', error);
-      return null;
-    });
-    return touristReaderPromise;
-  }
-
-  async function touristSpotReading(name) {
-    const text = String(name || '').trim();
-    if (!text) return '';
-    if (touristReadingOverrides.has(text)) return touristReadingOverrides.get(text);
-    if (touristReadingCache.has(text)) return touristReadingCache.get(text);
-
-    if (!/[一-龯々〆ヶ﨑]/u.test(text)) {
-      const kana = text.replace(/[ァ-ヶ]/g, ch =>
-        String.fromCharCode(ch.charCodeAt(0) - 0x60)
-      );
-      touristReadingCache.set(text, kana);
-      return kana;
-    }
-
-    const reader = await initializeTouristReader();
-    if (!reader) return '';
-    try {
-      const reading = await reader.convert(text, { to: 'hiragana', mode: 'normal' });
-      const normalized = String(reading || '').trim();
-      if (normalized) touristReadingCache.set(text, normalized);
-      return normalized;
-    } catch (error) {
-      console.warn(`観光地「${text}」のふりがな変換に失敗しました。`, error);
-      return '';
-    }
-  }
-
-  async function prepareAllTouristReadings() {
-    if (touristReadingsPreparedPromise) return touristReadingsPreparedPromise;
-    touristReadingsPreparedPromise = (async () => {
-      const reader = await initializeTouristReader();
-      if (!reader) return false;
-
-      // Generate and cache every tourist-spot reading before the first tourism
-      // question is shown. This removes the race where early questions could
-      // appear before the asynchronous dictionary initialization had finished.
-      for (const spot of touristSpots) {
-        await touristSpotReading(spot.name);
-      }
-      return true;
-    })();
-    return touristReadingsPreparedPromise;
-  }
-
-  async function showTouristReading(target, name, questionRef = null) {
+  function showTouristReading(target, name, questionRef = null) {
     if (!target) return;
-    const reading = await touristSpotReading(name);
     if (questionRef && state.currentQuestion !== questionRef) return;
+    const reading = touristSpotReading(name);
     target.textContent = reading;
     target.hidden = !reading;
   }
@@ -451,7 +179,6 @@
     if (els.questionLabel) els.questionLabel.textContent = state.mode === 'municipality'
       ? 'この市町村がある都道府県を選んでください'
       : 'この観光地がある都道府県を選んでください';
-    if (state.mode === 'tourism') initializeTouristReader();
     syncSettingsButtons();
   }
 
@@ -549,31 +276,8 @@
     state.streak = 0; state.maxStreak = 0; state.mistakes = []; state.lastId = null; updateStats();
   }
 
-  async function startGame() {
-    if (state.phase === 'starting') return;
-    setSettingsOpen(false);
-
-    if (state.mode === 'tourism') {
-      const previousPhase = state.phase;
-      state.phase = 'starting';
-      const startControls = [els.startButton, els.restartSameButton].filter(Boolean);
-      const startLabels = new Map(startControls.map(button => [button, button.textContent]));
-      for (const button of startControls) {
-        button.disabled = true;
-        button.textContent = '読みを準備中…';
-      }
-      try {
-        await prepareAllTouristReadings();
-      } finally {
-        for (const button of startControls) {
-          button.disabled = false;
-          button.textContent = startLabels.get(button) || button.textContent;
-        }
-        state.phase = previousPhase;
-      }
-    }
-
-    state.phase = 'playing'; resetRoundState(); buildGameQueue();
+  function startGame() {
+    setSettingsOpen(false); state.phase = 'playing'; resetRoundState(); buildGameQueue();
     els.startScreen.hidden = true; els.endScreen.hidden = true; els.gameLayout.hidden = false; showNextQuestion();
   }
   function showStartScreen() {
@@ -620,10 +324,9 @@
       els.questionReading.textContent = reading;
       els.questionReading.hidden = !reading;
     } else {
-      const reading = touristReadingOverrides.get(q.name) || touristReadingCache.get(q.name) || '';
+      const reading = touristSpotReading(q.name);
       els.questionReading.textContent = reading;
       els.questionReading.hidden = !reading;
-      if (!reading) showTouristReading(els.questionReading, q.name, q);
     }
     els.questionNo.textContent = String(state.questionIndex).padStart(2,'0');
     if (Number.isFinite(state.questionLimit)) {
