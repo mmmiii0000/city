@@ -237,21 +237,27 @@
   const touristReadingCache = new Map();
   let touristReaderPromise = null;
 
+  const touristDictionaryPaths = [
+    'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/',
+    'https://kuromojin.netlify.app/dict/'
+  ];
+  let touristReadingsPreparedPromise = null;
+
   function normalizeKuromojiDictionaryUrl(url) {
     if (typeof url !== 'string') return url;
-    const malformedPrefix = 'https:/cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/';
-    if (!url.startsWith(malformedPrefix)) return url;
-    return `https://${url.slice('https:/'.length)}`;
+    // kuromoji 0.1.2 uses path.join() internally, so an absolute URL such as
+    // https://... becomes https:/... before XMLHttpRequest.open() receives it.
+    // Restore the missing slash for any HTTP(S) dictionary endpoint.
+    return url
+      .replace(/^https:\/(?!\/)/, 'https://')
+      .replace(/^http:\/(?!\/)/, 'http://');
   }
 
-  async function initializeKuroshiroReader(reader) {
+  async function initializeKuroshiroReader(reader, dictPath) {
     const xhrPrototype = typeof XMLHttpRequest !== 'undefined' ? XMLHttpRequest.prototype : null;
     const originalOpen = xhrPrototype?.open;
     let patchedOpen = null;
 
-    // kuromoji 0.1.2 joins dictionary paths with path.join(), which turns an
-    // absolute https:// URL into https:/... in browsers. Normalize only those
-    // dictionary requests while Kuroshiro is initializing, then restore XHR.
     if (xhrPrototype && typeof originalOpen === 'function') {
       patchedOpen = function(method, url, ...rest) {
         return originalOpen.call(this, method, normalizeKuromojiDictionaryUrl(url), ...rest);
@@ -260,9 +266,7 @@
     }
 
     try {
-      await reader.init(new KuromojiAnalyzer({
-        dictPath: 'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/'
-      }));
+      await reader.init(new KuromojiAnalyzer({ dictPath }));
     } finally {
       if (xhrPrototype && patchedOpen && xhrPrototype.open === patchedOpen) {
         xhrPrototype.open = originalOpen;
@@ -276,9 +280,19 @@
       if (typeof Kuroshiro === 'undefined' || typeof KuromojiAnalyzer === 'undefined') {
         throw new Error('Kuroshiro libraries are unavailable.');
       }
-      const reader = new Kuroshiro();
-      await initializeKuroshiroReader(reader);
-      return reader;
+
+      let lastError = null;
+      for (const dictPath of touristDictionaryPaths) {
+        const reader = new Kuroshiro();
+        try {
+          await initializeKuroshiroReader(reader, dictPath);
+          return reader;
+        } catch (error) {
+          lastError = error;
+          console.warn(`観光地ふりがな辞書の読み込みに失敗しました: ${dictPath}`, error);
+        }
+      }
+      throw lastError || new Error('観光地ふりがな辞書を読み込めませんでした。');
     })().catch(error => {
       console.warn('観光地のふりがな変換を初期化できませんでした。', error);
       return null;
@@ -311,6 +325,23 @@
       console.warn(`観光地「${text}」のふりがな変換に失敗しました。`, error);
       return '';
     }
+  }
+
+  async function prepareAllTouristReadings() {
+    if (touristReadingsPreparedPromise) return touristReadingsPreparedPromise;
+    touristReadingsPreparedPromise = (async () => {
+      const reader = await initializeTouristReader();
+      if (!reader) return false;
+
+      // Generate and cache every tourist-spot reading before the first tourism
+      // question is shown. This removes the race where early questions could
+      // appear before the asynchronous dictionary initialization had finished.
+      for (const spot of touristSpots) {
+        await touristSpotReading(spot.name);
+      }
+      return true;
+    })();
+    return touristReadingsPreparedPromise;
   }
 
   async function showTouristReading(target, name, questionRef = null) {
@@ -518,8 +549,31 @@
     state.streak = 0; state.maxStreak = 0; state.mistakes = []; state.lastId = null; updateStats();
   }
 
-  function startGame() {
-    setSettingsOpen(false); state.phase = 'playing'; resetRoundState(); buildGameQueue();
+  async function startGame() {
+    if (state.phase === 'starting') return;
+    setSettingsOpen(false);
+
+    if (state.mode === 'tourism') {
+      const previousPhase = state.phase;
+      state.phase = 'starting';
+      const startControls = [els.startButton, els.restartSameButton].filter(Boolean);
+      const startLabels = new Map(startControls.map(button => [button, button.textContent]));
+      for (const button of startControls) {
+        button.disabled = true;
+        button.textContent = '読みを準備中…';
+      }
+      try {
+        await prepareAllTouristReadings();
+      } finally {
+        for (const button of startControls) {
+          button.disabled = false;
+          button.textContent = startLabels.get(button) || button.textContent;
+        }
+        state.phase = previousPhase;
+      }
+    }
+
+    state.phase = 'playing'; resetRoundState(); buildGameQueue();
     els.startScreen.hidden = true; els.endScreen.hidden = true; els.gameLayout.hidden = false; showNextQuestion();
   }
   function showStartScreen() {
@@ -566,9 +620,10 @@
       els.questionReading.textContent = reading;
       els.questionReading.hidden = !reading;
     } else {
-      els.questionReading.textContent = '';
-      els.questionReading.hidden = true;
-      showTouristReading(els.questionReading, q.name, q);
+      const reading = touristReadingOverrides.get(q.name) || touristReadingCache.get(q.name) || '';
+      els.questionReading.textContent = reading;
+      els.questionReading.hidden = !reading;
+      if (!reading) showTouristReading(els.questionReading, q.name, q);
     }
     els.questionNo.textContent = String(state.questionIndex).padStart(2,'0');
     if (Number.isFinite(state.questionLimit)) {
