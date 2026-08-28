@@ -237,6 +237,39 @@
   const touristReadingCache = new Map();
   let touristReaderPromise = null;
 
+  function normalizeKuromojiDictionaryUrl(url) {
+    if (typeof url !== 'string') return url;
+    const malformedPrefix = 'https:/cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/';
+    if (!url.startsWith(malformedPrefix)) return url;
+    return `https://${url.slice('https:/'.length)}`;
+  }
+
+  async function initializeKuroshiroReader(reader) {
+    const xhrPrototype = typeof XMLHttpRequest !== 'undefined' ? XMLHttpRequest.prototype : null;
+    const originalOpen = xhrPrototype?.open;
+    let patchedOpen = null;
+
+    // kuromoji 0.1.2 joins dictionary paths with path.join(), which turns an
+    // absolute https:// URL into https:/... in browsers. Normalize only those
+    // dictionary requests while Kuroshiro is initializing, then restore XHR.
+    if (xhrPrototype && typeof originalOpen === 'function') {
+      patchedOpen = function(method, url, ...rest) {
+        return originalOpen.call(this, method, normalizeKuromojiDictionaryUrl(url), ...rest);
+      };
+      xhrPrototype.open = patchedOpen;
+    }
+
+    try {
+      await reader.init(new KuromojiAnalyzer({
+        dictPath: 'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/'
+      }));
+    } finally {
+      if (xhrPrototype && patchedOpen && xhrPrototype.open === patchedOpen) {
+        xhrPrototype.open = originalOpen;
+      }
+    }
+  }
+
   function initializeTouristReader() {
     if (touristReaderPromise) return touristReaderPromise;
     touristReaderPromise = (async () => {
@@ -244,9 +277,7 @@
         throw new Error('Kuroshiro libraries are unavailable.');
       }
       const reader = new Kuroshiro();
-      await reader.init(new KuromojiAnalyzer({
-        dictPath: 'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/'
-      }));
+      await initializeKuroshiroReader(reader);
       return reader;
     })().catch(error => {
       console.warn('観光地のふりがな変換を初期化できませんでした。', error);
@@ -389,6 +420,7 @@
     if (els.questionLabel) els.questionLabel.textContent = state.mode === 'municipality'
       ? 'この市町村がある都道府県を選んでください'
       : 'この観光地がある都道府県を選んでください';
+    if (state.mode === 'tourism') initializeTouristReader();
     syncSettingsButtons();
   }
 
